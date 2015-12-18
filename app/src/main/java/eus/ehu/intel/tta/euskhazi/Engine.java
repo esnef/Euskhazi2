@@ -20,6 +20,10 @@ public class Engine {
         this.mPreferencesManager=PreferencesManager.getInstance();
     }
 
+
+
+
+
     public static Engine getInstance(Context contextApplication){
         if(contextApplication==null){
             Log.e(TAG,"The parameter contextApplication is nullpoint");
