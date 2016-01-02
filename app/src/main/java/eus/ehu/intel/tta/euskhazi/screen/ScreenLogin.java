@@ -3,6 +3,7 @@ package eus.ehu.intel.tta.euskhazi.screen;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
@@ -196,6 +197,9 @@ public class ScreenLogin extends ScreenBase implements LoaderCallbacks<Cursor> {
             showProgress(true);
             mAuthTask = new UserLoginTask(email, password);
             mAuthTask.execute((Void) null);
+
+            Intent intent = new Intent(this, MenuNivelActivity.class);
+            startActivity(intent);
         }
     }
 
