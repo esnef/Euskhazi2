@@ -25,6 +25,14 @@
         <activity
             android:name=".screen.MenuNivelActivity"
             android:label="@string/title_activity_menu_nivel"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".screen.AtarikoaActivity"
+            android:label="@string/title_activity_atarikoa"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".screen.TipoExamenActivity"
+            android:label="@string/title_activity_tipo_examen"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
