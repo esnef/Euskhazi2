@@ -15,5 +15,8 @@
     </string>
     <string name="title_activity_menu_nivel">MenuNivelActivity</string>
     <string name="title_choose_level">Aukeratu maila</string>
+    <string name="title_activity_atarikoa">AtarikoaActivity</string>
+    <string name="title_activity_tipo_examen">TipoExamenActivity</string>
+    <string name="title_choose_exam_type">Aukeratu azterketa mota</string>
 
 </resources>
