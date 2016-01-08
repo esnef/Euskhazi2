@@ -38,7 +38,7 @@ public class TipoExamenActivity extends ScreenBase {
                 break;
             case 2:
                 Toast.makeText(this, "Idatzizkoa sin implementar", Toast.LENGTH_SHORT).show();
-                /*
+
                 mEngine.setOnUserListener(new Engine.OnUserListener() {
                     @Override
                     public void onGetUser(User user) {
@@ -84,7 +84,7 @@ public class TipoExamenActivity extends ScreenBase {
                 } catch (Engine.ExcepcionUser excepcionUser) {
                     excepcionUser.printStackTrace();
                 }
-                */
+
                 break;
             case 3:
                 Toast.makeText(this, "Sinonimoak sin implementar", Toast.LENGTH_SHORT).show();
