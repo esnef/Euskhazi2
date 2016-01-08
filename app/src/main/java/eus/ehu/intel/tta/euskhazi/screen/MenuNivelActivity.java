@@ -11,7 +11,7 @@ import android.widget.Toast;
 
 import eus.ehu.intel.tta.euskhazi.R;
 
-public class MenuNivelActivity extends AppCompatActivity {
+public class MenuNivelActivity extends ScreenBase {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

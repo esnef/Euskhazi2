@@ -1,28 +1,44 @@
-package eus.ehu.intel.tta.euskhazi.services.data;
+package eus.ehu.intel.tta.euskhazi.services.dataType;
+
+import java.io.Serializable;
 
 /**
- * Created by eduardo.zarate on 18/12/2015.
+ * Created by alumno on 8/01/16.
  */
-public class Exam {
-    private static String TAG = Exam.class.getCanonicalName();
+public class Exam implements Serializable {
+    private static final long serialVersionUID = 1L;
+
+    private int idexams;
 
     private String drafting;
+
     private String level;
-    private int numExams;
-    private double resultExams;
+    private int numExam;
+    private double result;
     private String typeExam;
     private String voiceFileName;
+
+
 
     public Exam() {
     }
 
-    public Exam(String level,int numExams,double resultExams,String typeExam,String voiceFileName,String drafting) {
+    public Exam(String level,int numExam,double result,String typeExam,String voiceFileName,String drafting) {
         this.drafting=drafting;
         this.level=level;
-        this.numExams=numExams;
-        this.resultExams=resultExams;
+        this.numExam=numExam;
+        this.result=result;
         this.typeExam=typeExam;
         this.voiceFileName=voiceFileName;
+    }
+
+
+    public int getIdexams() {
+        return this.idexams;
+    }
+
+    public void setIdexams(int idexams) {
+        this.idexams = idexams;
     }
 
     public String getDrafting() {
@@ -42,19 +58,19 @@ public class Exam {
     }
 
     public int getNumExams() {
-        return this.numExams;
+        return this.numExam;
     }
 
-    public void setNumExams(int numExams) {
-        this.numExams = numExams;
+    public void setNumExams(int numExam) {
+        this.numExam = numExam;
     }
 
-    public double getResultExams() {
-        return this.resultExams;
+    public double getResult() {
+        return this.result;
     }
 
-    public void setResultExams(double resultExams) {
-        this.resultExams = resultExams;
+    public void setResult(double result) {
+        this.result = result;
     }
 
     public String getTypeExam() {
@@ -72,6 +88,7 @@ public class Exam {
     public void setVoiceFileName(String voiceFileName) {
         this.voiceFileName = voiceFileName;
     }
+
 
 
 }
