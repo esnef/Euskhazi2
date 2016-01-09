@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import eus.ehu.intel.tta.euskhazi.Engine;
@@ -24,6 +25,9 @@ public class TipoExamenActivity extends ScreenBase {
         setSupportActionBar(toolbar);
 
 
+        Intent intent = getIntent();
+        TextView textLogin = (TextView)findViewById(R.id.tipo_examen_textView_level);
+        textLogin.setText(intent.getStringExtra("level") + " MAILA");
 
 
     }

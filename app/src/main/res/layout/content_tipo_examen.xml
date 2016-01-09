@@ -19,7 +19,13 @@
         android:layout_centerHorizontal="true">
 
         <TextView
-            android:id="@+id/menu_login"
+            android:id="@+id/tipo_examen_textView_level"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textSize="30dp"/>
+
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"

@@ -30,35 +30,35 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="A1"
-            android:tag="1"
+            android:tag="A1"
             android:onClick="chooseLevel" />
 
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="A2"
-            android:tag="2"
+            android:tag="A2"
             android:onClick="chooseLevel" />
 
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="b1"
-            android:tag="3"
+            android:text="B1"
+            android:tag="B1"
             android:onClick="chooseLevel" />
 
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="B2"
-            android:tag="4"
+            android:tag="B2"
             android:onClick="chooseLevel" />
 
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="C1"
-            android:tag="5"
+            android:tag="C1"
             android:onClick="chooseLevel" />
 
     </LinearLayout>

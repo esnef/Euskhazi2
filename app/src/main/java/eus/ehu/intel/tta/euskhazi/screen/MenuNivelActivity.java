@@ -24,10 +24,12 @@ public class MenuNivelActivity extends ScreenBase {
 
     public void chooseLevel(View view){
 
-        int level = Integer.parseInt(view.getTag().toString());
+        //int level = Integer.parseInt(view.getTag().toString());
+        String level = view.getTag().toString();
         //Toast.makeText(this, "Aukeratutako maila" + level, Toast.LENGTH_SHORT).show();
 
         Intent intent = new Intent(this, TipoExamenActivity.class);
+        intent.putExtra("level",level);
         startActivity(intent);
     }
 
