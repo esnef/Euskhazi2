@@ -6,12 +6,15 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
+import eus.ehu.intel.tta.euskhazi.Engine;
 import eus.ehu.intel.tta.euskhazi.R;
+import eus.ehu.intel.tta.euskhazi.services.dataType.User;
 
-public class TipoExamenActivity extends AppCompatActivity {
+public class TipoExamenActivity extends ScreenBase {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,6 +22,10 @@ public class TipoExamenActivity extends AppCompatActivity {
         setContentView(R.layout.activity_tipo_examen);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+
+
+
     }
 
     public void chooseExamType(View view){
@@ -31,6 +38,53 @@ public class TipoExamenActivity extends AppCompatActivity {
                 break;
             case 2:
                 Toast.makeText(this, "Idatzizkoa sin implementar", Toast.LENGTH_SHORT).show();
+
+                mEngine.setOnUserListener(new Engine.OnUserListener() {
+                    @Override
+                    public void onGetUser(User user) {
+
+                    }
+
+                    @Override
+                    public void onGetUserNow(User user) {
+
+                    }
+
+                    @Override
+                    public void onIsUser(boolean isUser) {
+                        System.out.println("isUser: "+isUser);
+                    }
+
+                    @Override
+                    public void onAddUser(boolean isAddUser) {
+                        System.out.println("isAddUser: "+isAddUser);
+                    }
+
+                    @Override
+                    public void onSaveUser(boolean isSaveUser) {
+
+                    }
+                });
+                try {
+                    mEngine.isUser("as","f");
+                } catch (Engine.ExcepcionUser excepcionUser) {
+                    excepcionUser.printStackTrace();
+                }
+                User user=new User();
+                user.setPass("f");
+                user.setName("as");
+                try {
+                    mEngine.addUser(user);
+                } catch (Engine.ExcepcionUser excepcionUser) {
+                    excepcionUser.printStackTrace();
+                }
+
+                try {
+                    mEngine.isUser("as", "f");
+                } catch (Engine.ExcepcionUser excepcionUser) {
+                    excepcionUser.printStackTrace();
+                }
+
                 break;
             case 3:
                 Toast.makeText(this, "Sinonimoak sin implementar", Toast.LENGTH_SHORT).show();

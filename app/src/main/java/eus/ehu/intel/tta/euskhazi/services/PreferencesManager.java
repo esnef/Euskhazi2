@@ -11,7 +11,10 @@ public class PreferencesManager {
     private static String TAG = PreferencesManager.class.getCanonicalName();
     private static PreferencesManager mPreferencesManager=null;
     private static final String PREFERENCE_ID=TAG+"PREFERENCE_ID";
-    private static final String STRING_DEFAULT=TAG+"";
+    public static final String STRING_DEFAULT=TAG+"";
+
+
+
     SharedPreferences sharedPref;
     public PreferencesManager(){
 
