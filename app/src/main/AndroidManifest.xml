@@ -28,7 +28,7 @@
             android:label="@string/title_activity_menu_nivel"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".screen.AtarikoaActivity"
+            android:name=".screen.ScreenListaExamsAtarikoa"
             android:label="@string/title_activity_atarikoa"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity

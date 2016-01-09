@@ -2,11 +2,7 @@ package eus.ehu.intel.tta.euskhazi.screen;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -37,7 +33,7 @@ public class TipoExamenActivity extends ScreenBase {
         int examType = Integer.parseInt(view.getTag().toString());
         switch (examType){
             case 1:
-                Intent intent = new Intent(this, AtarikoaActivity.class);
+                Intent intent = new Intent(this, ScreenListaExamsAtarikoa.class);
                 startActivity(intent);
                 break;
             case 2:

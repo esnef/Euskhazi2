@@ -9,7 +9,18 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="eus.ehu.intel.tta.euskhazi.screen.AtarikoaActivity"
-    tools:showIn="@layout/activity_atarikoa">
+    tools:context=".screen.ScreenListaExamsAtarikoa"
+    tools:showIn="@layout/activity_lista_exams_atarikoa">
 
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerHorizontal="true">
+
+        <ListView android:id="@+id/atarikoa_exams_listView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
 </RelativeLayout>
