@@ -1,0 +1,229 @@
+{"exams":[
+		{
+			"statements":[
+				{
+				"statement":"Litzentziaturako azterketa zail hura gainditzekotan, aldez aurretik oso ondo prestatu beharra zuen Koldok.",
+				"solution":"Lizentziaturako azterketa zail hura gainditu nahi bazuen, aldez aurretik oso ondo  prestatu beharra zuen Koldok",
+				"keywords":[
+					{"value":"Ba","location":"1","precede":true}
+					]
+				},
+				{
+				"statement":"Liburu mardul hau da lana egitean laguntzarik handiena eman diguna",
+				"solution":"Liburu mardul honek eman digu laguntzarik handiena lana egitean",
+				"keywords":[
+					{"value":"Digu","location":"1","precede":false}
+					]
+				},
+				{
+				"statement":"'Zerk bulaza zaitezkete euskara ikastera?' Galdetu zigun Kepak lehenengo egunean",
+				"solution":"Euskara ikastera zerk bulaza gintzakeen galdetu zigun Kepak lehenengo egunean",
+				"keywords":[
+					{"value":"Galdetu","location":"1","precede":false}
+					]
+				},
+				{
+				"statement":"Afaria Arzakenean izango zela entzun genion Olatzi, baita beraren senargaia etorriko zela ere",
+				"solution":"Afaria Arzakenean izango zela eta beraren senargaia etorriko zela ere entzun genion Olatzi",
+				"keywords":[
+					{"value":"Entzun genion Olatzi","location":"1","precede":false}
+					]
+				},
+				{
+				"statement":"Anek ondo ikusten zuen bere burua lanpostu hartarako, eta Enekok berea ere bai",
+				"solution":"Anek eta enekok ondo ikusten zuten beren burua lanpostu hartarako",
+				"keywords":[
+					{"value":"Anek eta Enekok","location":"1","precede":false}
+					]
+				},
+				{
+				"statement":"Nire aburuz, derbya Arhleticek Realak baino dezente hobeo jokatu zuen",
+				"solution":"Nire aburuz, derbyan Realak ez zuen Athleticek bezain ondo jokatu",
+				"keywords":[
+					{"value":"Bezain","location":"1","precede":false}
+					]
+				},
+				{
+				"statement":"Ulertuko duzunez , une hartan nik ezin izan nizuen halako mesederik eskatu",
+				"solution":"Nik ez nuen zuei halako mesederik eskatzerik izan",
+				"keywords":[
+					{"value":"Nik ez","location":"1","precede":false}
+					]
+				},
+				{
+				"statement":"Maider neska ezin atseginagoa da, baina Arrate ez da gutxiago",
+				"solution":"Maider eta Arrate zein baino zein neska atseginagoak dira",
+				"keywords":[
+					{"value":"Baino","location":"1","precede":false}
+					]
+				},
+				{
+				"statement":"Argi eta garbi esan nizuen neure etxean ez azaltzeko eta, are gutxiago, oparirik ekartzeko",
+				"solution":"Argi era Garbi esan nizuen neure etxean azal ez zaiteztela eta,are gutxiago, oparirik ekar zenezatela",
+				"keywords":[
+					{"value":"Azal ez","location":"1","precede":false}
+					]
+				},
+				{
+				"statement":"Liburu hori berori erosi eta irakurri dut, baina baita gstau ere",
+				"solution":"Liburu hori berori erosteaz eta irakurtzeaz gain, gustatu ere egin zait",
+				"keywords":[
+					{"value":"Gain,","location":"1","precede":false},
+					{"value":"ere,","location":"1","precede":false}
+					]
+				}
+				]
+		},
+		{
+			"statements":[
+				{
+				"statement":"Litzentziaturako azterketa zail hura gainditzekotan, aldez aurretik oso ondo prestatu beharra zuen Koldok.",
+				"solution":"Lizentziaturako azterketa zail hura gainditu nahi bazuen, aldez aurretik oso ondo  prestatu beharra zuen Koldok",
+				"keywords":[
+					{"value":"Ba","location":"1","precede":true}
+					]
+				},
+				{
+				"statement":"Liburu mardul hau da lana egitean laguntzarik handiena eman diguna",
+				"solution":"Liburu mardul honek eman digu laguntzarik handiena lana egitean",
+				"keywords":[
+					{"value":"Digu","location":"1","precede":false}
+					]
+				},
+				{
+				"statement":"'Zerk bulaza zaitezkete euskara ikastera?' Galdetu zigun Kepak lehenengo egunean",
+				"solution":"Euskara ikastera zerk bulaza gintzakeen galdetu zigun Kepak lehenengo egunean",
+				"keywords":[
+					{"value":"Galdetu","location":"1","precede":false}
+					]
+				},
+				{
+				"statement":"Afaria Arzakenean izango zela entzun genion Olatzi, baita beraren senargaia etorriko zela ere",
+				"solution":"Afaria Arzakenean izango zela eta beraren senargaia etorriko zela ere entzun genion Olatzi",
+				"keywords":[
+					{"value":"Entzun genion Olatzi","location":"1","precede":false}
+					]
+				},
+				{
+				"statement":"Anek ondo ikusten zuen bere burua lanpostu hartarako, eta Enekok berea ere bai",
+				"solution":"Anek eta enekok ondo ikusten zuten beren burua lanpostu hartarako",
+				"keywords":[
+					{"value":"Anek eta Enekok","location":"1","precede":false}
+					]
+				},
+				{
+				"statement":"Nire aburuz, derbya Arhleticek Realak baino dezente hobeo jokatu zuen",
+				"solution":"Nire aburuz, derbyan Realak ez zuen Athleticek bezain ondo jokatu",
+				"keywords":[
+					{"value":"Bezain","location":"1","precede":false}
+					]
+				},
+				{
+				"statement":"Ulertuko duzunez , une hartan nik ezin izan nizuen halako mesederik eskatu",
+				"solution":"Nik ez nuen zuei halako mesederik eskatzerik izan",
+				"keywords":[
+					{"value":"Nik ez","location":"1","precede":false}
+					]
+				},
+				{
+				"statement":"Maider neska ezin atseginagoa da, baina Arrate ez da gutxiago",
+				"solution":"Maider eta Arrate zein baino zein neska atseginagoak dira",
+				"keywords":[
+					{"value":"Baino","location":"1","precede":false}
+					]
+				},
+				{
+				"statement":"Argi eta garbi esan nizuen neure etxean ez azaltzeko eta, are gutxiago, oparirik ekartzeko",
+				"solution":"Argi era Garbi esan nizuen neure etxean azal ez zaiteztela eta,are gutxiago, oparirik ekar zenezatela",
+				"keywords":[
+					{"value":"Azal ez","location":"1","precede":false}
+					]
+				},
+				{
+				"statement":"Liburu hori berori erosi eta irakurri dut, baina baita gstau ere",
+				"solution":"Liburu hori berori erosteaz eta irakurtzeaz gain, gustatu ere egin zait",
+				"keywords":[
+					{"value":"Gain,","location":"1","precede":false},
+					{"value":"ere,","location":"1","precede":false}
+					]
+				}
+				]
+		},
+		{
+			"statements":[
+				{
+				"statement":"Litzentziaturako azterketa zail hura gainditzekotan, aldez aurretik oso ondo prestatu beharra zuen Koldok.",
+				"solution":"Lizentziaturako azterketa zail hura gainditu nahi bazuen, aldez aurretik oso ondo  prestatu beharra zuen Koldok",
+				"keywords":[
+					{"value":"Ba","location":"1","precede":true}
+					]
+				},
+				{
+				"statement":"Liburu mardul hau da lana egitean laguntzarik handiena eman diguna",
+				"solution":"Liburu mardul honek eman digu laguntzarik handiena lana egitean",
+				"keywords":[
+					{"value":"Digu","location":"1","precede":false}
+					]
+				},
+				{
+				"statement":"'Zerk bulaza zaitezkete euskara ikastera?' Galdetu zigun Kepak lehenengo egunean",
+				"solution":"Euskara ikastera zerk bulaza gintzakeen galdetu zigun Kepak lehenengo egunean",
+				"keywords":[
+					{"value":"Galdetu","location":"1","precede":false}
+					]
+				},
+				{
+				"statement":"Afaria Arzakenean izango zela entzun genion Olatzi, baita beraren senargaia etorriko zela ere",
+				"solution":"Afaria Arzakenean izango zela eta beraren senargaia etorriko zela ere entzun genion Olatzi",
+				"keywords":[
+					{"value":"Entzun genion Olatzi","location":"1","precede":false}
+					]
+				},
+				{
+				"statement":"Anek ondo ikusten zuen bere burua lanpostu hartarako, eta Enekok berea ere bai",
+				"solution":"Anek eta enekok ondo ikusten zuten beren burua lanpostu hartarako",
+				"keywords":[
+					{"value":"Anek eta Enekok","location":"1","precede":false}
+					]
+				},
+				{
+				"statement":"Nire aburuz, derbya Arhleticek Realak baino dezente hobeo jokatu zuen",
+				"solution":"Nire aburuz, derbyan Realak ez zuen Athleticek bezain ondo jokatu",
+				"keywords":[
+					{"value":"Bezain","location":"1","precede":false}
+					]
+				},
+				{
+				"statement":"Ulertuko duzunez , une hartan nik ezin izan nizuen halako mesederik eskatu",
+				"solution":"Nik ez nuen zuei halako mesederik eskatzerik izan",
+				"keywords":[
+					{"value":"Nik ez","location":"1","precede":false}
+					]
+				},
+				{
+				"statement":"Maider neska ezin atseginagoa da, baina Arrate ez da gutxiago",
+				"solution":"Maider eta Arrate zein baino zein neska atseginagoak dira",
+				"keywords":[
+					{"value":"Baino","location":"1","precede":false}
+					]
+				},
+				{
+				"statement":"Argi eta garbi esan nizuen neure etxean ez azaltzeko eta, are gutxiago, oparirik ekartzeko",
+				"solution":"Argi era Garbi esan nizuen neure etxean azal ez zaiteztela eta,are gutxiago, oparirik ekar zenezatela",
+				"keywords":[
+					{"value":"Azal ez","location":"1","precede":false}
+					]
+				},
+				{
+				"statement":"Liburu hori berori erosi eta irakurri dut, baina baita gstau ere",
+				"solution":"Liburu hori berori erosteaz eta irakurtzeaz gain, gustatu ere egin zait",
+				"keywords":[
+					{"value":"Gain,","location":"1","precede":false},
+					{"value":"ere,","location":"1","precede":false}
+					]
+				}
+				]
+		}
+	]		
+		
+}

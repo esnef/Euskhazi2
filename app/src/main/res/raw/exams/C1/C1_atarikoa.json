@@ -1,0 +1,366 @@
+[
+		{
+			"statements":[
+				{
+				"statement":"Txomin: - Nahikari, hurrengo astean euskara ikasten hasiko naiz Algortako Euskaltegian. Txomin: - Benetan? Ni _______.",
+				"solution":"2",
+				"answers":[
+					{
+						"first":"baita",
+						"second":"ere",
+						"third":"ere bai",
+						"fourth":"bebai"
+					}
+				]
+				},
+				{
+				"statement":"Gaur egungo gizartekide gehienek badakite tresna teknologiko berriak ___________.",
+				"solution":"2",
+				"answers":[
+					{
+						"first":"erabiliagatik",
+						"second":"erabili",
+						"third":"erabiltzen",
+						"fourth":"erabiltzea"
+					}
+				]
+				},
+				{
+				"statement":"Eroslea: - Aizu, aterako dizkiguzu lau botila ur eta bi zuku? Tabernaria: - Bai, oraintxe bertan aterako _____________.",
+				"solution":"1",
+				"answers":[
+					{
+						"first":"dizkidazu",
+						"second":"dizkizuet",
+						"third":"dizkiguzu",
+						"fourth":"dizkit"
+					}
+				]
+				},
+				{
+				"statement":"Nire ondoan eserita doan gizonak gidariari hurrengo kalean __________ esan dio.",
+				"solution":"2",
+				"answers":[
+					{
+						"first":"geldituta",
+						"second":"gelditu dela",
+						"third":"gelditzeko",
+						"fourth":"gelditu den"
+					}
+				]
+				},
+				{
+				"statement":"Noiz jarri behar dugu gidariok segurtasun gerrikoa?",
+				"solution":"2",
+				"answers":[
+					{
+						"first":"Ibilgailua gidatu bitartean",
+						"second":"Ibilgailuan eseri aurretik",
+						"third":"Ibilgailuan sartu bezain laster",
+						"fourth":"Ibilgailutik irtetean"
+					}
+				]
+				},
+				{
+				"statement":"Larunbatetan hondartzara ________ gustatzen zait.",
+				"solution":"1",
+				"answers":[
+					{
+						"first":"joaten",
+						"second":"joatea",
+						"third":"joan",
+						"fourth":"joateagatik"
+					}
+				]
+				},
+				{
+				"statement":"Mikel etor _______ hona!",
+				"solution":"2",
+				"answers":[
+					{
+						"first":"etortzea",
+						"second":"etorri",
+						"third":"zaitez",
+						"fourth":"zaitezen"
+					}
+				]
+				},
+				{
+				"statement":"Erabat kendu _______ medizinak belauneko mina niri.",
+				"solution":"0",
+				"answers":[
+					{
+						"first":"dit",
+						"second":"nau",
+						"third":"zaizkit",
+						"fourth":"zait"
+					}
+				]
+				},
+				{
+				"statement":"Auzoan bizikletarekin ________ neskatoa nire alabaren adinekoa da.",
+				"solution":"1",
+				"answers":[
+					{
+						"first":"dabiltzaten",
+						"second":"dabilen",
+						"third":"zeuden",
+						"fourth":"dabiltzan"
+					}
+				]
+				},
+				{
+				"statement":"Arratsaldeon, ea Durangorako autobusa ________ jakin nahi dut, mesedez.",
+				"solution":"2",
+				"answers":[
+					{
+						"first":"aterata dagoen",
+						"second":"atera baden",
+						"third":"atera den",
+						"fourth":"atera dela"
+					}
+				]
+				},
+				{
+				"statement":"Gutxien gustatzen zaidan _________ negua da, hotz handia egiten duelako.",
+				"solution":"2",
+				"answers":[
+					{
+						"first":"urtea",
+						"second":"hilabetea",
+						"third":"urtaroa",
+						"fourth":"mendea"
+					}
+				]
+				},
+				{
+				"statement":"Nahi izatekotan, helikopteroz eramango __________ Afrikara.",
+				"solution":"1",
+				"answers":[
+					{
+						"first":"dizut",
+						"second":"zaitut",
+						"third":"zaituzut",
+						"fourth":"zaizu"
+					}
+				]
+				},
+				{
+				"statement":"Saskibaloi-talde horrek iaz partidu gehienak irabazten zituen; aurten, _______, oso gaizki dabil.",
+				"solution":"2",
+				"answers":[
+					{
+						"first":"baizik",
+						"second":"beraz",
+						"third":"ordea",
+						"fourth":"hortaz"
+					}
+				]
+				},
+				{
+				"statement":"Ane: - Datorren ostiralean euririk _______, Gorbeia mendira igoko gara.",
+				"solution":"2",
+				"answers":[
+					{
+						"first":"egitean",
+						"second":"egin ez badu",
+						"third":"egiten ez badu",
+						"fourth":"egingo baluke"
+					}
+				]
+				},
+				{
+				"statement":"Osane okindegitik irten denean, Nekanerekin topo egin du. Nekane: - Zer moduz zaude, Osane? Pasa al zaizu buruko mina? - Oraindik ez, baina gaur atzo baino _________ nago.",
+				"solution":"1",
+				"answers":[
+					{
+						"first":"ondoago",
+						"second":"hobeto",
+						"third":"ondo",
+						"fourth":"hobetuz"
+					}
+				]
+				},
+				{
+				"statement":"Kale hau oso arriskutsua da; __________, kontuz ibili zaitez.",
+				"solution":"0",
+				"answers":[
+					{
+						"first":"beraz",
+						"second":"izan daiteke",
+						"third":"bestela",
+						"fourth":"hala ere"
+					}
+				]
+				},
+				{
+				"statement":"Guk pasaden astelehenean haurrak jolasten ikusi __________.",
+				"solution":"0",
+				"answers":[
+					{
+						"first":"genituen",
+						"second":"genien",
+						"third":"ginen",
+						"fourth":"genuen"
+					}
+				]
+				},
+				{
+				"statement":"Gaur goizean amak (niri) kromoak eman ___________.",
+				"solution":"2",
+				"answers":[
+					{
+						"first":"didate",
+						"second":"dit",
+						"third":"dizkit",
+						"fourth":"zizkidan"
+					}
+				]
+				},
+				{
+				"statement":"Nik zuri sorpresa bat ekarri ________, baina zuk niri ez ________ eskerrak eman.",
+				"solution":"2",
+				"answers":[
+					{
+						"first":"dizu / dizkiote",
+						"second":"dizut / dizkiete",
+						"third":"dizut / dizkidazu",
+						"fourth":"dizu / zizkioten"
+					}
+				]
+				},
+				{
+				"statement":"Zergatik ez duzue egin hondartzarako plana?",
+				"solution":"2",
+				"answers":[
+					{
+						"first":"Biharko eguraldi txarra dagoelako.",
+						"second":"Biharko eguraldi txarra eman dutelako eta.",
+						"third":"Biharko eguraldi txarra eman dutelako.",
+						"fourth":"Biharko eguraldi txarra dago."
+					}
+				]
+				},
+				{
+				"statement":"Atzo Mariari margoak galdu ___________.",
+				"solution":"1",
+				"answers":[
+					{
+						"first":"zaio",
+						"second":"zitzaizkion",
+						"third":"zaizkio",
+						"fourth":"zioten"
+					}
+				]
+				},
+				{
+				"statement":"Lehen hilabetero _________ mendira.",
+				"solution":"2",
+				"answers":[
+					{
+						"first":"joan dira",
+						"second":"joaten dira",
+						"third":"joaten ziren",
+						"fourth":"joan ziren"
+					}
+				]
+				},
+				{
+				"statement":"Zein da zure lagunaren mutil-laguna? Kamiseta gorria _______.",
+				"solution":"0",
+				"answers":[
+					{
+						"first":"daukana",
+						"second":"du",
+						"third":"daukala",
+						"fourth":"dauzkanak"
+					}
+				]
+				},
+				{
+				"statement":"Zure familiakoek gaur ni ez _________ agurtu kalean.",
+				"solution":"2",
+				"answers":[
+					{
+						"first":"didate",
+						"second":"dute",
+						"third":"naute",
+						"fourth":"nau"
+					}
+				]
+				},
+				{
+				"statement":"Ez dakit nork, baina __________ sorpresa bat ekarri dizu.",
+				"solution":"2",
+				"answers":[
+					{
+						"first":"edonork",
+						"second":"inork",
+						"third":"norbaitek",
+						"fourth":"norbait"
+					}
+				]
+				},
+				{
+				"statement":"Maialenek ez du esan bihar etorriko __________.",
+				"solution":"1",
+				"answers":[
+					{
+						"first":"delako",
+						"second":"denik",
+						"third":"dela",
+						"fourth":"da"
+					}
+				]
+				},
+				{
+				"statement":"Donostira iristen ___________ deitu Aitorri mesedez.",
+				"solution":"2",
+				"answers":[
+					{
+						"first":"zaizunean",
+						"second":"bezain laster",
+						"third":"zarenean",
+						"fourth":"zaigunean"
+					}
+				]
+				},
+				{
+				"statement":"Pasadan asteko haizeak zuhaitz asko bota __________ esan du telebistak.",
+				"solution":"1",
+				"answers":[
+					{
+						"first":"zituen",
+						"second":"zituela",
+						"third":"ditu",
+						"fourth":"bazituen"
+					}
+				]
+				},
+				{
+				"statement":"Zein da zure aktorerik ___________? Tom Cruise.",
+				"solution":"2",
+				"answers":[
+					{
+						"first":"gustukoagoa",
+						"second":"gustukua",
+						"third":"gustukoena",
+						"fourth":"gustuzkoela"
+					}
+				]
+				},
+				{
+				"statement":"Lau urteko umeak tximuak ___________ barregarriak dira.",
+				"solution":"2",
+				"answers":[
+					{
+						"first":"baino",
+						"second":"adina",
+						"third":"bezain",
+						"fourth":"beste"
+					}
+				]
+				}
+				]
+		}
+]		

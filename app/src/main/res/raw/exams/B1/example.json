@@ -1,0 +1,16 @@
+[
+{
+"name" : "test",
+"calo" : "1000",
+"fat" : "100",
+"protein" : "100",
+"carbohydrates" : "800"
+},
+{
+"name" : "test2",
+"calo" : "10000",
+"fat" : "343",
+"protein" : "3434",
+"carbohydrates" : "4343"
+}
+]
