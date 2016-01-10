@@ -1,16 +1,16 @@
-package eus.ehu.intel.tta.euskhazi.services.dataType.exam.ahozkoa;
+package eus.ehu.intel.tta.euskhazi.services.dataType.exam.idatzizkoa;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
- * Created by eduardo on 8/01/16.
+ * Created by eduardo on 10/01/16.
  */
-public class Ahozkoa implements Serializable{
+public class Idatzizkoa implements Serializable {
     private String title;
     private String explanation;
-    private ArrayList<Question> questions;
-    private ArrayList<ImageURLAhozkoa> imagesURL;
+    private ArrayList<ItemIdatzizkoa> items;
+    private ArrayList<ImageURLIdatzizkoa> imagesURL;
     private String conditions;
 
     public String getTitle() {
@@ -29,19 +29,19 @@ public class Ahozkoa implements Serializable{
         this.explanation = explanation;
     }
 
-    public ArrayList<Question> getQuestions() {
-        return questions;
+    public ArrayList<ItemIdatzizkoa> getItems() {
+        return items;
     }
 
-    public void setQuestions(ArrayList<Question> questions) {
-        this.questions = questions;
+    public void setItems(ArrayList<ItemIdatzizkoa> items) {
+        this.items = items;
     }
 
-    public ArrayList<ImageURLAhozkoa> getImagesURL() {
+    public ArrayList<ImageURLIdatzizkoa> getImagesURL() {
         return imagesURL;
     }
 
-    public void setImagesURL(ArrayList<ImageURLAhozkoa> imagesURL) {
+    public void setImagesURL(ArrayList<ImageURLIdatzizkoa> imagesURL) {
         this.imagesURL = imagesURL;
     }
 

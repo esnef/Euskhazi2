@@ -21,6 +21,10 @@ import eus.ehu.intel.tta.euskhazi.services.dataType.User;
 import eus.ehu.intel.tta.euskhazi.services.dataType.exam.Level;
 import eus.ehu.intel.tta.euskhazi.services.dataType.exam.ahozkoa.Ahozkoa;
 import eus.ehu.intel.tta.euskhazi.services.dataType.exam.atarikoa.Atarikoa;
+import eus.ehu.intel.tta.euskhazi.services.dataType.exam.berridazketak.Berridazketak;
+import eus.ehu.intel.tta.euskhazi.services.dataType.exam.entzunezkoa.Entzunezkoa;
+import eus.ehu.intel.tta.euskhazi.services.dataType.exam.idatzizkoa.Idatzizkoa;
+import eus.ehu.intel.tta.euskhazi.services.dataType.exam.sinonimoak.Sinonimoak;
 
 /**
  * Created by eduardo.zarate on 18/12/2015.
@@ -49,6 +53,8 @@ public class Engine {
         initLevel();
 
 
+
+
         updateMobile();
 
     }
@@ -58,12 +64,21 @@ public class Engine {
         String[] strings={"A1","A2","B1","B2","C1"};
         int[] intAhozkoa={R.raw.ahozkoa,R.raw.ahozkoa,R.raw.ahozkoa,R.raw.ahozkoa,R.raw.ahozkoa};
         int[] intAtarikoa={R.raw.atarikoa,R.raw.atarikoa,R.raw.atarikoa,R.raw.atarikoa,R.raw.atarikoa};
+        int[] intBerridazketak={R.raw.berridazketak,R.raw.berridazketak,R.raw.berridazketak,R.raw.berridazketak,R.raw.berridazketak};
+        int[] intEntzunezkoa={R.raw.entzunezkoa,R.raw.entzunezkoa,R.raw.entzunezkoa,R.raw.entzunezkoa,R.raw.entzunezkoa};
+        int[] intIdatzizkoa={R.raw.idatzizkoa,R.raw.idatzizkoa,R.raw.idatzizkoa,R.raw.idatzizkoa,R.raw.idatzizkoa};
+        int[] intSinonimoak={R.raw.sinonimoak,R.raw.sinonimoak,R.raw.sinonimoak,R.raw.sinonimoak,R.raw.sinonimoak};
+
         for(int con=0;con<strings.length;con++){
             Level level=new Level();
             level.setTypeLevel(strings[con]);
             level.setAhozkoas(new ArrayList<Ahozkoa>());
             level.setAtarikoas(new ArrayList<Atarikoa>());
-            updateLevel(level,intAhozkoa[con],intAtarikoa[con]);
+            level.setBerridazketaks(new ArrayList<Berridazketak>());
+            level.setEntzunezkoas(new ArrayList<Entzunezkoa>());
+            level.setIdatzizkoas(new ArrayList<Idatzizkoa>());
+            level.setSinonimoaks(new ArrayList<Sinonimoak>());
+            updateLevel(level,intAhozkoa[con],intAtarikoa[con],intBerridazketak[con],intEntzunezkoa[con],intIdatzizkoa[con],intSinonimoak[con]);
             mLevels.add(level);
         }
     }
@@ -227,9 +242,16 @@ public class Engine {
     //MOBILE END//
 
     //LEVEL INIT//
-    private boolean updateLevel(Level level, int ahozkoa, int atarikoa){
+    private boolean updateLevel(Level level, int ahozkoa, int atarikoa,int berridazketak,int entzunezkoa,int idatzizkoa,int sinonimoak){
         String ahozkoas=readDataRAW(ahozkoa);
         String atarikoas=readDataRAW(atarikoa);
+        String berridazketaks=readDataRAW(berridazketak);
+        String entzunezkoas=readDataRAW(entzunezkoa);
+        String idatzizkoas=readDataRAW(idatzizkoa);
+        String sinonimoaks=readDataRAW(sinonimoak);
+
+
+
         Gson gson=new Gson();
         if(ahozkoas!=null) {
             Type listType = new TypeToken<ArrayList<Ahozkoa>>() {
@@ -241,6 +263,26 @@ public class Engine {
             Type listType = new TypeToken<ArrayList<Atarikoa>>() { }.getType();
             ArrayList<Atarikoa> atarikoaList=gson.fromJson(atarikoas,listType);
             level.setAtarikoas(atarikoaList);
+        }
+        if(berridazketaks!=null){
+            Type listType = new TypeToken<ArrayList<Berridazketak>>() { }.getType();
+            ArrayList<Berridazketak> berridazketakList=gson.fromJson(berridazketaks,listType);
+            level.setBerridazketaks(berridazketakList);
+        }
+        if(entzunezkoas!=null){
+            Type listType = new TypeToken<ArrayList<Entzunezkoa>>() { }.getType();
+            ArrayList<Entzunezkoa> entzunezkoaList=gson.fromJson(entzunezkoas,listType);
+            level.setEntzunezkoas(entzunezkoaList);
+        }
+        if(idatzizkoas!=null){
+            Type listType = new TypeToken<ArrayList<Idatzizkoa>>() { }.getType();
+            ArrayList<Idatzizkoa> idatzizkoaList=gson.fromJson(idatzizkoas,listType);
+            level.setIdatzizkoas(idatzizkoaList);
+        }
+        if(sinonimoaks!=null){
+            Type listType = new TypeToken<ArrayList<Sinonimoak>>() { }.getType();
+            ArrayList<Sinonimoak> sinonimoakList=gson.fromJson(sinonimoaks,listType);
+            level.setSinonimoaks(sinonimoakList);
         }
 
         return true;

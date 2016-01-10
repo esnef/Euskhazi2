@@ -1,11 +1,11 @@
-package eus.ehu.intel.tta.euskhazi.services.dataType.exam.ahozkoa;
+package eus.ehu.intel.tta.euskhazi.services.dataType.exam.idatzizkoa;
 
 import java.io.Serializable;
 
 /**
  * Created by eduardo on 8/01/16.
  */
-public class ImageURL implements Serializable {
+public class ImageURLIdatzizkoa implements Serializable {
     private String imageURL;
 
     public String getImageURL() {

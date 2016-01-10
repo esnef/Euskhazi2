@@ -1,15 +1,14 @@
-package eus.ehu.intel.tta.euskhazi.services.dataType.exam.atarikoa;
+package eus.ehu.intel.tta.euskhazi.services.dataType.exam.entzunezkoa;
 
 import java.io.Serializable;
 
 /**
- * Created by eduardo on 8/01/16.
+ * Created by eduardo on 10/01/16.
  */
-public class Answer implements Serializable {
+public class AnswerEntzunezkoa implements Serializable {
     private String first;
     private String second;
     private String third;
-    private String fourth;
 
     public String getFirst() {
         return first;
@@ -33,13 +32,5 @@ public class Answer implements Serializable {
 
     public void setThird(String third) {
         this.third = third;
-    }
-
-    public String getFourth() {
-        return fourth;
-    }
-
-    public void setFourth(String fourth) {
-        this.fourth = fourth;
     }
 }

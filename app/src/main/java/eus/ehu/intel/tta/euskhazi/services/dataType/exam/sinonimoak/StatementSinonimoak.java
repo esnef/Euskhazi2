@@ -1,15 +1,17 @@
-package eus.ehu.intel.tta.euskhazi.services.dataType.exam.atarikoa;
+package eus.ehu.intel.tta.euskhazi.services.dataType.exam.sinonimoak;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 
+import eus.ehu.intel.tta.euskhazi.services.dataType.exam.entzunezkoa.AnswerEntzunezkoa;
+
 /**
- * Created by eduardo on 8/01/16.
+ * Created by eduardo on 10/01/16.
  */
-public class Atarikoa implements Serializable {
+public class StatementSinonimoak implements Serializable {
     private String statement;
     private String solution;
-    private ArrayList<AnswerAtarikoa> answers;
+    private String placeholder;
 
     public String getStatement() {
         return statement;
@@ -27,13 +29,11 @@ public class Atarikoa implements Serializable {
         this.solution = solution;
     }
 
-    public ArrayList<AnswerAtarikoa> getAnswers() {
-        return answers;
+    public String getPlaceholder() {
+        return placeholder;
     }
 
-    public void setAnswers(ArrayList<AnswerAtarikoa> answers) {
-        this.answers = answers;
+    public void setPlaceholder(String placeholder) {
+        this.placeholder = placeholder;
     }
-
-
 }
