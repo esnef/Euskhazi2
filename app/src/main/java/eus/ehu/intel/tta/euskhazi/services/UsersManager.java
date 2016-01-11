@@ -31,6 +31,7 @@ public class UsersManager {
 
     public UsersManager(Context contextApplication){
         this.contextApplication=contextApplication;
+        this.mPreferencesManager=PreferencesManager.getInstance();
         updateMobile();
 
     }
