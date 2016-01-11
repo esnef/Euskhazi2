@@ -9,6 +9,7 @@ import android.widget.Toast;
 
 import eus.ehu.intel.tta.euskhazi.Engine;
 import eus.ehu.intel.tta.euskhazi.R;
+import eus.ehu.intel.tta.euskhazi.services.UsersManager;
 import eus.ehu.intel.tta.euskhazi.services.dataType.User;
 
 public class TipoExamenActivity extends ScreenBase {
@@ -39,7 +40,7 @@ public class TipoExamenActivity extends ScreenBase {
             case 2:
                 Toast.makeText(this, "Idatzizkoa sin implementar", Toast.LENGTH_SHORT).show();
 
-                mEngine.setOnUserListener(new Engine.OnUserListener() {
+                mEngine.setOnUserListener(new UsersManager.OnUserListener() {
                     @Override
                     public void onGetUser(User user) {
 
@@ -67,7 +68,7 @@ public class TipoExamenActivity extends ScreenBase {
                 });
                 try {
                     mEngine.isUser("as","f");
-                } catch (Engine.ExcepcionUser excepcionUser) {
+                } catch (UsersManager.ExcepcionUser excepcionUser) {
                     excepcionUser.printStackTrace();
                 }
                 User user=new User();
@@ -75,13 +76,13 @@ public class TipoExamenActivity extends ScreenBase {
                 user.setName("as");
                 try {
                     mEngine.addUser(user);
-                } catch (Engine.ExcepcionUser excepcionUser) {
+                } catch (UsersManager.ExcepcionUser excepcionUser) {
                     excepcionUser.printStackTrace();
                 }
 
                 try {
                     mEngine.isUser("as", "f");
-                } catch (Engine.ExcepcionUser excepcionUser) {
+                } catch (UsersManager.ExcepcionUser excepcionUser) {
                     excepcionUser.printStackTrace();
                 }
 
