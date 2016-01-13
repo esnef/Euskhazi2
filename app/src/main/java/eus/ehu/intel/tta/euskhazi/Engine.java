@@ -109,7 +109,10 @@ public class Engine {
     }
 
 
+    public void setOnGetAllUserListener(UsersManager.OnGetAllUserListener onGetAllUserListener){
+        mUsersManager.setOnGetAllUserListener(onGetAllUserListener);
 
+    }
 
 
     public void setOnGetUserListener(UsersManager.OnGetUserListener onGetUserListener){
