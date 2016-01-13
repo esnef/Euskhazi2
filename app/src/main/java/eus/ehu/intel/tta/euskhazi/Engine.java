@@ -96,6 +96,9 @@ public class Engine {
     public boolean isUser(User user) throws  UsersManager.ExcepcionUser {
         return mUsersManager.isUser(user);
     }
+    public boolean getAllUser(){
+        return mUsersManager.getAllUser();
+    }
 
     /**
      *
