@@ -10,12 +10,30 @@ public class Exam implements Serializable {
 
     private int idexams;
 
+    /**
+     * en los examenes que hay que escribir, se escribe aqui
+     */
     private String drafting;
 
+    /**
+     * el nivel del examen
+     */
     private String level;
+
+    /**
+     * número de examen
+     */
     private int numExam;
     private double result;
+
+    /**
+     *el nombre del tipo de examen
+     */
     private String typeExam;
+
+    /**
+     * el path al archivo de audio de ahozkoa
+     */
     private String voiceFileName;
 
 

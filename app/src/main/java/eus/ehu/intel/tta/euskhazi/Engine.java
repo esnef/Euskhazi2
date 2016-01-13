@@ -93,11 +93,23 @@ public class Engine {
         return mUsersManager.getUserNow();
     }
 
+    /**
+     *
+     * @param user
+     * @return
+     * @throws UsersManager.ExcepcionUser
+     */
     public boolean isUser(User user) throws  UsersManager.ExcepcionUser {
         return mUsersManager.isUser(user);
     }
 
-
+    /**
+     *
+     * @param name
+     * @param password
+     * @return
+     * @throws UsersManager.ExcepcionUser
+     */
     public boolean isUser(String name,String password) throws UsersManager.ExcepcionUser {
         return mUsersManager.isUser(name,password);
     }
@@ -116,10 +128,20 @@ public class Engine {
 
 
     //LEVEL INIT//
+
+    /**
+     * devuelve ArrayList<Levels> de todos los niveles, estando en cada una todos los arrayList de cada tipo de examen
+     * @return
+     */
     public boolean getLevels(){
         return mLevelsManager.getLevels();
     }
 
+    /**
+     * devuelve todos los examenes de un nivel
+     * @param levelType
+     * @return
+     */
     private boolean getLevel(String levelType){
         return mLevelsManager.getLevel(levelType);
     }
