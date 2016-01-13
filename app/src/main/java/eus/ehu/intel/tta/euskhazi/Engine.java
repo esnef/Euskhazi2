@@ -108,6 +108,10 @@ public class Engine {
         return mUsersManager.isUser(name, password);
     }
 
+    public boolean isUser(String name) throws UsersManager.ExcepcionUser {
+        return mUsersManager.isUser(name);
+    }
+
 
     public void setOnGetAllUserListener(UsersManager.OnGetAllUserListener onGetAllUserListener){
         mUsersManager.setOnGetAllUserListener(onGetAllUserListener);
