@@ -1,6 +1,7 @@
 package eus.ehu.intel.tta.euskhazi.services;
 
 import android.content.Context;
+import android.os.AsyncTask;
 import android.util.Log;
 
 import com.google.gson.Gson;
@@ -16,9 +17,9 @@ import eus.ehu.intel.tta.euskhazi.utils.UtilsServices;
  * Created by alumno on 11/01/16.
  */
 public class UsersManager {
-    private static String TAG = UsersManager.class.getCanonicalName();
+    private final static String TAG = UsersManager.class.getCanonicalName();
     private static UsersManager mUsersManager;
-    private final Context contextApplication;
+    private final  Context contextApplication;
     private Mobile mMobile;
     private User mUserNow;
     private static final String PREFERENCE_MOBILE_ID=TAG+"PREFERENCE_MOBILE_ID";
@@ -81,11 +82,20 @@ public class UsersManager {
         if(!isUser(user)){
             if(mMobile!=null){
                 mMobile.getUsers().add(user);
-                boolean result=saveMobile();
-                if(onUserListener!=null) onUserListener.onAddUser(result);
-                if(onAddUserListener!=null) onAddUserListener.onAddUser(result);
 
+                 boolean result=saveMobile();
+                    if(onUserListener!=null) onUserListener.onAddUser(result);
+                    if(onAddUserListener!=null) onAddUserListener.onAddUser(result);
                 return result;
+
+                //Version segundo hilo
+                /*
+                SaveMobileAsyncTask saveMobileAsyncTask=new SaveMobileAsyncTask();
+                saveMobileAsyncTask.execute(mMobile);
+                return true;
+                */
+
+
             }
         }
         if(onUserListener!=null) onUserListener.onAddUser(false);
@@ -281,6 +291,16 @@ public class UsersManager {
         String json=gson.toJson(mMobile);
         return mPreferencesManager.putString(contextApplication, PREFERENCE_MOBILE_ID, json);
     }
+
+    private boolean saveMobile(Mobile mobile){
+        if(mobile==null)return false;
+        //Generamos el json
+        Gson gson=new Gson();
+        String json=gson.toJson(mobile);
+        PreferencesManager preferencesManager=new PreferencesManager();
+        return preferencesManager.putString(contextApplication, PREFERENCE_MOBILE_ID, json);
+    }
+
     private boolean updateMobile(){
         String json=mPreferencesManager.getString(contextApplication, PREFERENCE_MOBILE_ID);
         if(!json.equals(PreferencesManager.STRING_DEFAULT) && json!=null){
@@ -294,5 +314,55 @@ public class UsersManager {
         }
         return false;
     }
+    /*
+    private boolean updateMobile(Mobile mobile){
+        PreferencesManager preferencesManager=new PreferencesManager();
+        String json=preferencesManager.getString(contextApplication, PREFERENCE_MOBILE_ID);
+        if(!json.equals(PreferencesManager.STRING_DEFAULT) && json!=null){
+            Gson gson=new Gson();
+            mMobile=gson.fromJson(json,Mobile.class);
+        }else{
+            //No hay movil guardado con lo que hay que crearlo
+            mMobile=new Mobile();
+            mMobile.setMobilesMAC(UtilsServices.getMACaddress(contextApplication));
+            mMobile.setUsers(new ArrayList<User>());
+        }
+        return false;
+    }
+*/
+
+
+
+    private class SaveMobileAsyncTask extends AsyncTask<Mobile, Void, Boolean> {
+
+        @Override
+        protected Boolean doInBackground(Mobile... params) {
+            int count = params.length;
+            long totalSize = 0;
+            Mobile mobile=params[0];
+            return saveMobile(mobile);
+        }
+
+        @Override
+        protected void onProgressUpdate(Void... values) {
+
+        }
+
+        @Override
+        protected void onPreExecute() {
+
+        }
+
+        @Override
+        protected void onPostExecute(Boolean result) {
+            if(onUserListener!=null) onUserListener.onAddUser(result);
+            if(onAddUserListener!=null) onAddUserListener.onAddUser(result);
+        }
+        @Override
+        protected void onCancelled() {
+
+        }
+    }
+
     //MOBILE END//
 }
