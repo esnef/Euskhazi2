@@ -10,7 +10,7 @@ public class Mobile implements Serializable {
     private static final long serialVersionUID = 1L;
 
 
-    private int idmobiles;
+    //private int idmobiles;
 
     private String mobilesMAC;
     private List<User> users;

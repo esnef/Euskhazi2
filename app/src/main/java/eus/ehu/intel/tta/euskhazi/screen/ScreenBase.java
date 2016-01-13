@@ -34,6 +34,7 @@ import java.util.List;
 
 import eus.ehu.intel.tta.euskhazi.Engine;
 import eus.ehu.intel.tta.euskhazi.R;
+import eus.ehu.intel.tta.euskhazi.services.dataType.User;
 
 import static android.Manifest.permission.READ_CONTACTS;
 
@@ -41,6 +42,7 @@ import static android.Manifest.permission.READ_CONTACTS;
  * A login screen that offers login via email/password.
  */
 public class ScreenBase extends AppCompatActivity{
+    protected static User newUser;
     protected static String TAG = ScreenBase.class.getCanonicalName();
     protected Engine mEngine;
     @Override

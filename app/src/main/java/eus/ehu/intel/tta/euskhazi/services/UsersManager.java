@@ -28,6 +28,11 @@ public class UsersManager {
     //Eventos
     private OnUserListener onUserListener=null;
     private PreferencesManager mPreferencesManager;
+    private OnSaveUserListener onSaveUserListener;
+    private OnGetUserListener onGetUserListener;
+    private OnAddUserListener onAddUserListener;
+    private OnGetUserNowListener onGetUserNowListener;
+    private OnIsUserListener onIsUserListener;
 
     public UsersManager(Context contextApplication){
         this.contextApplication=contextApplication;
@@ -55,11 +60,15 @@ public class UsersManager {
         if(mMobile!=null){
             if(saveMobile()){
                 if(onUserListener!=null) onUserListener.onSaveUser(true);
+                if(onSaveUserListener!=null) onSaveUserListener.onSaveUser(true);
                 return true;
             }
 
         }
         if(onUserListener!=null) onUserListener.onSaveUser(false);
+        if(onSaveUserListener!=null) onSaveUserListener.onSaveUser(false);
+
+
         return false;
     }
 
@@ -73,10 +82,15 @@ public class UsersManager {
                 mMobile.getUsers().add(user);
                 boolean result=saveMobile();
                 if(onUserListener!=null) onUserListener.onAddUser(result);
+                if(onAddUserListener!=null) onAddUserListener.onAddUser(result);
+
                 return result;
             }
         }
         if(onUserListener!=null) onUserListener.onAddUser(false);
+        if(onAddUserListener!=null) onAddUserListener.onAddUser(false);
+
+
         return false;
     }
 
@@ -90,11 +104,13 @@ public class UsersManager {
                 User userFor=users.get(con);
                 if(userFor.getName().equals(user.getName()) && userFor.getPass().equals(user.getPass())){
                     if(onUserListener!=null) onUserListener.onGetUser(userFor);
+                    if(onGetUserListener!=null)onGetUserListener.onGetUser(userFor);
                     return true;
                 }
             }
         }
         if(onUserListener!=null)onUserListener.onGetUser(null);
+        if(onGetUserListener!=null)onGetUserListener.onGetUser(null);
         return false;
     }
     public boolean getUser(String name,String password) throws ExcepcionUser {
@@ -110,6 +126,7 @@ public class UsersManager {
     public boolean getUserNow(){
         if(mUserNow!=null){
             if(onUserListener!=null)onUserListener.onGetUserNow(mUserNow);
+            if(onGetUserNowListener!=null)onGetUserNowListener.onGetUserNow(mUserNow);
         }else{
             return false;
         }
@@ -126,11 +143,15 @@ public class UsersManager {
                 User userFor=users.get(con);
                 if(userFor.getName().equals(user.getName()) && userFor.getPass().equals(user.getPass())){
                     if(onUserListener!=null)onUserListener.onIsUser(true);
+                    if(onIsUserListener!=null)onIsUserListener.onIsUser(true);
+
                     return true;
                 }
             }
         }
         if(onUserListener!=null)onUserListener.onIsUser(false);
+        if(onIsUserListener!=null)onIsUserListener.onIsUser(false);
+
         return false;
     }
 
@@ -145,6 +166,46 @@ public class UsersManager {
         return isUser(user);
     }
 
+
+    public interface OnGetUserListener{
+        public void onGetUser(User user);
+    }
+
+    public void setOnGetUserListener(OnGetUserListener onGetUserListener){
+        this.onGetUserListener=onGetUserListener;
+    }
+
+    public interface OnGetUserNowListener{
+        public void onGetUserNow(User user);
+    }
+
+    public void setOnGetUserNowListener(OnGetUserNowListener onGetUserNowListener){
+        this.onGetUserNowListener=onGetUserNowListener;
+    }
+
+    public interface OnIsUserListener{
+        public void onIsUser(boolean isUser);
+    }
+
+    public void setOnIsUserListener(OnIsUserListener onIsUserListener){
+        this.onIsUserListener=onIsUserListener;
+    }
+
+    public interface OnAddUserListener{
+        public void onAddUser(boolean isAddUser);
+    }
+
+    public void setOnAddUserListener(OnAddUserListener onAddUserListener){
+        this.onAddUserListener=onAddUserListener;
+    }
+
+    public interface OnSaveUserListener{
+        public void onSaveUser(boolean isSaveUser);
+    }
+
+    public void setOnSaveUserListener(OnSaveUserListener onSaveUserListener){
+        this.onSaveUserListener=onSaveUserListener;
+    }
 
     public interface OnUserListener{
         public void onGetUser(User user);

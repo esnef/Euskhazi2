@@ -7,10 +7,14 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+
 import eus.ehu.intel.tta.euskhazi.Engine;
 import eus.ehu.intel.tta.euskhazi.R;
+import eus.ehu.intel.tta.euskhazi.services.LevelsManager;
 import eus.ehu.intel.tta.euskhazi.services.UsersManager;
 import eus.ehu.intel.tta.euskhazi.services.dataType.User;
+import eus.ehu.intel.tta.euskhazi.services.dataType.exam.Level;
 
 public class TipoExamenActivity extends ScreenBase {
 
@@ -40,10 +44,24 @@ public class TipoExamenActivity extends ScreenBase {
             case 2:
                 Toast.makeText(this, "Idatzizkoa sin implementar", Toast.LENGTH_SHORT).show();
 
+
+                mEngine.setOnExamsListener(new LevelsManager.OnExamsListener() {
+                    @Override
+                    public void onGetLevels(ArrayList<Level> levels) {
+
+                    }
+
+                    @Override
+                    public void onGetLevel(Level levels) {
+
+                    }
+                });
                 mEngine.setOnUserListener(new UsersManager.OnUserListener() {
                     @Override
                     public void onGetUser(User user) {
-
+                        if(user!=null)
+                        startActivity(new Intent(getApplicationContext(),MenuNivelActivity.class));
+                        mEngine.setOnUserListener(null);
                     }
 
                     @Override
@@ -53,12 +71,16 @@ public class TipoExamenActivity extends ScreenBase {
 
                     @Override
                     public void onIsUser(boolean isUser) {
-                        System.out.println("isUser: "+isUser);
+                        if(isUser) try {
+                            mEngine.getUser("sdf ","f");
+                        } catch (UsersManager.ExcepcionUser excepcionUser) {
+                            excepcionUser.printStackTrace();
+                        }
                     }
 
                     @Override
                     public void onAddUser(boolean isAddUser) {
-                        System.out.println("isAddUser: "+isAddUser);
+
                     }
 
                     @Override
@@ -67,7 +89,7 @@ public class TipoExamenActivity extends ScreenBase {
                     }
                 });
                 try {
-                    mEngine.isUser("as","f");
+                    mEngine.isUser("sdf ","f");
                 } catch (UsersManager.ExcepcionUser excepcionUser) {
                     excepcionUser.printStackTrace();
                 }

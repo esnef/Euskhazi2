@@ -10,7 +10,7 @@ public class User implements Serializable {
     private static final long serialVersionUID = 1L;
 
 
-    private int idusers;
+    //private int idusers;
     private String name;
     private String pass;
     //@XmlElement

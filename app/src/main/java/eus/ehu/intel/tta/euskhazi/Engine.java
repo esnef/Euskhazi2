@@ -86,19 +86,13 @@ public class Engine {
         return mUsersManager.getUser(user);
     }
     public boolean getUser(String name,String password) throws UsersManager.ExcepcionUser {
-        return mUsersManager.getUser(name,password);
+        return mUsersManager.getUser(name, password);
     }
 
     public boolean getUserNow(){
         return mUsersManager.getUserNow();
     }
 
-    /**
-     *
-     * @param user
-     * @return
-     * @throws UsersManager.ExcepcionUser
-     */
     public boolean isUser(User user) throws  UsersManager.ExcepcionUser {
         return mUsersManager.isUser(user);
     }
@@ -111,10 +105,40 @@ public class Engine {
      * @throws UsersManager.ExcepcionUser
      */
     public boolean isUser(String name,String password) throws UsersManager.ExcepcionUser {
-        return mUsersManager.isUser(name,password);
+        return mUsersManager.isUser(name, password);
     }
 
 
+
+
+
+    public void setOnGetUserListener(UsersManager.OnGetUserListener onGetUserListener){
+        mUsersManager.setOnGetUserListener(onGetUserListener);
+    }
+
+
+
+    public void setOnGetUserNowListener(UsersManager.OnGetUserNowListener onGetUserNowListener){
+        mUsersManager.setOnGetUserNowListener(onGetUserNowListener);
+    }
+
+
+
+    public void setOnIsUserListener(UsersManager.OnIsUserListener onIsUserListener){
+        mUsersManager.setOnIsUserListener(onIsUserListener);
+    }
+
+
+
+    public void setOnAddUserListener(UsersManager.OnAddUserListener onAddUserListener){
+        mUsersManager.setOnAddUserListener(onAddUserListener);
+    }
+
+
+
+    public void setOnSaveUserListener(UsersManager.OnSaveUserListener onSaveUserListener){
+        mUsersManager.setOnSaveUserListener(onSaveUserListener);
+    }
 
     public void setOnUserListener(UsersManager.OnUserListener onUserListener){
         mUsersManager.setOnUserListener(onUserListener);
@@ -128,27 +152,24 @@ public class Engine {
 
 
     //LEVEL INIT//
-
-    /**
-     * devuelve ArrayList<Levels> de todos los niveles, estando en cada una todos los arrayList de cada tipo de examen
-     * @return
-     */
     public boolean getLevels(){
         return mLevelsManager.getLevels();
     }
 
-    /**
-     * devuelve todos los examenes de un nivel
-     * @param levelType
-     * @return
-     */
     private boolean getLevel(String levelType){
         return mLevelsManager.getLevel(levelType);
     }
 
-
     public void setOnExamsListener(LevelsManager.OnExamsListener onExamsListener){
         mLevelsManager.setOnExamsListener(onExamsListener);
+    }
+
+    public void setOnGetLevelsListener(LevelsManager.OnGetLevelsListener onGetLevelsListener){
+        mLevelsManager.setOnGetLevelsListener(onGetLevelsListener);
+    }
+
+    public void setOnGetLevelListener(LevelsManager.OnGetLevelListener onGetLevelListener){
+        mLevelsManager.setOnGetLevelListener(onGetLevelListener);
     }
     //LEVEL END//
 

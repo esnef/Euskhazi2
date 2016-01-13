@@ -30,7 +30,8 @@ public class LevelsManager  {
     public static final String[] LEVEL_TYPES={"A1","A2","B1","B2","C1"};
     private ArrayList<Level> mLevels;
     private OnExamsListener onExamsListener;
-
+    private OnGetLevelsListener onGetLevelsListener;
+    private OnGetLevelListener onGetLevelListener;
 
 
     public LevelsManager(Context contextApplication){
@@ -59,8 +60,6 @@ public class LevelsManager  {
         String entzunezkoas=readDataRAW(entzunezkoa);
         String idatzizkoas=readDataRAW(idatzizkoa);
         String sinonimoaks=readDataRAW(sinonimoak);
-
-
 
         Gson gson=new Gson();
         if(ahozkoas!=null) {
@@ -127,6 +126,7 @@ public class LevelsManager  {
             initLevel();
         }
         if(onExamsListener!=null)onExamsListener.onGetLevels(mLevels);
+        if(onGetLevelsListener!=null)onGetLevelsListener.onGetLevels(mLevels);
         return true;
 
     }
@@ -140,6 +140,7 @@ public class LevelsManager  {
         }
         for(int con=0;con<mLevels.size();con++){
             if(mLevels.get(con).getTypeLevel().equals(levelType)){
+                if(onGetLevelListener!=null)onGetLevelListener.onGetLevel(mLevels.get(con));
                 if(onExamsListener!=null)onExamsListener.onGetLevel(mLevels.get(con));
             }
         }
@@ -147,9 +148,25 @@ public class LevelsManager  {
         return true;
     }
 
+    public interface OnGetLevelsListener{
+        public void onGetLevels(ArrayList<Level> levels);
+    }
+
+    public interface OnGetLevelListener{
+        public void onGetLevel(Level levels);
+    }
+
     public interface OnExamsListener{
         public void onGetLevels(ArrayList<Level> levels);
         public void onGetLevel(Level levels);
+    }
+
+    public void setOnGetLevelsListener(OnGetLevelsListener onGetLevelsListener){
+        this.onGetLevelsListener=onGetLevelsListener;
+    }
+
+    public void setOnGetLevelListener(OnGetLevelListener onGetLevelListener){
+        this.onGetLevelListener=onGetLevelListener;
     }
 
     public void setOnExamsListener(OnExamsListener onExamsListener){
