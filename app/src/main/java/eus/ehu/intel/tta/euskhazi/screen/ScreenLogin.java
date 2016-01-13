@@ -93,6 +93,15 @@ public class ScreenLogin extends ScreenBase implements LoaderCallbacks<Cursor> {
                 attemptLogin();
             }
         });
+        Button mIrPantallaRegistroButton = (Button) findViewById(R.id.ir_pantalla_registro_button);
+        mIrPantallaRegistroButton.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), ScreenRegistroUsuario.class);
+                startActivity(intent);
+            }
+        });
+
 
         mLoginFormView = findViewById(R.id.login_form);
         mProgressView = findViewById(R.id.login_progress);

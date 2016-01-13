@@ -43,6 +43,7 @@ public class TipoExamenActivity extends ScreenBase {
                 break;
             case 2:
                 Toast.makeText(this, "Idatzizkoa sin implementar", Toast.LENGTH_SHORT).show();
+
                 break;
             case 3:
                 Toast.makeText(this, "Sinonimoak sin implementar", Toast.LENGTH_SHORT).show();
