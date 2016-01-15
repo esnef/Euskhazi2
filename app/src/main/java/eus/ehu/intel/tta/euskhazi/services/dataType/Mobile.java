@@ -29,7 +29,7 @@ public class Mobile implements Serializable {
         this.mobilesMAC = mobilesMAC;
     }
 
-    public String getMobilesMAC(String maCaddress) {
+    public String getMobilesMAC() {
         return mobilesMAC;
     }
 

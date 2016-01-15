@@ -1,5 +1,8 @@
 package eus.ehu.intel.tta.euskhazi.services.Communications;
 
+import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.util.Base64;
 
 import java.io.BufferedReader;
@@ -26,7 +29,11 @@ public class RestClient {
 
 
     private String pathServer="http://u017633.ehu.eus:18080/AlumnoTta/rest/tta";
-    private String pathApplication=null;
+    private String pathApplication="euskhazi";
+
+    public static final String  PATH_SAVE_MOBILE="saveMobile";
+
+    public static final String  PATH_GET_MOBILE="getMobile=";
 
 
     public RestClient(String pathServer,String pathApplication){
@@ -159,6 +166,12 @@ public class RestClient {
         public RestException(String message) { super(message); }
         public RestException(String message, Throwable cause) { super(message, cause); }
         public RestException(Throwable cause) { super(cause); }
+    }
+
+    public static boolean isOnline(Context context) {
+        ConnectivityManager cm =(ConnectivityManager)context.getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo netInfo = cm.getActiveNetworkInfo();
+        return netInfo != null && netInfo.isConnectedOrConnecting();
     }
 
 

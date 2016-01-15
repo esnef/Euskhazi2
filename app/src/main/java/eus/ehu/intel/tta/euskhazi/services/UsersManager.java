@@ -6,9 +6,11 @@ import android.util.Log;
 
 import com.google.gson.Gson;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import eus.ehu.intel.tta.euskhazi.services.Communications.RestClient;
 import eus.ehu.intel.tta.euskhazi.services.dataType.Mobile;
 import eus.ehu.intel.tta.euskhazi.services.dataType.User;
 import eus.ehu.intel.tta.euskhazi.utils.UtilsServices;
@@ -39,8 +41,12 @@ public class UsersManager {
     public UsersManager(Context contextApplication){
         this.contextApplication=contextApplication;
         this.mPreferencesManager=PreferencesManager.getInstance();
-        updateMobile();
-
+        //Version Primer hilo
+        //updateMobile();
+        //
+        //Version Segundo plano
+        UpdateMobileAsyncTask updateMobileAsyncTask=new UpdateMobileAsyncTask();
+        updateMobileAsyncTask.execute(contextApplication);
     }
 
 
@@ -63,6 +69,11 @@ public class UsersManager {
             if(saveMobile()){
                 if(onUserListener!=null) onUserListener.onSaveUser(true);
                 if(onSaveUserListener!=null) onSaveUserListener.onSaveUser(true);
+                SaveMobileServerAsyncTask saveMobileServerAsyncTask=new SaveMobileServerAsyncTask();
+                SaveMobileData saveMobileData=new SaveMobileData();
+                saveMobileData.setContext(contextApplication);
+                saveMobileData.setMobile(mMobile);
+                saveMobileServerAsyncTask.execute(saveMobileData);
                 return true;
             }
 
@@ -82,18 +93,21 @@ public class UsersManager {
         if(!isUserPrivate(user)){
             if(mMobile!=null){
                 mMobile.getUsers().add(user);
-
+                /*
                  boolean result=saveMobile();
                     if(onUserListener!=null) onUserListener.onAddUser(result);
                     if(onAddUserListener!=null) onAddUserListener.onAddUser(result);
                 return result;
-
-                //Version segundo hilo
-                /*
-                SaveMobileAsyncTask saveMobileAsyncTask=new SaveMobileAsyncTask();
-                saveMobileAsyncTask.execute(mMobile);
-                return true;
                 */
+                //Version segundo hilo
+
+                SaveMobileData saveMobileData=new SaveMobileData();
+                saveMobileData.setMobile(mMobile);
+                saveMobileData.setContext(contextApplication);
+                SaveMobileAsyncTask saveMobileAsyncTask=new SaveMobileAsyncTask();
+                saveMobileAsyncTask.execute(saveMobileData);
+                return true;
+
 
 
             }
@@ -308,13 +322,32 @@ public class UsersManager {
         return mPreferencesManager.putString(contextApplication, PREFERENCE_MOBILE_ID, json);
     }
 
-    private boolean saveMobile(Mobile mobile){
+    private boolean saveMobile(Mobile mobile, Context context){
         if(mobile==null)return false;
         //Generamos el json
         Gson gson=new Gson();
         String json=gson.toJson(mobile);
         PreferencesManager preferencesManager=new PreferencesManager();
-        return preferencesManager.putString(contextApplication, PREFERENCE_MOBILE_ID, json);
+        boolean result=preferencesManager.putString(context, PREFERENCE_MOBILE_ID, json);
+        return result;
+    }
+
+    private boolean saveMobileServer(String json, Context context) throws IOException {
+        if(json==null || json.equals("") || context==null){
+            return false;
+        }
+        if(RestClient.isOnline(context)){
+            RestClient restClient=new RestClient();
+            int response=restClient.postJson(json,RestClient.PATH_SAVE_MOBILE);
+            if(response==200){
+                return true;
+            }
+
+        }else{
+            Log.e(TAG,"No se tiene internet para subir el archivo");
+        }
+
+        return false;
     }
 
     private boolean updateMobile(){
@@ -330,33 +363,85 @@ public class UsersManager {
         }
         return false;
     }
-    /*
-    private boolean updateMobile(Mobile mobile){
+
+    private Mobile updateMobile(Context context){
         PreferencesManager preferencesManager=new PreferencesManager();
-        String json=preferencesManager.getString(contextApplication, PREFERENCE_MOBILE_ID);
+        String json=preferencesManager.getString(context, PREFERENCE_MOBILE_ID);
+        Mobile mobile=null;
         if(!json.equals(PreferencesManager.STRING_DEFAULT) && json!=null){
             Gson gson=new Gson();
-            mMobile=gson.fromJson(json,Mobile.class);
+            mobile=gson.fromJson(json,Mobile.class);
         }else{
             //No hay movil guardado con lo que hay que crearlo
-            mMobile=new Mobile();
-            mMobile.setMobilesMAC(UtilsServices.getMACaddress(contextApplication));
-            mMobile.setUsers(new ArrayList<User>());
+            mobile=new Mobile();
+            mobile.setMobilesMAC(UtilsServices.getMACaddress(contextApplication));
+            mobile.setUsers(new ArrayList<User>());
         }
-        return false;
+        return mobile;
     }
-*/
+
+
+    private Mobile updateMobileServer(Mobile mobile,Context context){
+        if(mobile==null  || context==null)return null;
+        Mobile mobileNew;
+        RestClient restClient=new RestClient();
+        try {
+            if(!RestClient.isOnline(context))return mobile;
+            String json=restClient.getString(RestClient.PATH_GET_MOBILE+mobile.getMobilesMAC());
+
+            if(!json.equals("") && json!=null){
+                Gson gson=new Gson();
+                if(gson.toJson(mobile).trim().equals(json.trim())){
+                    Log.d(TAG,"No hay modificaciones");
+                    return mobile;
+                }
+                mobileNew=gson.fromJson(json,Mobile.class);
+                return  mobileNew;
+            }else{
+                Log.e(TAG,"Error al actualizar el mobile contra la base de datos 1");
+            }
+            return mobile;
+        } catch (IOException e) {
+            e.printStackTrace();
+           Log.e(TAG,"Error al actualizar el mobile contra la base de datos");
+        }
+
+        return mobile;
+
+    }
 
 
 
-    private class SaveMobileAsyncTask extends AsyncTask<Mobile, Void, Boolean> {
+
+    private class SaveMobileData{
+        private Mobile mobile;
+        private Context context;
+
+        public Mobile getMobile() {
+            return mobile;
+        }
+
+        public void setMobile(Mobile mobile) {
+            this.mobile = mobile;
+        }
+
+        public Context getContext() {
+            return context;
+        }
+
+        public void setContext(Context context) {
+            this.context = context;
+        }
+    }
+
+    private class SaveMobileAsyncTask extends AsyncTask<SaveMobileData, Void, Boolean> {
 
         @Override
-        protected Boolean doInBackground(Mobile... params) {
+        protected Boolean doInBackground(SaveMobileData... params) {
             int count = params.length;
             long totalSize = 0;
-            Mobile mobile=params[0];
-            return saveMobile(mobile);
+            SaveMobileData saveMobileData=params[0];
+            return saveMobile(saveMobileData.getMobile(),saveMobileData.getContext());
         }
 
         @Override
@@ -373,12 +458,129 @@ public class UsersManager {
         protected void onPostExecute(Boolean result) {
             if(onUserListener!=null) onUserListener.onAddUser(result);
             if(onAddUserListener!=null) onAddUserListener.onAddUser(result);
+            if(result){
+                SaveMobileServerAsyncTask saveMobileServerAsyncTask=new SaveMobileServerAsyncTask();
+                SaveMobileData saveMobileData=new SaveMobileData();
+                saveMobileData.setContext(contextApplication);
+                saveMobileData.setMobile(mMobile);
+                saveMobileServerAsyncTask.execute(saveMobileData);
+            }
         }
         @Override
         protected void onCancelled() {
 
         }
     }
+
+    private class SaveMobileServerAsyncTask extends AsyncTask<SaveMobileData, Void, Boolean> {
+
+        @Override
+        protected Boolean doInBackground(SaveMobileData... params) {
+            int count = params.length;
+            long totalSize = 0;
+            SaveMobileData saveMobileData=params[0];
+            Gson gson=new Gson();
+            String json=gson.toJson(saveMobileData.getMobile());
+            try {
+                return saveMobileServer(json,saveMobileData.getContext());
+            } catch (IOException e) {
+                Log.e(TAG, "Error en el almacenamiento de datos");
+            }
+            return false;
+        }
+
+        @Override
+        protected void onProgressUpdate(Void... values) {
+
+        }
+
+        @Override
+        protected void onPreExecute() {
+
+        }
+
+        @Override
+        protected void onPostExecute(Boolean result) {
+            if(result){
+                Log.d(TAG,"Se ha realizado correctamente el almacenamiento en el servidor");
+            }else{
+                Log.d(TAG, "No se ha produccido correctamente el envio al servidor");
+            }
+        }
+        @Override
+        protected void onCancelled() {
+
+        }
+    }
+
+
+    private class UpdateMobileAsyncTask extends AsyncTask<Context, Void, Mobile> {
+
+        @Override
+        protected Mobile doInBackground(Context... params) {
+            int count = params.length;
+            long totalSize = 0;
+            Context context=params[0];
+            return updateMobile(context);
+        }
+
+        @Override
+        protected void onProgressUpdate(Void... values) {
+
+        }
+
+        @Override
+        protected void onPreExecute() {
+
+        }
+
+        @Override
+        protected void onPostExecute(Mobile mobile) {
+            mMobile=mobile;
+            UpdateMobileServerAsyncTask updateMobileServerAsyncTask=new UpdateMobileServerAsyncTask();
+            SaveMobileData saveMobileData=new SaveMobileData();
+            saveMobileData.setContext(contextApplication);
+            saveMobileData.setMobile(mMobile);
+            updateMobileServerAsyncTask.execute(saveMobileData);
+        }
+        @Override
+        protected void onCancelled() {
+
+        }
+    }
+
+
+    private class UpdateMobileServerAsyncTask extends AsyncTask<SaveMobileData, Void, Mobile> {
+
+        @Override
+        protected Mobile doInBackground(SaveMobileData... params) {
+            int count = params.length;
+            long totalSize = 0;
+            SaveMobileData saveMobileData=params[0];
+            return updateMobileServer(saveMobileData.getMobile(),saveMobileData.getContext());
+        }
+
+        @Override
+        protected void onProgressUpdate(Void... values) {
+
+        }
+
+        @Override
+        protected void onPreExecute() {
+
+        }
+
+        @Override
+        protected void onPostExecute(Mobile mobile) {
+            mMobile=mobile;
+        }
+        @Override
+        protected void onCancelled() {
+
+        }
+    }
+
+
 
     //MOBILE END//
 }
