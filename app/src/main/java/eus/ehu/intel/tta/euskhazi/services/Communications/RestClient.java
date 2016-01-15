@@ -29,7 +29,11 @@ public class RestClient {
 
 
     private String pathServer="http://u017633.ehu.eus:18080/AlumnoTta/rest/tta";
-    private String pathApplication=null;
+    private String pathApplication="euskhazi";
+
+    public static final String  PATH_SAVE_MOBILE="saveMobile";
+
+    public static final String  PATH_GET_MOBILE="getMobile=";
 
 
     public RestClient(String pathServer,String pathApplication){
