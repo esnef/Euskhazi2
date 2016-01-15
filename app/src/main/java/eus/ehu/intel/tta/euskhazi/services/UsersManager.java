@@ -79,7 +79,7 @@ public class UsersManager {
         if(user==null || user.getName()==null || user.getPass()==null || user.getName().equals("") || user.getPass().equals("")){
             throw new ExcepcionUser(new Integer(ExcepcionUser.PARAMETERS_NULL).toString());
         }
-        if(!isUser(user)){
+        if(!isUserPrivate(user)){
             if(mMobile!=null){
                 mMobile.getUsers().add(user);
 
@@ -142,6 +142,22 @@ public class UsersManager {
             return false;
         }
         return true;
+    }
+
+    private boolean isUserPrivate(User user) throws ExcepcionUser {
+        if(user==null){
+            throw new ExcepcionUser(new Integer(ExcepcionUser.PARAMETERS_NULL).toString());
+        }
+        if(mMobile!=null){
+            List<User> users=mMobile.getUsers();
+            for(int con=0;con<users.size();con++){
+                User userFor=users.get(con);
+                if(userFor.getName().equals(user.getName()) && userFor.getPass().equals(user.getPass())){
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 
     public boolean isUser(User user) throws ExcepcionUser {
