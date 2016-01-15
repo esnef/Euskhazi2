@@ -47,8 +47,7 @@ public class ScreenRegistroUsuario extends ScreenBase {
                     public void onAddUser(boolean isAddUser) {
                         if (isAddUser){
                             Toast.makeText(getApplicationContext(), getString(R.string.registrado_correctamente),Toast.LENGTH_SHORT).show();
-                            Intent intent = new Intent(getApplicationContext(), ScreenLogin.class);
-                            startActivity(intent);
+                            finish();
                         }else {
                             Toast.makeText(getApplicationContext(), getString(R.string.registrado_incorrecto),Toast.LENGTH_SHORT).show();
                         }

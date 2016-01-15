@@ -3,6 +3,7 @@ package eus.ehu.intel.tta.euskhazi.screen;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.support.annotation.NonNull;
@@ -23,17 +24,25 @@ import android.text.TextUtils;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
+import android.widget.AbsListView;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ListAdapter;
+import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import eus.ehu.intel.tta.euskhazi.R;
+import eus.ehu.intel.tta.euskhazi.services.UsersManager;
+import eus.ehu.intel.tta.euskhazi.services.dataType.User;
 
 import static android.Manifest.permission.READ_CONTACTS;
 
@@ -102,9 +111,43 @@ public class ScreenLogin extends ScreenBase implements LoaderCallbacks<Cursor> {
             }
         });
 
+        mEngine.setOnGetAllUserListener(new UsersManager.OnGetAllUserListener() {
+            @Override
+            public void onGetAllUser(List<User> users) {
+                ArrayList<String> listNombreUsuarios = new ArrayList<>();
+                for (User user : users) {
+                    String nombreUsuario = user.getName();
+                    listNombreUsuarios.add(nombreUsuario);
+                }
+                ArrayAdapter<String> adapter = new ArrayAdapter<>(getApplicationContext(), R.layout.textview_layout, R.id.exams_textView, listNombreUsuarios);
+                ListView lstOpciones = (ListView) findViewById(R.id.screen_login_usuarios_listView);
+                lstOpciones.setAdapter(adapter);
+            }
+        });
+        mEngine.getAllUser();
 
-        mLoginFormView = findViewById(R.id.login_form);
+
+        //mLoginFormView = findViewById(R.id.login_form);
         mProgressView = findViewById(R.id.login_progress);
+    }
+
+    @Override
+    protected void onResume(){
+        super.onResume();
+        mEngine.setOnGetAllUserListener(new UsersManager.OnGetAllUserListener() {
+            @Override
+            public void onGetAllUser(List<User> users) {
+                ArrayList<String> listNombreUsuarios = new ArrayList<>();
+                for (User user : users) {
+                    String nombreUsuario = user.getName();
+                   listNombreUsuarios.add(nombreUsuario);
+                }
+                ArrayAdapter<String> adapter = new ArrayAdapter<>(getApplicationContext(), R.layout.textview_layout, R.id.exams_textView, listNombreUsuarios);
+                ListView lstOpciones = (ListView) findViewById(R.id.screen_login_usuarios_listView);
+                lstOpciones.setAdapter(adapter);
+            }
+        });
+        mEngine.getAllUser();
     }
 
     private void populateAutoComplete() {

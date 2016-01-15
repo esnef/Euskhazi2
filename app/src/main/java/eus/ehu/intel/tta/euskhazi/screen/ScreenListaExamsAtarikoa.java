@@ -6,6 +6,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -22,12 +23,14 @@ public class ScreenListaExamsAtarikoa extends ScreenBase {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        ArrayList<String> exams = new ArrayList<String>();
+        ArrayList<String> exams = new ArrayList<>();
         for (int i = 1; i < 6; i++){
             String azterketa = "Azterketa " + i;
+            //Button button = new Button(this);
+            //button.setText("Azterketa " + i);
             exams.add(azterketa);
         }
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.textview_layout, R.id.exams_textView, exams);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, R.layout.textview_layout, R.id.exams_textView, exams);
         ListView lstOpciones = (ListView) findViewById(R.id.atarikoa_exams_listView);
         lstOpciones.setAdapter(adapter);
 
