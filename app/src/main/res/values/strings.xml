@@ -20,5 +20,8 @@
     <string name="title_activity_screen_registro_usuario">ScreenRegistroUsuario</string>
     <string name="action_resgistrar">Erabiltzaile berria</string>
     <string name="action_crear_usuario">Erabiltzailea sortu</string>
+    <string name="resgistro_usuario_meter_todos_los_datos">Datu guztiak bete behar dituzu</string>
+    <string name="registrado_correctamente">Erabiltzailea ondo sortu da</string>
+    <string name="registrado_incorrecto">Errore bat gertatu da erabiltzailea sortzerakoan</string>
 
 </resources>
