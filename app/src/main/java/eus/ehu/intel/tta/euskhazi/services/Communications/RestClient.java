@@ -1,5 +1,8 @@
 package eus.ehu.intel.tta.euskhazi.services.Communications;
 
+import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.util.Base64;
 
 import java.io.BufferedReader;
@@ -159,6 +162,12 @@ public class RestClient {
         public RestException(String message) { super(message); }
         public RestException(String message, Throwable cause) { super(message, cause); }
         public RestException(Throwable cause) { super(cause); }
+    }
+
+    public static boolean isOnline(Context context) {
+        ConnectivityManager cm =(ConnectivityManager)context.getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo netInfo = cm.getActiveNetworkInfo();
+        return netInfo != null && netInfo.isConnectedOrConnecting();
     }
 
 

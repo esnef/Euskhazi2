@@ -39,8 +39,12 @@ public class UsersManager {
     public UsersManager(Context contextApplication){
         this.contextApplication=contextApplication;
         this.mPreferencesManager=PreferencesManager.getInstance();
-        updateMobile();
-
+        //Version Primer hilo
+        //updateMobile();
+        //
+        //Version Segundo plano
+        UpdateMobileAsyncTask updateMobileAsyncTask=new UpdateMobileAsyncTask();
+        updateMobileAsyncTask.execute(contextApplication);
     }
 
 
@@ -82,18 +86,21 @@ public class UsersManager {
         if(!isUserPrivate(user)){
             if(mMobile!=null){
                 mMobile.getUsers().add(user);
-
+                /*
                  boolean result=saveMobile();
                     if(onUserListener!=null) onUserListener.onAddUser(result);
                     if(onAddUserListener!=null) onAddUserListener.onAddUser(result);
                 return result;
-
-                //Version segundo hilo
-                /*
-                SaveMobileAsyncTask saveMobileAsyncTask=new SaveMobileAsyncTask();
-                saveMobileAsyncTask.execute(mMobile);
-                return true;
                 */
+                //Version segundo hilo
+
+                SaveMobileData saveMobileData=new SaveMobileData();
+                saveMobileData.setMobile(mMobile);
+                saveMobileData.setContext(contextApplication);
+                SaveMobileAsyncTask saveMobileAsyncTask=new SaveMobileAsyncTask();
+                saveMobileAsyncTask.execute(saveMobileData);
+                return true;
+
 
 
             }
@@ -308,13 +315,13 @@ public class UsersManager {
         return mPreferencesManager.putString(contextApplication, PREFERENCE_MOBILE_ID, json);
     }
 
-    private boolean saveMobile(Mobile mobile){
+    private boolean saveMobile(Mobile mobile, Context context){
         if(mobile==null)return false;
         //Generamos el json
         Gson gson=new Gson();
         String json=gson.toJson(mobile);
         PreferencesManager preferencesManager=new PreferencesManager();
-        return preferencesManager.putString(contextApplication, PREFERENCE_MOBILE_ID, json);
+        return preferencesManager.putString(context, PREFERENCE_MOBILE_ID, json);
     }
 
     private boolean updateMobile(){
@@ -330,33 +337,55 @@ public class UsersManager {
         }
         return false;
     }
-    /*
-    private boolean updateMobile(Mobile mobile){
+
+    private Mobile updateMobile(Context context){
         PreferencesManager preferencesManager=new PreferencesManager();
-        String json=preferencesManager.getString(contextApplication, PREFERENCE_MOBILE_ID);
+        String json=preferencesManager.getString(context, PREFERENCE_MOBILE_ID);
+        Mobile mobile=null;
         if(!json.equals(PreferencesManager.STRING_DEFAULT) && json!=null){
             Gson gson=new Gson();
-            mMobile=gson.fromJson(json,Mobile.class);
+            mobile=gson.fromJson(json,Mobile.class);
         }else{
             //No hay movil guardado con lo que hay que crearlo
-            mMobile=new Mobile();
-            mMobile.setMobilesMAC(UtilsServices.getMACaddress(contextApplication));
-            mMobile.setUsers(new ArrayList<User>());
+            mobile=new Mobile();
+            mobile.setMobilesMAC(UtilsServices.getMACaddress(contextApplication));
+            mobile.setUsers(new ArrayList<User>());
         }
-        return false;
+        return mobile;
     }
-*/
 
 
 
-    private class SaveMobileAsyncTask extends AsyncTask<Mobile, Void, Boolean> {
+
+    private class SaveMobileData{
+        private Mobile mobile;
+        private Context context;
+
+        public Mobile getMobile() {
+            return mobile;
+        }
+
+        public void setMobile(Mobile mobile) {
+            this.mobile = mobile;
+        }
+
+        public Context getContext() {
+            return context;
+        }
+
+        public void setContext(Context context) {
+            this.context = context;
+        }
+    }
+
+    private class SaveMobileAsyncTask extends AsyncTask<SaveMobileData, Void, Boolean> {
 
         @Override
-        protected Boolean doInBackground(Mobile... params) {
+        protected Boolean doInBackground(SaveMobileData... params) {
             int count = params.length;
             long totalSize = 0;
-            Mobile mobile=params[0];
-            return saveMobile(mobile);
+            SaveMobileData saveMobileData=params[0];
+            return saveMobile(saveMobileData.getMobile(),saveMobileData.getContext());
         }
 
         @Override
@@ -380,5 +409,35 @@ public class UsersManager {
         }
     }
 
+
+    private class UpdateMobileAsyncTask extends AsyncTask<Context, Void, Mobile> {
+
+        @Override
+        protected Mobile doInBackground(Context... params) {
+            int count = params.length;
+            long totalSize = 0;
+            Context context=params[0];
+            return updateMobile(context);
+        }
+
+        @Override
+        protected void onProgressUpdate(Void... values) {
+
+        }
+
+        @Override
+        protected void onPreExecute() {
+
+        }
+
+        @Override
+        protected void onPostExecute(Mobile mobile) {
+            mMobile=mobile;
+        }
+        @Override
+        protected void onCancelled() {
+
+        }
+    }
     //MOBILE END//
 }
