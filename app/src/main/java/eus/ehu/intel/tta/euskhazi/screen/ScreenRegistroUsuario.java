@@ -33,33 +33,40 @@ public class ScreenRegistroUsuario extends ScreenBase {
             @Override
             public void onClick(View v) {
                 EditText userNameEditText = (EditText) findViewById(R.id.userName_editText);
-                final String userName = userNameEditText.getText().toString();
+                final String userName = userNameEditText.getText().toString().trim();
                 EditText passwordEditText = (EditText) findViewById(R.id.password_editText);
-                final String password = passwordEditText.getText().toString();
+                final String password = passwordEditText.getText().toString().trim();
 
+                if (userName.equals("")||password.equals("")){
+                    Toast.makeText(getApplicationContext(),"Datu guztiak bete behar dituzu",Toast.LENGTH_SHORT).show();
+                    return;
+                }
 
+                mEngine.setOnAddUserListener(new UsersManager.OnAddUserListener() {
+                    @Override
+                    public void onAddUser(boolean isAddUser) {
+                        Toast.makeText(getApplicationContext(),"addUser eventoa",Toast.LENGTH_SHORT).show();
+                        if (isAddUser){
+                            Toast.makeText(getApplicationContext(),"Erabiltzailea ondo sortu da",Toast.LENGTH_SHORT).show();
+                            Intent intent = new Intent(getApplicationContext(), ScreenLogin.class);
+                            startActivity(intent);
+                        }else {
+                            Toast.makeText(getApplicationContext(),"Errore bat gertatu da erabiltzailea sortzerakoan",Toast.LENGTH_SHORT).show();
+                        }
+                        mEngine.setOnAddUserListener(null);
+                        mEngine.setOnIsUserListener(null);
+                    }
+                });
 
                 mEngine.setOnIsUserListener(new UsersManager.OnIsUserListener() {
                     @Override
                     public void onIsUser(boolean isUser) {
-                        if (isUser){
-                            User usuarioNuevo = new User(userName, password, new ArrayList<Exam>());
+                        if (!isUser){
+                            User usuarioNuevo = new User(userName, password, null);
                             try {
-                                mEngine.setOnAddUserListener(new UsersManager.OnAddUserListener() {
-                                    @Override
-                                    public void onAddUser(boolean isAddUser) {
-                                        if (isAddUser){
-                                            Toast.makeText(getApplicationContext(),"Erabiltzailea ondo sortu da",Toast.LENGTH_SHORT).show();
-                                            Intent intent = new Intent(getApplicationContext(), ScreenLogin.class);
-                                            startActivity(intent);
-                                        }else {
-                                            Toast.makeText(getApplicationContext(),"Errore bat gertatu da erabiltzailea sortzerakoan",Toast.LENGTH_SHORT).show();
-                                        }
-                                        mEngine.setOnAddUserListener(null);
-                                    }
-                                });
-                                mEngine.addUser(usuarioNuevo);
-                                mEngine.setOnIsUserListener(null);
+                                Toast.makeText(getApplicationContext(),"addUser eventoari deituko zaio ",Toast.LENGTH_SHORT).show();
+                                boolean bo = mEngine.addUser(usuarioNuevo);
+                                Toast.makeText(getApplicationContext(),"addUser = "+ String.valueOf(bo),Toast.LENGTH_SHORT).show();
                             } catch (UsersManager.ExcepcionUser excepcionUser) {
                                 excepcionUser.printStackTrace();
                             }
