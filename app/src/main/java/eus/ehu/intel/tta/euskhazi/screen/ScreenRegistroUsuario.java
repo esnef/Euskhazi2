@@ -37,21 +37,20 @@ public class ScreenRegistroUsuario extends ScreenBase {
                 EditText passwordEditText = (EditText) findViewById(R.id.password_editText);
                 final String password = passwordEditText.getText().toString().trim();
 
-                if (userName.equals("")||password.equals("")){
-                    Toast.makeText(getApplicationContext(),"Datu guztiak bete behar dituzu",Toast.LENGTH_SHORT).show();
+                if (userName.equals("") || password.equals("")){
+                    Toast.makeText(getApplicationContext(), getString(R.string.resgistro_usuario_meter_todos_los_datos),Toast.LENGTH_SHORT).show();
                     return;
                 }
 
                 mEngine.setOnAddUserListener(new UsersManager.OnAddUserListener() {
                     @Override
                     public void onAddUser(boolean isAddUser) {
-                        Toast.makeText(getApplicationContext(),"addUser eventoa",Toast.LENGTH_SHORT).show();
                         if (isAddUser){
-                            Toast.makeText(getApplicationContext(),"Erabiltzailea ondo sortu da",Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(), getString(R.string.registrado_correctamente),Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent(getApplicationContext(), ScreenLogin.class);
                             startActivity(intent);
                         }else {
-                            Toast.makeText(getApplicationContext(),"Errore bat gertatu da erabiltzailea sortzerakoan",Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(), getString(R.string.registrado_incorrecto),Toast.LENGTH_SHORT).show();
                         }
                         mEngine.setOnAddUserListener(null);
                         mEngine.setOnIsUserListener(null);
@@ -64,9 +63,7 @@ public class ScreenRegistroUsuario extends ScreenBase {
                         if (!isUser){
                             User usuarioNuevo = new User(userName, password, null);
                             try {
-                                Toast.makeText(getApplicationContext(),"addUser eventoari deituko zaio ",Toast.LENGTH_SHORT).show();
                                 boolean bo = mEngine.addUser(usuarioNuevo);
-                                Toast.makeText(getApplicationContext(),"addUser = "+ String.valueOf(bo),Toast.LENGTH_SHORT).show();
                             } catch (UsersManager.ExcepcionUser excepcionUser) {
                                 excepcionUser.printStackTrace();
                             }
