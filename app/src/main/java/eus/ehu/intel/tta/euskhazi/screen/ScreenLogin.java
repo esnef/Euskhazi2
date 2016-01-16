@@ -99,6 +99,10 @@ public class ScreenLogin extends ScreenBase implements LoaderCallbacks<Cursor> {
         mEmailSignInButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
+                if (mEmailView.getText().toString().trim().equals("") || mPasswordView.getText().toString().trim().equals("")) {
+                    Toast.makeText(getApplicationContext(), getString(R.string.resgistro_usuario_meter_todos_los_datos), Toast.LENGTH_SHORT).show();
+                    return;
+                }
                 attemptLogin();
             }
         });
@@ -111,22 +115,6 @@ public class ScreenLogin extends ScreenBase implements LoaderCallbacks<Cursor> {
             }
         });
 
-        mEngine.setOnGetAllUserListener(new UsersManager.OnGetAllUserListener() {
-            @Override
-            public void onGetAllUser(List<User> users) {
-                ArrayList<String> listNombreUsuarios = new ArrayList<>();
-                for (User user : users) {
-                    String nombreUsuario = user.getName();
-                    listNombreUsuarios.add(nombreUsuario);
-                }
-                ArrayAdapter<String> adapter = new ArrayAdapter<>(getApplicationContext(), R.layout.textview_layout, R.id.exams_textView, listNombreUsuarios);
-                ListView lstOpciones = (ListView) findViewById(R.id.screen_login_usuarios_listView);
-                lstOpciones.setAdapter(adapter);
-            }
-        });
-        mEngine.getAllUser();
-
-
         //mLoginFormView = findViewById(R.id.login_form);
         mProgressView = findViewById(R.id.login_progress);
     }
@@ -138,13 +126,27 @@ public class ScreenLogin extends ScreenBase implements LoaderCallbacks<Cursor> {
             @Override
             public void onGetAllUser(List<User> users) {
                 ArrayList<String> listNombreUsuarios = new ArrayList<>();
-                for (User user : users) {
-                    String nombreUsuario = user.getName();
-                   listNombreUsuarios.add(nombreUsuario);
+                if (users == null || users.isEmpty()) {
+                    Toast.makeText(getApplicationContext(), "Ez dago erabiltzailerik erregistratuta", Toast.LENGTH_SHORT).show();
+                    return;
+                }else {
+                    for (User user : users) {
+                        String nombreUsuario = user.getName();
+                        listNombreUsuarios.add(nombreUsuario);
+                    }
+                    ArrayAdapter<String> adapter = new ArrayAdapter<>(getApplicationContext(), R.layout.textview_layout, R.id.exams_textView, listNombreUsuarios);
+                    ListView lstOpciones = (ListView) findViewById(R.id.screen_login_usuarios_listView);
+                    lstOpciones.setAdapter(adapter);
+
+                    lstOpciones.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                        public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
+                            String nombreUsuario = (String) adapterView.getItemAtPosition(position);
+                            AutoCompleteTextView emailTextView = (AutoCompleteTextView) findViewById(R.id.email);
+                            emailTextView.setText(nombreUsuario);
+                        }
+                    });
                 }
-                ArrayAdapter<String> adapter = new ArrayAdapter<>(getApplicationContext(), R.layout.textview_layout, R.id.exams_textView, listNombreUsuarios);
-                ListView lstOpciones = (ListView) findViewById(R.id.screen_login_usuarios_listView);
-                lstOpciones.setAdapter(adapter);
+                mEngine.setOnGetAllUserListener(null);
             }
         });
         mEngine.getAllUser();
@@ -206,7 +208,7 @@ public class ScreenLogin extends ScreenBase implements LoaderCallbacks<Cursor> {
      * errors are presented and no actual login attempt is made.
      */
     private void attemptLogin() {
-        if (mAuthTask != null) {
+        /*if (mAuthTask != null) {
             return;
         }
 
@@ -249,20 +251,51 @@ public class ScreenLogin extends ScreenBase implements LoaderCallbacks<Cursor> {
             showProgress(true);
             mAuthTask = new UserLoginTask(email, password);
             mAuthTask.execute((Void) null);
+        }*/
 
-            Intent intent = new Intent(this, MenuNivelActivity.class);
-            startActivity(intent);
+        mEngine.setOnIsUserListener(new UsersManager.OnIsUserListener() {
+            @Override
+            public void onIsUser(boolean isUser) {
+                if (isUser) {
+
+                    mEngine.setOnGetUserListener(new UsersManager.OnGetUserListener() {
+                        @Override
+                        public void onGetUser(User user) {
+                            //Toast.makeText(getApplicationContext(), user.getName() + getString(R.string.usuario_correcto), Toast.LENGTH_SHORT).show();
+                            Intent intent = new Intent(getApplicationContext(), MenuNivelActivity.class);
+                            startActivity(intent);
+                            mEngine.setOnGetUserListener(null);
+                            mEngine.setOnIsUserListener(null);
+                        }
+                    });
+                    try {
+                        mEngine.getUser(mEmailView.getText().toString().trim(), mPasswordView.getText().toString().trim());
+                    } catch (UsersManager.ExcepcionUser excepcionUser) {
+                        excepcionUser.printStackTrace();
+                    }
+                } else {
+                    Toast.makeText(getApplicationContext(), getString(R.string.usuario_incorrecto), Toast.LENGTH_SHORT).show();
+                    return;
+                }
+            }
+        });
+        try {
+            mEngine.isUser(mEmailView.getText().toString().trim(), mPasswordView.getText().toString().trim());
+        } catch (UsersManager.ExcepcionUser excepcionUser) {
+            excepcionUser.printStackTrace();
         }
+
     }
 
     private boolean isEmailValid(String email) {
         //TODO: Replace this with your own logic
-        return email.contains("@");
+        //return email.contains("@");
+        return true;
     }
 
     private boolean isPasswordValid(String password) {
         //TODO: Replace this with your own logic
-        return password.length() > 4;
+        return password.length() > 0;
     }
 
     /**

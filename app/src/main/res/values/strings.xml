@@ -23,5 +23,7 @@
     <string name="resgistro_usuario_meter_todos_los_datos">Datu guztiak bete behar dituzu</string>
     <string name="registrado_correctamente">Erabiltzailea ondo sortu da</string>
     <string name="registrado_incorrecto">Errore bat gertatu da erabiltzailea sortzerakoan</string>
+    <string name="usuario_incorrecto">Ez da existitzen erabiltzaile hau pasahitz horrekin</string>
+    <string name="usuario_correcto"> erabiltzailearen pasahitza zuzena da</string>
 
 </resources>
