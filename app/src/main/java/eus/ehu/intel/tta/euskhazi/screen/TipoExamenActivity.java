@@ -7,14 +7,7 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.util.ArrayList;
-
-import eus.ehu.intel.tta.euskhazi.Engine;
 import eus.ehu.intel.tta.euskhazi.R;
-import eus.ehu.intel.tta.euskhazi.services.LevelsManager;
-import eus.ehu.intel.tta.euskhazi.services.UsersManager;
-import eus.ehu.intel.tta.euskhazi.services.dataType.User;
-import eus.ehu.intel.tta.euskhazi.services.dataType.exam.Level;
 
 public class TipoExamenActivity extends ScreenBase {
 
@@ -36,28 +29,12 @@ public class TipoExamenActivity extends ScreenBase {
     public void chooseExamType(View view){
 
         int examType = Integer.parseInt(view.getTag().toString());
-        switch (examType){
-            case 1:
-                Intent intent = new Intent(this, ScreenListaExamsAtarikoa.class);
-                startActivity(intent);
-                break;
-            case 2:
-                Toast.makeText(this, "Idatzizkoa sin implementar", Toast.LENGTH_SHORT).show();
+        String level = getIntent().getStringExtra("level");
+        Intent intent = new Intent(this, ScreenListaExams.class);
+        intent.putExtra("level", level);
+        intent.putExtra("typeLevel", examType);
+        startActivity(intent);
 
-                break;
-            case 3:
-                Toast.makeText(this, "Sinonimoak sin implementar", Toast.LENGTH_SHORT).show();
-                break;
-            case 4:
-                Toast.makeText(this, "Berridazketak sin implementar", Toast.LENGTH_SHORT).show();
-                break;
-            case 5:
-                Toast.makeText(this, "Entzumena sin implementar", Toast.LENGTH_SHORT).show();
-                break;
-            case 6:
-                Toast.makeText(this, "Ahozkoa sin implementar", Toast.LENGTH_SHORT).show();
-                break;
-        }
     }
 
 }

@@ -9,14 +9,21 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context=".screen.ScreenListaExamsAtarikoa"
-    tools:showIn="@layout/activity_lista_exams_atarikoa">
+    tools:context=".screen.ScreenListaExams"
+    tools:showIn="@layout/activity_lista_exams">
 
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_centerHorizontal="true">
+
+        <TextView
+            android:id="@+id/content_lista_exams_title_textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textSize="30dp"/>
 
         <ListView android:id="@+id/atarikoa_exams_listView"
             android:layout_width="match_parent"

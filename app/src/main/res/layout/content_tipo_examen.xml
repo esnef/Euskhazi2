@@ -36,42 +36,42 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Atarikoa"
-            android:tag="1"
+            android:tag="0"
             android:onClick="chooseExamType" />
 
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Idatzizkoa"
-            android:tag="2"
+            android:tag="1"
             android:onClick="chooseExamType" />
 
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Sinonimoak"
-            android:tag="3"
+            android:tag="2"
             android:onClick="chooseExamType" />
 
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Berridazketak"
-            android:tag="4"
+            android:tag="3"
             android:onClick="chooseExamType" />
 
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Entzumena"
-            android:tag="5"
+            android:tag="4"
             android:onClick="chooseExamType" />
 
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Ahozkoa"
-            android:tag="6"
+            android:tag="5"
             android:onClick="chooseExamType" />
 
     </LinearLayout>
