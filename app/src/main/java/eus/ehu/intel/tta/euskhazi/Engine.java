@@ -166,7 +166,7 @@ public class Engine {
         return mLevelsManager.getLevels();
     }
 
-    private boolean getLevel(String levelType){
+    public boolean getLevel(String levelType){
         return mLevelsManager.getLevel(levelType);
     }
 
