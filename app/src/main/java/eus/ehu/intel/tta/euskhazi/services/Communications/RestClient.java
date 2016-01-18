@@ -28,12 +28,12 @@ public class RestClient {
     private final static String AUTH="Authorization";
 
 
-    private String pathServer="http://u017633.ehu.eus:18080/AlumnoTta/rest/tta";
+    private String pathServer="http://192.168.0.14:8080/EuskhaziRestAndroid/rest/prueba";
     private String pathApplication="euskhazi";
 
-    public static final String  PATH_SAVE_MOBILE="saveMobile";
+    public static final String  PATH_SAVE_MOBILE="saveMobile1";
 
-    public static final String  PATH_GET_MOBILE="getMobile=";
+    public static final String  PATH_GET_MOBILE="getMobile1/";
 
 
     public RestClient(String pathServer,String pathApplication){
@@ -108,19 +108,19 @@ public class RestClient {
     }
 
     public int postJson(final String json,String path) throws IOException {
-        if(path==null || json==null || path.equals("")){
+        if (path == null || json == null || path.equals("")) {
             throw new RestException("Except that you do not have parameters");
         }
-        HttpURLConnection conn=null;
-        try{
-            conn=getConnection(path);
+        HttpURLConnection conn = null;
+        try {
+            conn = getConnection(path);
             conn.setRequestMethod("POST");
-            conn.setRequestProperty("Content-Type","application/json; charset=UTF-8");
-            PrintWriter pw=new PrintWriter(conn.getOutputStream());
-                pw.print(json);
-                return conn.getResponseCode();
-        }finally {
-            if(conn!=null)conn.disconnect();
+            conn.setRequestProperty("Content-Type", "application/json; charset=UTF-8");
+            PrintWriter pw = new PrintWriter(conn.getOutputStream());
+            pw.print(json);
+            return conn.getResponseCode();
+        } finally {
+            if (conn != null) conn.disconnect();
         }
     }
 

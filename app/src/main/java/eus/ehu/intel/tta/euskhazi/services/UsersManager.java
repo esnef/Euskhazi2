@@ -388,8 +388,8 @@ public class UsersManager {
         try {
             if(!RestClient.isOnline(context))return mobile;
             String json=restClient.getString(RestClient.PATH_GET_MOBILE+mobile.getMobilesMAC());
-
-            if(!json.equals("") && json!=null){
+            System.out.println("json: "+json);
+            if(json!=null && !json.equals("")){
                 Gson gson=new Gson();
                 if(gson.toJson(mobile).trim().equals(json.trim())){
                     Log.d(TAG,"No hay modificaciones");
@@ -481,6 +481,7 @@ public class UsersManager {
             SaveMobileData saveMobileData=params[0];
             Gson gson=new Gson();
             String json=gson.toJson(saveMobileData.getMobile());
+            System.out.println(json);
             try {
                 return saveMobileServer(json,saveMobileData.getContext());
             } catch (IOException e) {
