@@ -28,7 +28,7 @@ public class RestClient {
     private final static String AUTH="Authorization";
 
 
-    private String pathServer="http://192.168.0.14:8080/EuskhaziRestAndroid/rest/prueba";
+    private String pathServer="http://192.168.0.15:8080/EuskhaziRestAndroid/rest/prueba";
     private String pathApplication="euskhazi";
 
     public static final String  PATH_SAVE_MOBILE="saveMobile1";
@@ -111,6 +111,7 @@ public class RestClient {
         if (path == null || json == null || path.equals("")) {
             throw new RestException("Except that you do not have parameters");
         }
+        System.out.println(json);
         HttpURLConnection conn = null;
         try {
             conn = getConnection(path);
@@ -118,6 +119,7 @@ public class RestClient {
             conn.setRequestProperty("Content-Type", "application/json; charset=UTF-8");
             PrintWriter pw = new PrintWriter(conn.getOutputStream());
             pw.print(json);
+            pw.close();
             return conn.getResponseCode();
         } finally {
             if (conn != null) conn.disconnect();
