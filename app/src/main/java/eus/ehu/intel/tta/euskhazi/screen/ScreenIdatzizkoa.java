@@ -11,12 +11,12 @@ import android.widget.TextView;
 
 import eus.ehu.intel.tta.euskhazi.R;
 
-public class ScreenAtarikoa extends ScreenBase {
+public class ScreenIdatzizkoa extends ScreenBase {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_screen_atarikoa);
+        setContentView(R.layout.activity_screen_idatzizkoa);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -24,8 +24,8 @@ public class ScreenAtarikoa extends ScreenBase {
         int numeroExamen = intent.getExtras().getInt("numeroExamen");
         String levelString = intent.getStringExtra("level");
 
-        TextView textLogin = (TextView)findViewById(R.id.atarikoa_title_textView);
-        textLogin.setText("Atarikoa " + (numeroExamen+1) + " - " + levelString);
+        TextView textLogin = (TextView)findViewById(R.id.idatzizkoa_title_textView);
+        textLogin.setText("Idatzizkoa " + (numeroExamen+1) + " - " + levelString);
     }
 
 }

@@ -83,6 +83,29 @@ public class ScreenListaExams extends ScreenBase {
 
                             Context context = getApplicationContext();
                             Toast.makeText(context, "Aukeratutako azterketa " + (position+1), Toast.LENGTH_SHORT).show();
+
+                            switch (typeLevel) {
+                                case 0:
+                                    Intent intent0 = new Intent(getApplicationContext(), ScreenAtarikoa.class);
+                                    intent0.putExtra("level", levelString);
+                                    intent0.putExtra("numeroExamen", position);
+                                    startActivity(intent0);
+                                    break;
+                                case 1:
+                                    Intent intent1 = new Intent(getApplicationContext(), ScreenIdatzizkoa.class);
+                                    intent1.putExtra("level", levelString);
+                                    intent1.putExtra("numeroExamen", position);
+                                    startActivity(intent1);
+                                    break;
+                                case 2:
+                                    break;
+                                case 3:
+                                    break;
+                                case 4:
+                                    break;
+                                case 5:
+                                    break;
+                            }
                         }
                     });
                 }
