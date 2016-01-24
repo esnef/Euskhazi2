@@ -7,33 +7,15 @@ import java.util.ArrayList;
  * Created by eduardo on 8/01/16.
  */
 public class Atarikoa implements Serializable {
-    private String statement;
-    private String solution;
-    private ArrayList<AnswerAtarikoa> answers;
 
-    public String getStatement() {
-        return statement;
+    private ArrayList<AtarikoaStatements> statements;
+
+
+    public ArrayList<AtarikoaStatements> getStatements() {
+        return statements;
     }
 
-    public void setStatement(String statement) {
-        this.statement = statement;
+    public void setStatements(ArrayList<AtarikoaStatements> statements) {
+        this.statements = statements;
     }
-
-    public String getSolution() {
-        return solution;
-    }
-
-    public void setSolution(String solution) {
-        this.solution = solution;
-    }
-
-    public ArrayList<AnswerAtarikoa> getAnswers() {
-        return answers;
-    }
-
-    public void setAnswers(ArrayList<AnswerAtarikoa> answers) {
-        this.answers = answers;
-    }
-
-
 }
