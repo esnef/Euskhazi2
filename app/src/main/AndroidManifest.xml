@@ -40,6 +40,10 @@
         <activity
             android:name=".screen.ScreenRegistroUsuario"
             android:label="@string/title_activity_screen_registro_usuario"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".screen.ScreenAtarikoa"
+            android:label="@string/title_activity_screen_atarikoa"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
