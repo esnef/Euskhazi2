@@ -18,7 +18,7 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".screen.ScreenLogin"
-            android:label="@string/app_name"></activity>
+            android:label="@string/app_name" />
         <activity
             android:name=".screen.MenuNivelActivity"
             android:label="@string/title_activity_menu_nivel"
@@ -52,6 +52,22 @@
         <activity
             android:name=".screen.ScreenIdatzizkoa"
             android:label="@string/title_activity_screen_idatzizkoa"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".screen.ScreenSinonimoak"
+            android:label="@string/title_activity_screen_sinonimoak"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".screen.ScreenBerridazketak"
+            android:label="@string/title_activity_screen_berridazketak"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".screen.ScreenEntzumena"
+            android:label="@string/title_activity_screen_entzumena"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".screen.ScreenAhozkoa"
+            android:label="@string/title_activity_screen_ahozkoa"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 

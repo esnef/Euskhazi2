@@ -98,12 +98,28 @@ public class ScreenListaExams extends ScreenBase {
                                     startActivity(intent1);
                                     break;
                                 case 2:
+                                    Intent intent2 = new Intent(getApplicationContext(), ScreenSinonimoak.class);
+                                    intent2.putExtra("level", levelString);
+                                    intent2.putExtra("numeroExamen", position);
+                                    startActivity(intent2);
                                     break;
                                 case 3:
+                                    Intent intent3 = new Intent(getApplicationContext(), ScreenBerridazketak.class);
+                                    intent3.putExtra("level", levelString);
+                                    intent3.putExtra("numeroExamen", position);
+                                    startActivity(intent3);
                                     break;
                                 case 4:
+                                    Intent intent4 = new Intent(getApplicationContext(), ScreenEntzumena.class);
+                                    intent4.putExtra("level", levelString);
+                                    intent4.putExtra("numeroExamen", position);
+                                    startActivity(intent4);
                                     break;
                                 case 5:
+                                    Intent intent5 = new Intent(getApplicationContext(), ScreenAhozkoa.class);
+                                    intent5.putExtra("level", levelString);
+                                    intent5.putExtra("numeroExamen", position);
+                                    startActivity(intent5);
                                     break;
                             }
                         }

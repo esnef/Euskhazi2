@@ -29,5 +29,9 @@
     <string name="title_activity_screen_atarikoa">ScreenAtarikoa</string>
     <string name="title_activity_screen_loading">ScreenLoading</string>
     <string name="title_activity_screen_idatzizkoa">ScreenIdatzizkoa</string>
+    <string name="title_activity_screen_sinonimoak">ScreenSinonimoak</string>
+    <string name="title_activity_screen_berridazketak">ScreenBerridazketak</string>
+    <string name="title_activity_screen_entzumena">ScreenEntzumena</string>
+    <string name="title_activity_screen_ahozkoa">ScreenAhozkoa</string>
 
 </resources>
