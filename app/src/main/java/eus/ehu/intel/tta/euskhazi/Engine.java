@@ -71,6 +71,18 @@ public class Engine {
         return mEngine;
     }
 
+    public boolean initialization(){
+        return mUsersManager.initialization();
+    }
+
+    public Context getContextApplication() {
+        return contextApplication;
+    }
+
+    public void setContextApplication(Context contextApplication) {
+        this.contextApplication = contextApplication;
+    }
+
     //INIT USERS//
 
     public boolean saveUser(){
@@ -152,6 +164,15 @@ public class Engine {
 
     public void setOnUserListener(UsersManager.OnUserListener onUserListener){
         mUsersManager.setOnUserListener(onUserListener);
+    }
+
+    public void setOnInitializationOfflineListener(UsersManager.OnInitializationOfflineListener onInitializationOfflineListener){
+        mUsersManager.setOnInitializationOfflineListener(onInitializationOfflineListener);
+    }
+
+
+    public void setOnInitializationOnlineListener(UsersManager.OnInitializationOnlineListener onInitializationOnlineListener){
+        mUsersManager.setOnInitializationOnlineListener(onInitializationOnlineListener);
     }
 
 

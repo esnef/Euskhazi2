@@ -27,5 +27,6 @@
     <string name="usuario_correcto"> erabiltzailearen pasahitza zuzena da</string>
     <string name="no_hay_examenes">Ez dago maila honetako azterketarik</string>
     <string name="title_activity_screen_atarikoa">ScreenAtarikoa</string>
+    <string name="title_activity_screen_loading">ScreenLoading</string>
 
 </resources>

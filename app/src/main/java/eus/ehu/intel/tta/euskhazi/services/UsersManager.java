@@ -37,6 +37,12 @@ public class UsersManager {
     private OnGetUserNowListener onGetUserNowListener;
     private OnIsUserListener onIsUserListener;
     private OnGetAllUserListener onGetAllUserListener;
+    private OnInitializationOfflineListener onInitializationOfflineListener;
+    private OnInitializationOnlineListener onInitializationOnlineListener;
+
+
+    private boolean isInitialization=false;
+
 
     public UsersManager(Context contextApplication){
         this.contextApplication=contextApplication;
@@ -45,9 +51,11 @@ public class UsersManager {
         //updateMobile();
         //
         //Version Segundo plano
-        UpdateMobileAsyncTask updateMobileAsyncTask=new UpdateMobileAsyncTask();
-        updateMobileAsyncTask.execute(contextApplication);
+        //UpdateMobileAsyncTask updateMobileAsyncTask=new UpdateMobileAsyncTask();
+        //updateMobileAsyncTask.execute(contextApplication);
     }
+
+
 
 
     public static UsersManager getInstance(Context contextApplication){
@@ -63,6 +71,16 @@ public class UsersManager {
     }
 
     //INIT USERS//
+
+    public boolean initialization(){
+        UpdateMobileAsyncTask updateMobileAsyncTask=new UpdateMobileAsyncTask();
+        updateMobileAsyncTask.execute(contextApplication);
+        return true;
+    }
+
+    public boolean isInitialization(){
+        return isInitialization;
+    }
 
     public boolean saveUser(){
         if(mMobile!=null){
@@ -268,6 +286,22 @@ public class UsersManager {
         this.onGetUserNowListener=onGetUserNowListener;
     }
 
+    public interface OnInitializationOfflineListener{
+        public void onInitializationOffline(boolean isInitializationOffline);
+    }
+
+    public void setOnInitializationOfflineListener(OnInitializationOfflineListener onInitializationOfflineListener){
+        this.onInitializationOfflineListener=onInitializationOfflineListener;
+    }
+
+    public interface OnInitializationOnlineListener{
+        public void onInitializationOnline(boolean isInitializationOnline);
+    }
+
+    public void setOnInitializationOnlineListener(OnInitializationOnlineListener onInitializationOnlineListener){
+        this.onInitializationOnlineListener=onInitializationOnlineListener;
+    }
+
     public interface OnIsUserListener{
         public void onIsUser(boolean isUser);
     }
@@ -388,8 +422,8 @@ public class UsersManager {
         try {
             if(!RestClient.isOnline(context))return mobile;
             String json=restClient.getString(RestClient.PATH_GET_MOBILE+mobile.getMobilesMAC());
-
-            if(!json.equals("") && json!=null){
+            System.out.println("json: "+json);
+            if(json!=null && !json.equals("")){
                 Gson gson=new Gson();
                 if(gson.toJson(mobile).trim().equals(json.trim())){
                     Log.d(TAG,"No hay modificaciones");
@@ -481,6 +515,7 @@ public class UsersManager {
             SaveMobileData saveMobileData=params[0];
             Gson gson=new Gson();
             String json=gson.toJson(saveMobileData.getMobile());
+            System.out.println(json);
             try {
                 return saveMobileServer(json,saveMobileData.getContext());
             } catch (IOException e) {
@@ -536,6 +571,14 @@ public class UsersManager {
 
         @Override
         protected void onPostExecute(Mobile mobile) {
+            if(mobile==null){
+                isInitialization=false;
+                if(onInitializationOfflineListener!=null)onInitializationOfflineListener.onInitializationOffline(false);
+            }else{
+                if(onInitializationOfflineListener!=null)onInitializationOfflineListener.onInitializationOffline(true);
+                isInitialization=true;
+
+            }
             mMobile=mobile;
             UpdateMobileServerAsyncTask updateMobileServerAsyncTask=new UpdateMobileServerAsyncTask();
             SaveMobileData saveMobileData=new SaveMobileData();
@@ -572,7 +615,16 @@ public class UsersManager {
 
         @Override
         protected void onPostExecute(Mobile mobile) {
-            mMobile=mobile;
+            if(mobile!=null){
+                Gson gson=new Gson();
+                System.out.println(gson.toJson(mobile));
+                if(onInitializationOnlineListener!=null)onInitializationOnlineListener.onInitializationOnline(true);
+                mMobile=mobile;
+            }else{
+                if(onInitializationOnlineListener!=null)onInitializationOnlineListener.onInitializationOnline(false);
+            }
+
+
         }
         @Override
         protected void onCancelled() {
