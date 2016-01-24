@@ -11,7 +11,7 @@ import android.widget.TextView;
 
 import eus.ehu.intel.tta.euskhazi.R;
 
-public class ScreenBerridazketak extends AppCompatActivity {
+public class ScreenBerridazketak extends ScreenBase {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

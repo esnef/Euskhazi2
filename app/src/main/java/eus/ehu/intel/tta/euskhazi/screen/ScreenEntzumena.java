@@ -11,7 +11,7 @@ import android.widget.TextView;
 
 import eus.ehu.intel.tta.euskhazi.R;
 
-public class ScreenEntzumena extends AppCompatActivity {
+public class ScreenEntzumena extends ScreenBase {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
