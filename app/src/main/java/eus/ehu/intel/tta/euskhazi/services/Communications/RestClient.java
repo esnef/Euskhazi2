@@ -3,6 +3,7 @@ package eus.ehu.intel.tta.euskhazi.services.Communications;
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.os.AsyncTask;
 import android.util.Base64;
 
 import java.io.BufferedReader;
@@ -15,6 +16,8 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
+
+import eus.ehu.intel.tta.euskhazi.services.dataType.Mobile;
 
 /**
  * Created by eduardo on 1/01/16.
@@ -29,6 +32,8 @@ public class RestClient {
 
 
     private String pathServer="http://ec2-54-213-59-103.us-west-2.compute.amazonaws.com/EuskhaziRestAndroid/rest/prueba";
+    //private String pathServer="http://192.168.0.13:8080/EuskhaziRestAndroid/rest/prueba";
+
     private String pathApplication="euskhazi";
 
     public static final String  PATH_SAVE_MOBILE="saveMobile1";
@@ -138,12 +143,14 @@ public class RestClient {
             conn.setRequestProperty("Content-Type", "multipart/form-data;boundary=" + boundary);
             DataOutputStream out=new DataOutputStream(conn.getOutputStream());
             out.writeBytes(prefix+boundary+newLine);
-            out.writeBytes("Content-Disposition: form-data; name=\"file\";filename\""+fileName+"\""+newLine);
+            out.writeBytes("Content-Disposition: form-data; name=\"uploadedFile\";filename=\""+fileName+"\""+newLine);
             out.writeBytes(newLine);
             byte[] data=new byte[1024*1024];
             int len;
-            while ((len=is.read(data))>0)
+            while ((len=is.read(data))>0){
                 out.write(data,0,len);
+            }
+
             out.writeBytes(newLine);
             out.writeBytes(prefix+boundary+prefix+newLine);
             out.close();
@@ -175,6 +182,8 @@ public class RestClient {
         NetworkInfo netInfo = cm.getActiveNetworkInfo();
         return netInfo != null && netInfo.isConnectedOrConnecting();
     }
+
+
 
 
 }
