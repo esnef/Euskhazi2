@@ -146,6 +146,7 @@ public class UsersManager {
             for(int con=0;con<users.size();con++){
                 User userFor=users.get(con);
                 if(userFor.getName().equals(user.getName()) && userFor.getPass().equals(user.getPass())){
+                    mUserNow=userFor;
                     if(onUserListener!=null) onUserListener.onGetUser(userFor);
                     if(onGetUserListener!=null)onGetUserListener.onGetUser(userFor);
                     return true;
@@ -171,6 +172,8 @@ public class UsersManager {
             if(onUserListener!=null)onUserListener.onGetUserNow(mUserNow);
             if(onGetUserNowListener!=null)onGetUserNowListener.onGetUserNow(mUserNow);
         }else{
+            if(onUserListener!=null)onUserListener.onGetUserNow(mUserNow);
+            if(onGetUserNowListener!=null)onGetUserNowListener.onGetUserNow(mUserNow);
             return false;
         }
         return true;
