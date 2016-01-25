@@ -151,6 +151,12 @@ public class ScreenListaExams extends ScreenBase {
         }
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();  // Always call the superclass method first
+
+    }
+
 
     public class ExamsAdapter extends ArrayAdapter<ExamType> {
         public ExamsAdapter(Context context, ArrayList<ExamType> examType) {

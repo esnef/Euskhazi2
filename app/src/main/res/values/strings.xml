@@ -36,6 +36,12 @@
     <string name="load_exam_incorrectly">Azterketa kargatzerakoan arazo bat gertatu da</string>
     <string name="send_to_correct">Zuzentzeko bidali</string>
     <string name="Nivel">Maila</string>
+    <string name="Grabar_audio">Grabatu ahotsa</string>
+    <string name="No_se_ha_subido_correctamente_al_servidor">Ez dago behar bezala igo Server</string>
+    <string name="Se_ha_guardado_correctamente_en_el_servidor">Izan da zerbitzarian gordetako</string>
+
     <string name="usuario_incorrecto">Errore bat erabiltzailearen datuak lortzerakoan</string>
+
+
 
 </resources>

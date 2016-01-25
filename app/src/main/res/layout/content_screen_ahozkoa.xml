@@ -47,7 +47,11 @@
         android:textSize="10dp"
         android:text="conditions" />
 
-
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/Grabar_audio"
+        android:id="@+id/ahozkoa_record_voice_Button" />
 
 
 </LinearLayout>
