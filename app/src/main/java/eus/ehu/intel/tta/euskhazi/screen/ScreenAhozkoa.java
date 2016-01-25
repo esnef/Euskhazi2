@@ -20,6 +20,7 @@ public class ScreenAhozkoa extends ScreenBase {
     private TextView ahozkoa_exam_textView;
     private TextView ahozkoa_explanation_textView;
     private TextView ahozkoa_questions_textView;
+    private TextView ahozkoa_conditions_textView;
 
 
     @Override
@@ -39,7 +40,7 @@ public class ScreenAhozkoa extends ScreenBase {
         ahozkoa_exam_textView = (TextView) findViewById(R.id.ahozkoa_exam_textView);
         ahozkoa_explanation_textView = (TextView) findViewById(R.id.ahozkoa_explanation_textView);
         ahozkoa_questions_textView  = (TextView) findViewById(R.id.ahozkoa_questions_textView);
-
+        ahozkoa_conditions_textView = (TextView) findViewById(R.id.ahozkoa_conditions_textView);
 
 
 
@@ -55,7 +56,7 @@ public class ScreenAhozkoa extends ScreenBase {
                             ahozkoa_questions_textView.setText(ahozkoa_questions_textView.getText()+"-"+ahozkoa.getQuestions().get(con).getQuestion()+"\n");
 
                         }
-
+                        ahozkoa_conditions_textView.setText(ahozkoa.getConditions());
 
                     }
 
