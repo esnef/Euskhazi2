@@ -99,7 +99,9 @@ public class ScreenIdatzizkoa extends ScreenBase {
                         exam.setNumExams(numeroExamen);
                         exam.setTypeExam("idatzizkoa");
 
+                        if (user.getExams() == null) user.setExams(new ArrayList<Exam>());
                         List<Exam> examList = user.getExams();
+
                         boolean nuevoExamen = true;
                         for (int n=0; n < examList.size(); n++){
                             Exam exam1 = examList.get(n);
