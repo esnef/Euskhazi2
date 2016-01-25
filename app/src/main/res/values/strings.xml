@@ -36,5 +36,6 @@
     <string name="load_exam_incorrectly">Azterketa kargatzerakoan arazo bat gertatu da</string>
     <string name="send_to_correct">Zuzentzeko bidali</string>
     <string name="Nivel">Maila</string>
+    <string name="usuario_incorrecto">Errore bat erabiltzailearen datuak lortzerakoan</string>
 
 </resources>

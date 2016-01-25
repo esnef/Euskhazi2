@@ -12,11 +12,24 @@
     tools:context="eus.ehu.intel.tta.euskhazi.screen.ScreenSinonimoak"
     tools:showIn="@layout/activity_screen_sinonimoak">
 
-    <TextView
-        android:id="@+id/sinonimoak_title_textView"
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:textSize="30dp"/>
+        android:layout_height="match_parent"
+        android:layout_centerHorizontal="true">
+
+        <TextView
+            android:id="@+id/sinonimoak_title_textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textSize="30dp"/>
+
+        <ListView android:id="@+id/sinonimoak_listView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:descendantFocusability="beforeDescendants" />
+
+    </LinearLayout>
 
 </RelativeLayout>
