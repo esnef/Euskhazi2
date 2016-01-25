@@ -15,10 +15,12 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import eus.ehu.intel.tta.euskhazi.R;
 import eus.ehu.intel.tta.euskhazi.services.LevelsManager;
 import eus.ehu.intel.tta.euskhazi.services.UsersManager;
+import eus.ehu.intel.tta.euskhazi.services.dataType.Exam;
 import eus.ehu.intel.tta.euskhazi.services.dataType.User;
 import eus.ehu.intel.tta.euskhazi.services.dataType.exam.Level;
 import eus.ehu.intel.tta.euskhazi.services.dataType.exam.idatzizkoa.Idatzizkoa;
@@ -35,7 +37,7 @@ public class ScreenIdatzizkoa extends ScreenBase {
 
         Intent intent = getIntent();
         final int numeroExamen = intent.getExtras().getInt("numeroExamen");
-        String levelString = intent.getStringExtra("level");
+        final String levelString = intent.getStringExtra("level");
 
         TextView textLogin = (TextView)findViewById(R.id.idatzizkoa_title_textView);
         textLogin.setText("Idatzizkoa " + (numeroExamen + 1) + " - " + levelString);
@@ -79,9 +81,55 @@ public class ScreenIdatzizkoa extends ScreenBase {
             @Override
             public void onClick(View v) {
                 EditText idatzizkoa_editText = (EditText)findViewById(R.id.idatzizkoa_exercise_editText);
-                String emaitza = idatzizkoa_editText.getText().toString();
+                final String emaitza = idatzizkoa_editText.getText().toString();
 
-                //TODO hay que mandar el examen al servidor
+                mEngine.setOnGetUserNowListener(new UsersManager.OnGetUserNowListener() {
+                    @Override
+                    public void onGetUserNow(User user) {
+                        if (user == null){
+                            Toast.makeText(getApplicationContext(), R.string.usuario_incorrecto, Toast.LENGTH_SHORT).show();
+                            return;
+                        }else{
+                            Toast.makeText(getApplicationContext(), "ERABILTZAILEA ONDO DAGO", Toast.LENGTH_SHORT).show();
+                        }
+
+                        Exam exam = new Exam();
+                        exam.setDrafting(emaitza);
+                        exam.setLevel(levelString);
+                        exam.setNumExams(numeroExamen);
+                        exam.setTypeExam("idatzizkoa");
+
+                        List<Exam> examList = user.getExams();
+                        boolean nuevoExamen = true;
+                        for (int n=0; n < examList.size(); n++){
+                            Exam exam1 = examList.get(n);
+                            if (exam1.getLevel().equals(exam.getLevel()) && exam1.getNumExams() == exam.getNumExams() && exam1.getTypeExam().equals(exam.getTypeExam())) {
+                                nuevoExamen = false;
+                                examList.set(n, exam);
+                            }
+                        }
+                        if (nuevoExamen){
+                            examList.add(exam);
+                        }
+
+                        user.setExams(examList);
+
+                        mEngine.setOnSaveUserListener(new UsersManager.OnSaveUserListener() {
+                            @Override
+                            public void onSaveUser(boolean isSaveUser) {
+                                if (isSaveUser) {
+                                    System.out.println("Se ha guardado correctamente el usuario");
+                                } else {
+                                    System.out.println("ERRORRRR!!!!");
+                                }
+                                mEngine.setOnSaveUserListener(null);
+                                mEngine.setOnGetUserNowListener(null);
+                            }
+                        });
+                        mEngine.saveUser();
+                    }
+                });
+                mEngine.getUserNow();
             }
         });
     }
