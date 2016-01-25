@@ -171,8 +171,6 @@ public class ScreenListaExams extends ScreenBase {
             TextView item_examsType_TextView_type = (TextView) convertView.findViewById(R.id.item_examsType_TextView_type);
 
             // Populate the data into the template view using the data object
-            if(item_examsType_TextView_index==null)System.out.println("SA");
-            if(examType==null)System.out.println("Sb");
             item_examsType_TextView_index.setText(Integer.toString(examType.index));
             item_examsType_TextView_level.setText(getString(R.string.Nivel)+":"+examType.level);
             item_examsType_TextView_type.setText(examType.type);

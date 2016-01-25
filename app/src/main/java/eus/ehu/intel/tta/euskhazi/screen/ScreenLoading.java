@@ -31,6 +31,7 @@ import eus.ehu.intel.tta.euskhazi.services.Communications.RestClient;
 import eus.ehu.intel.tta.euskhazi.services.LevelsManager;
 import eus.ehu.intel.tta.euskhazi.services.UsersManager;
 import eus.ehu.intel.tta.euskhazi.services.dataType.Mobile;
+import eus.ehu.intel.tta.euskhazi.services.dataType.User;
 
 public class ScreenLoading extends ScreenBase {
 

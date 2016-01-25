@@ -141,7 +141,7 @@ public class UsersManager {
         if(user==null){
             throw new ExcepcionUser(new Integer(ExcepcionUser.PARAMETERS_NULL).toString());
         }
-        if(mMobile==null){
+        if(mMobile!=null){
             List<User> users=mMobile.getUsers();
             for(int con=0;con<users.size();con++){
                 User userFor=users.get(con);
