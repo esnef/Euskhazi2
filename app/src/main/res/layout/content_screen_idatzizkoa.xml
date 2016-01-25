@@ -12,11 +12,58 @@
     tools:context="eus.ehu.intel.tta.euskhazi.screen.ScreenIdatzizkoa"
     tools:showIn="@layout/activity_screen_idatzizkoa">
 
-    <TextView
-        android:id="@+id/idatzizkoa_title_textView"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:textSize="30dp"/>
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerHorizontal="true">
+
+            <TextView
+                android:id="@+id/idatzizkoa_title_textView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textSize="30dp"/>
+
+            <TextView
+                android:id="@+id/idatzizkoa_exercise_title_textView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/idatzizkoa_exercise_explanation_textView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <ListView android:id="@+id/idatzizkoa_listView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+            <EditText
+                android:id="@+id/idatzizkoa_exercise_editText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/idatzizkoa_exercise_condition_textView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <Button
+                android:id="@+id/idatzizkoa_correct_button"
+                style="?android:textAppearanceSmall"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="@string/send_to_correct"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+    </ScrollView>
 
 </RelativeLayout>
