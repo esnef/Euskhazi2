@@ -79,6 +79,7 @@ public class ScreenBase extends AppCompatActivity{
                 }
                 if (nuevoExamen){
                     examList.add(exam);
+                    System.out.println("NUEVO EXAMEN");
                 }
 
                 user.setExams(examList);

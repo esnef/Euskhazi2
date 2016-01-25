@@ -1,17 +1,11 @@
 package eus.ehu.intel.tta.euskhazi.screen;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -19,6 +13,7 @@ import java.util.ArrayList;
 
 import eus.ehu.intel.tta.euskhazi.R;
 import eus.ehu.intel.tta.euskhazi.services.LevelsManager;
+import eus.ehu.intel.tta.euskhazi.services.dataType.Exam;
 import eus.ehu.intel.tta.euskhazi.services.dataType.exam.Level;
 import eus.ehu.intel.tta.euskhazi.services.dataType.exam.sinonimoak.StatementSinonimoak;
 
@@ -33,7 +28,7 @@ public class ScreenSinonimoak extends ScreenBase {
 
         Intent intent = getIntent();
         final int numeroExamen = intent.getExtras().getInt("numeroExamen");
-        String levelString = intent.getStringExtra("level");
+        final String levelString = intent.getStringExtra("level");
 
         TextView textLogin = (TextView)findViewById(R.id.sinonimoak_title_textView);
         textLogin.setText("Sinonimoak " + (numeroExamen + 1) + " - " + levelString);
@@ -46,135 +41,85 @@ public class ScreenSinonimoak extends ScreenBase {
                     Toast.makeText(getApplicationContext(), R.string.load_exam_incorrectly, Toast.LENGTH_SHORT).show();
                     return;
                 }
-                ArrayList<StatementSinonimoak> statements = levels.getSinonimoaks().get(numeroExamen).getStatements();
+                final ArrayList<StatementSinonimoak> statements = levels.getSinonimoaks().get(numeroExamen).getStatements();
 
-                ArrayList<SinonimoakType> sinonimoakTypes=new ArrayList<SinonimoakType>();
-                for(int con=0;con<statements.size();con++){
-                    sinonimoakTypes.add(new SinonimoakType(statements.get(con),new String(""),con));
-                }
+                TextView statementTextView0 = (TextView) findViewById(R.id.sinonimoak_layout_textView_0);
+                statementTextView0.setText(statements.get(0).getStatement() + " (" + statements.get(0).getPlaceholder() + ")");
+                TextView statementTextView1 = (TextView) findViewById(R.id.sinonimoak_layout_textView_1);
+                statementTextView1.setText(statements.get(1).getStatement() + " (" + statements.get(1).getPlaceholder() + ")");
+                TextView statementTextView2 = (TextView) findViewById(R.id.sinonimoak_layout_textView_2);
+                statementTextView2.setText(statements.get(2).getStatement() + " (" + statements.get(2).getPlaceholder() + ")");
+                TextView statementTextView3 = (TextView) findViewById(R.id.sinonimoak_layout_textView_3);
+                statementTextView3.setText(statements.get(3).getStatement() + " (" + statements.get(3).getPlaceholder() + ")");
+                TextView statementTextView4 = (TextView) findViewById(R.id.sinonimoak_layout_textView_4);
+                statementTextView4.setText(statements.get(4).getStatement() + " (" + statements.get(4).getPlaceholder() + ")");
+                TextView statementTextView5 = (TextView) findViewById(R.id.sinonimoak_layout_textView_5);
+                statementTextView5.setText(statements.get(5).getStatement() + " (" + statements.get(5).getPlaceholder() + ")");
+                TextView statementTextView6 = (TextView) findViewById(R.id.sinonimoak_layout_textView_6);
+                statementTextView6.setText(statements.get(6).getStatement() + " (" + statements.get(6).getPlaceholder() + ")");
+                TextView statementTextView7 = (TextView) findViewById(R.id.sinonimoak_layout_textView_7);
+                statementTextView7.setText(statements.get(7).getStatement() + " (" + statements.get(7).getPlaceholder() + ")");
+                TextView statementTextView8 = (TextView) findViewById(R.id.sinonimoak_layout_textView_8);
+                statementTextView8.setText(statements.get(8).getStatement() + " (" + statements.get(8).getPlaceholder() + ")");
+                TextView statementTextView9 = (TextView) findViewById(R.id.sinonimoak_layout_textView_9);
+                statementTextView9.setText(statements.get(9).getStatement() + " (" + statements.get(9).getPlaceholder() + ")");
 
-                SinonimoakAdapter sinonimoakAdapter = new SinonimoakAdapter(getApplicationContext(), sinonimoakTypes);
-                ListView lstOpciones = (ListView) findViewById(R.id.sinonimoak_listView);
-                lstOpciones.setAdapter(sinonimoakAdapter);
+                Button zuzenduButton = (Button) findViewById(R.id.sinonimoak_correct_button);
+                zuzenduButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        double zuzenak = 0;
+
+                        EditText answerEditText0 = (EditText) findViewById(R.id.sinonimoak_layout_editText_0);
+                        String answer0 = answerEditText0.getText().toString().trim().toLowerCase();
+                        if (statements.get(0).getSolution().equals(answer0)) zuzenak++;
+                        EditText answerEditText1 = (EditText) findViewById(R.id.sinonimoak_layout_editText_1);
+                        String answer1 = answerEditText1.getText().toString().trim().toLowerCase();
+                        if (statements.get(1).getSolution().equals(answer1)) zuzenak++;
+                        EditText answerEditText2 = (EditText) findViewById(R.id.sinonimoak_layout_editText_2);
+                        String answer2 = answerEditText2.getText().toString().trim().toLowerCase();
+                        if (statements.get(2).getSolution().equals(answer2)) zuzenak++;
+                        EditText answerEditText3 = (EditText) findViewById(R.id.sinonimoak_layout_editText_3);
+                        String answer3 = answerEditText3.getText().toString().trim().toLowerCase();
+                        if (statements.get(3).getSolution().equals(answer3)) zuzenak++;
+                        EditText answerEditText4 = (EditText) findViewById(R.id.sinonimoak_layout_editText_4);
+                        String answer4 = answerEditText4.getText().toString().trim().toLowerCase();
+                        if (statements.get(4).getSolution().equals(answer4)) zuzenak++;
+                        EditText answerEditText5 = (EditText) findViewById(R.id.sinonimoak_layout_editText_5);
+                        String answer5 = answerEditText5.getText().toString().trim().toLowerCase();
+                        if (statements.get(5).getSolution().equals(answer5)) zuzenak++;
+                        EditText answerEditText6 = (EditText) findViewById(R.id.sinonimoak_layout_editText_6);
+                        String answer6 = answerEditText6.getText().toString().trim().toLowerCase();
+                        if (statements.get(6).getSolution().equals(answer6)) zuzenak++;
+                        EditText answerEditText7 = (EditText) findViewById(R.id.sinonimoak_layout_editText_7);
+                        String answer7 = answerEditText7.getText().toString().trim().toLowerCase();
+                        if (statements.get(7).getSolution().equals(answer7)) zuzenak++;
+                        EditText answerEditText8 = (EditText) findViewById(R.id.sinonimoak_layout_editText_8);
+                        String answer8 = answerEditText8.getText().toString().trim().toLowerCase();
+                        if (statements.get(8).getSolution().equals(answer8)) zuzenak++;
+                        EditText answerEditText9 = (EditText) findViewById(R.id.sinonimoak_layout_editText_9);
+                        String answer9 = answerEditText9.getText().toString().trim().toLowerCase();
+                        if (statements.get(9).getSolution().equals(answer9)) zuzenak++;
+
+                        if (zuzenak >= 6) {
+                            Toast.makeText(getApplicationContext(), R.string.examen_aprobado, Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(getApplicationContext(), R.string.examen_suspendido, Toast.LENGTH_SHORT).show();
+                        }
+                        Exam exam = new Exam();
+                        exam.setTypeExam("sinonimoak");
+                        exam.setNumExams(numeroExamen);
+                        exam.setLevel(levelString);
+                        exam.setResult(zuzenak);
+
+                        saveUserExam(exam);
+                    }
+                });
 
                 mEngine.setOnGetLevelListener(null);
             }
         });
         mEngine.getLevel(levelString);
-    }
-
-    private class SinonimoakType {
-        public StatementSinonimoak statementSinonimoak;
-        public String response;
-        public int index;
-
-
-        public SinonimoakType(StatementSinonimoak statementSinonimoak, String response, int index) {
-            this.statementSinonimoak = statementSinonimoak;
-            this.response = response;
-            this.index=index;
-        }
-    }
-    public class SinonimoakAdapter extends ArrayAdapter<SinonimoakType> {
-        private ArrayList<SinonimoakType> sinonimoakTypes;
-
-        public SinonimoakAdapter(Context context, ArrayList<SinonimoakType> sinonimoakTypes){
-            super(context, R.layout.sinonimoak_layout, sinonimoakTypes);
-            this.sinonimoakTypes=sinonimoakTypes;
-        }
-
-        public View getView(int position, View convertView, ViewGroup parent){
-
-
-            // Get the data item for this position
-            SinonimoakType sinonimoakType = getItem(position);
-
-            if (convertView == null) {
-                convertView = LayoutInflater.from(getContext()).inflate(R.layout.sinonimoak_layout, parent, false);
-            }
-            // Lookup view for data population
-            TextView sinonimoak_layout_textView = (TextView) convertView.findViewById(R.id.sinonimoak_layout_textView);
-            EditText sinonimoak_layout_editText = (EditText) convertView.findViewById(R.id.sinonimoak_layout_editText);
-
-            // Populate the data into the template view using the data object
-            sinonimoak_layout_textView.setText(sinonimoakType.statementSinonimoak.getStatement());
-            sinonimoak_layout_editText.setHint(sinonimoakType.statementSinonimoak.getPlaceholder());
-            // Return the completed view to render on screen
-
-            return convertView;
-        }
-
-        /*
-        public View getView(int position, View convertView, ViewGroup parent) {
-            View v = convertView;
-
-            SinonimoakType sinonimoakType = sinonimoakTypes.get(position);
-
-
-            if (v == null) {
-                v = LayoutInflater.from(getContext()).inflate(R.layout.sinonimoak_layout, parent, false);
-                final ViewHolder viewHolder = new ViewHolder();
-                viewHolder.textView = (TextView) v.findViewById(R.id.sinonimoak_layout_textView);
-                viewHolder.editText = (EditText) v.findViewById(R.id.sinonimoak_layout_editText);
-
-
-                viewHolder.textView.addTextChangedListener(new TextWatcher(viewHolder,));
-                viewHolder.editText.addTextChangedListener(new TextWatcher(viewHolder, viewHolder.editText));
-
-                v.setTag(viewHolder);
-                viewHolder.textView.setTag(sinonimoakType);
-                viewHolder.editText.setTag(sinonimoakType);
-
-            }
-
-            else
-            {
-                ViewHolder holder = (ViewHolder) v.getTag();
-                holder.text1.setTag(sinonimoakType);
-                holder.text2.setTag(sinonimoakType);
-            }
-
-            ViewHolder holder = (ViewHolder) v.getTag();
-
-            // set values
-
-            if(wed.getWeight() != -1)
-            {
-                holder.text1.setText(wed.getWeight()+"");
-            }
-
-            else
-            {
-                holder.weight.setText("");
-            }
-
-            if(wed.getRepetitions() != -1)
-            {
-                holder.text2.setText(wed.getRepetitions()+"");
-            }
-
-            else
-            {
-                holder.reps.setText("");
-            }
-
-            return v;
-        }
-
-        @Override
-        public void afterTextChanged(Editable editable) {
-            if (editable == mEditText1.getEditableText()) {
-                // DO STH
-            } else if (editable == mEditText2.getEditableText()) {
-                // DO STH
-            }
-        }
-        */
-
-    }
-    static class ViewHolder{
-        TextView textView;
-        EditText editText;
     }
 
 }

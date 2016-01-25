@@ -83,7 +83,7 @@ public class ScreenIdatzizkoa extends ScreenBase {
                 EditText idatzizkoa_editText = (EditText)findViewById(R.id.idatzizkoa_exercise_editText);
                 final String emaitza = idatzizkoa_editText.getText().toString();
 
-                final Exam exam = new Exam();
+                Exam exam = new Exam();
                 exam.setDrafting(emaitza);
                 exam.setLevel(levelString);
                 exam.setNumExams(numeroExamen);

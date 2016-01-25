@@ -9,27 +9,138 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="eus.ehu.intel.tta.euskhazi.screen.ScreenSinonimoak"
+    tools:context=".screen.ScreenSinonimoak"
     tools:showIn="@layout/activity_screen_sinonimoak">
 
-    <LinearLayout
-        android:orientation="vertical"
+    <ScrollView
+        android:id="@+id/login_form"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_centerHorizontal="true">
+        android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/sinonimoak_title_textView"
+        <LinearLayout
+            android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:textSize="30dp"/>
+            android:layout_height="match_parent"
+            android:layout_centerHorizontal="true">
 
-        <ListView android:id="@+id/sinonimoak_listView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:descendantFocusability="beforeDescendants" />
+            <TextView
+                android:id="@+id/sinonimoak_title_textView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textSize="30dp"/>
 
-    </LinearLayout>
+            <TextView
+                android:id="@+id/sinonimoak_layout_textView_0"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <EditText
+                android:id="@+id/sinonimoak_layout_editText_0"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/sinonimoak_layout_textView_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <EditText
+                android:id="@+id/sinonimoak_layout_editText_1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/sinonimoak_layout_textView_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <EditText
+                android:id="@+id/sinonimoak_layout_editText_2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/sinonimoak_layout_textView_3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <EditText
+                android:id="@+id/sinonimoak_layout_editText_3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/sinonimoak_layout_textView_4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <EditText
+                android:id="@+id/sinonimoak_layout_editText_4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/sinonimoak_layout_textView_5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <EditText
+                android:id="@+id/sinonimoak_layout_editText_5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/sinonimoak_layout_textView_6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <EditText
+                android:id="@+id/sinonimoak_layout_editText_6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/sinonimoak_layout_textView_7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <EditText
+                android:id="@+id/sinonimoak_layout_editText_7"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/sinonimoak_layout_textView_8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <EditText
+                android:id="@+id/sinonimoak_layout_editText_8"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/sinonimoak_layout_textView_9"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <EditText
+                android:id="@+id/sinonimoak_layout_editText_9"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <Button
+                android:id="@+id/sinonimoak_correct_button"
+                style="?android:textAppearanceSmall"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="@string/correct_button"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+    </ScrollView>
 
 </RelativeLayout>

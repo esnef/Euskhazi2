@@ -37,5 +37,8 @@
     <string name="send_to_correct">Zuzentzeko bidali</string>
     <string name="Nivel">Maila</string>
     <string name="usuario_incorrecto">Errore bat erabiltzailearen datuak lortzerakoan</string>
+    <string name="correct_button">Zuzendu</string>
+    <string name="examen_aprobado">Gainditu duzu!</string>
+    <string name="examen_suspendido">Ez duzu gainditu</string>
 
 </resources>
