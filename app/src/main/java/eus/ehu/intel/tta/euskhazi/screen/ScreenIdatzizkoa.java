@@ -83,55 +83,13 @@ public class ScreenIdatzizkoa extends ScreenBase {
                 EditText idatzizkoa_editText = (EditText)findViewById(R.id.idatzizkoa_exercise_editText);
                 final String emaitza = idatzizkoa_editText.getText().toString();
 
-                mEngine.setOnGetUserNowListener(new UsersManager.OnGetUserNowListener() {
-                    @Override
-                    public void onGetUserNow(User user) {
-                        if (user == null){
-                            Toast.makeText(getApplicationContext(), R.string.usuario_incorrecto, Toast.LENGTH_SHORT).show();
-                            return;
-                        }else{
-                            Toast.makeText(getApplicationContext(), "ERABILTZAILEA ONDO DAGO", Toast.LENGTH_SHORT).show();
-                        }
+                final Exam exam = new Exam();
+                exam.setDrafting(emaitza);
+                exam.setLevel(levelString);
+                exam.setNumExams(numeroExamen);
+                exam.setTypeExam("idatzizkoa");
 
-                        Exam exam = new Exam();
-                        exam.setDrafting(emaitza);
-                        exam.setLevel(levelString);
-                        exam.setNumExams(numeroExamen);
-                        exam.setTypeExam("idatzizkoa");
-
-                        if (user.getExams() == null) user.setExams(new ArrayList<Exam>());
-                        List<Exam> examList = user.getExams();
-
-                        boolean nuevoExamen = true;
-                        for (int n=0; n < examList.size(); n++){
-                            Exam exam1 = examList.get(n);
-                            if (exam1.getLevel().equals(exam.getLevel()) && exam1.getNumExams() == exam.getNumExams() && exam1.getTypeExam().equals(exam.getTypeExam())) {
-                                nuevoExamen = false;
-                                examList.set(n, exam);
-                            }
-                        }
-                        if (nuevoExamen){
-                            examList.add(exam);
-                        }
-
-                        user.setExams(examList);
-
-                        mEngine.setOnSaveUserListener(new UsersManager.OnSaveUserListener() {
-                            @Override
-                            public void onSaveUser(boolean isSaveUser) {
-                                if (isSaveUser) {
-                                    System.out.println("Se ha guardado correctamente el usuario");
-                                } else {
-                                    System.out.println("ERRORRRR!!!!");
-                                }
-                                mEngine.setOnSaveUserListener(null);
-                                mEngine.setOnGetUserNowListener(null);
-                            }
-                        });
-                        mEngine.saveUser();
-                    }
-                });
-                mEngine.getUserNow();
+                User user = saveUserExam(exam);
             }
         });
     }
