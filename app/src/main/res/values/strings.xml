@@ -33,6 +33,8 @@
     <string name="title_activity_screen_berridazketak">ScreenBerridazketak</string>
     <string name="title_activity_screen_entzumena">ScreenEntzumena</string>
     <string name="title_activity_screen_ahozkoa">ScreenAhozkoa</string>
+    <string name="load_exam_incorrectly">Azterketa kargatzerakoan arazo bat gertatu da</string>
+    <string name="send_to_correct">Zuzentzeko bidali</string>
     <string name="Nivel">Maila</string>
 
 </resources>
