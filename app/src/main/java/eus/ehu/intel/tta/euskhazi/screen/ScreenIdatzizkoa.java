@@ -8,6 +8,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -16,6 +18,8 @@ import java.util.ArrayList;
 
 import eus.ehu.intel.tta.euskhazi.R;
 import eus.ehu.intel.tta.euskhazi.services.LevelsManager;
+import eus.ehu.intel.tta.euskhazi.services.UsersManager;
+import eus.ehu.intel.tta.euskhazi.services.dataType.User;
 import eus.ehu.intel.tta.euskhazi.services.dataType.exam.Level;
 import eus.ehu.intel.tta.euskhazi.services.dataType.exam.idatzizkoa.Idatzizkoa;
 import eus.ehu.intel.tta.euskhazi.services.dataType.exam.idatzizkoa.ItemIdatzizkoa;
@@ -34,7 +38,7 @@ public class ScreenIdatzizkoa extends ScreenBase {
         String levelString = intent.getStringExtra("level");
 
         TextView textLogin = (TextView)findViewById(R.id.idatzizkoa_title_textView);
-        textLogin.setText("Idatzizkoa " + (numeroExamen+1) + " - " + levelString);
+        textLogin.setText("Idatzizkoa " + (numeroExamen + 1) + " - " + levelString);
 
         mEngine.setOnGetLevelListener(new LevelsManager.OnGetLevelListener() {
             @Override
@@ -69,6 +73,17 @@ public class ScreenIdatzizkoa extends ScreenBase {
             }
         });
         mEngine.getLevel(levelString);
+
+        Button sendButton = (Button)findViewById(R.id.idatzizkoa_correct_button);
+        sendButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                EditText idatzizkoa_editText = (EditText)findViewById(R.id.idatzizkoa_exercise_editText);
+                String emaitza = idatzizkoa_editText.getText().toString();
+
+                //TODO hay que mandar el examen al servidor
+            }
+        });
     }
 
 }
