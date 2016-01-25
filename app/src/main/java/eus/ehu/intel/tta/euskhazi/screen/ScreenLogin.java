@@ -274,7 +274,7 @@ public class ScreenLogin extends ScreenBase implements LoaderCallbacks<Cursor> {
                         excepcionUser.printStackTrace();
                     }
                 } else {
-                    Toast.makeText(getApplicationContext(), getString(R.string.usuario_incorrecto), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), getString(R.string.usuario_incorrecto_login), Toast.LENGTH_SHORT).show();
                     return;
                 }
             }
