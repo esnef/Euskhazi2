@@ -4,6 +4,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -82,31 +84,7 @@ public class ScreenSinonimoak extends ScreenBase {
         }
 
         public View getView(int position, View convertView, ViewGroup parent){
-            /*
-            View item = convertView;
-            ViewHolder viewHolder;
 
-            if (item == null) {
-                LayoutInflater inflater = LayoutInflater.from(getContext());
-                item = inflater.inflate(R.layout.sinonimoak_layout, null);
-
-                viewHolder = new ViewHolder();
-                viewHolder.textView = (TextView) item.findViewById(R.id.sinonimoak_layout_textView);
-                viewHolder.editText = (EditText) item.findViewById(R.id.sinonimoak_layout_editText);
-                item.setTag(viewHolder);
-            } else{
-                viewHolder = (ViewHolder) item.getTag();
-            }
-
-            SinonimoakType sinonimoakType = getItem(position);
-
-            //TextView sinonimoakLayoutTextView = (TextView)item.findViewById(R.id.sinonimoak_layout_textView);
-            //sinonimoakLayoutTextView.setText(statementSinonimoak.getStatement() + " (" + statementSinonimoak.getPlaceholder() + ")");
-
-            viewHolder.textView.setText(sinonimoakType.statementSinonimoak.getStatement());
-            viewHolder.editText.setHint(sinonimoakType.statementSinonimoak.getPlaceholder());
-            return  item;
-            */
 
             // Get the data item for this position
             SinonimoakType sinonimoakType = getItem(position);
@@ -126,6 +104,72 @@ public class ScreenSinonimoak extends ScreenBase {
             return convertView;
         }
 
+        /*
+        public View getView(int position, View convertView, ViewGroup parent) {
+            View v = convertView;
+
+            SinonimoakType sinonimoakType = sinonimoakTypes.get(position);
+
+
+            if (v == null) {
+                v = LayoutInflater.from(getContext()).inflate(R.layout.sinonimoak_layout, parent, false);
+                final ViewHolder viewHolder = new ViewHolder();
+                viewHolder.textView = (TextView) v.findViewById(R.id.sinonimoak_layout_textView);
+                viewHolder.editText = (EditText) v.findViewById(R.id.sinonimoak_layout_editText);
+
+
+                viewHolder.textView.addTextChangedListener(new TextWatcher(viewHolder,));
+                viewHolder.editText.addTextChangedListener(new TextWatcher(viewHolder, viewHolder.editText));
+
+                v.setTag(viewHolder);
+                viewHolder.textView.setTag(sinonimoakType);
+                viewHolder.editText.setTag(sinonimoakType);
+
+            }
+
+            else
+            {
+                ViewHolder holder = (ViewHolder) v.getTag();
+                holder.text1.setTag(sinonimoakType);
+                holder.text2.setTag(sinonimoakType);
+            }
+
+            ViewHolder holder = (ViewHolder) v.getTag();
+
+            // set values
+
+            if(wed.getWeight() != -1)
+            {
+                holder.text1.setText(wed.getWeight()+"");
+            }
+
+            else
+            {
+                holder.weight.setText("");
+            }
+
+            if(wed.getRepetitions() != -1)
+            {
+                holder.text2.setText(wed.getRepetitions()+"");
+            }
+
+            else
+            {
+                holder.reps.setText("");
+            }
+
+            return v;
+        }
+
+        @Override
+        public void afterTextChanged(Editable editable) {
+            if (editable == mEditText1.getEditableText()) {
+                // DO STH
+            } else if (editable == mEditText2.getEditableText()) {
+                // DO STH
+            }
+        }
+        */
 
     }
     static class ViewHolder{
