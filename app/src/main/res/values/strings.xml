@@ -33,5 +33,6 @@
     <string name="title_activity_screen_berridazketak">ScreenBerridazketak</string>
     <string name="title_activity_screen_entzumena">ScreenEntzumena</string>
     <string name="title_activity_screen_ahozkoa">ScreenAhozkoa</string>
+    <string name="Nivel">Maila</string>
 
 </resources>

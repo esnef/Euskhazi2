@@ -4,7 +4,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
@@ -66,15 +68,19 @@ public class ScreenListaExams extends ScreenBase {
                             cantidadExamenes = levels.getAhozkoas().size();
                             break;
                     }
-
-                    ArrayList<String> exams = new ArrayList<>();
+                    //aqui es donde genera los Strings
+                    ArrayList<ExamType> exams = new ArrayList<>();
                     for (int i = 0; i < cantidadExamenes; i++) {
+                        ExamType examType=new ExamType("Azterketa",levelString,i+1);
                         String azterketa = "Azterketa " + (i+1);
                         //Button button = new Button(this);
                         //button.setText("Azterketa " + i);
-                        exams.add(azterketa);
+                        exams.add(examType);
                     }
-                    ArrayAdapter<String> adapter = new ArrayAdapter<>(getApplicationContext(), R.layout.textview_layout, R.id.exams_textView, exams);
+                    final ExamsAdapter adapter = new ExamsAdapter(getApplicationContext(), exams);
+
+
+                    //ArrayAdapter<String> adapter = new ArrayAdapter<>(getApplicationContext(), R.layout.textview_layout, R.id.exams_textView, exams);
                     ListView lstOpciones = (ListView) findViewById(R.id.atarikoa_exams_listView);
                     lstOpciones.setAdapter(adapter);
 
@@ -131,6 +137,48 @@ public class ScreenListaExams extends ScreenBase {
         mEngine.getLevel(levelString);
 
 
+    }
+
+    public class ExamType {
+        public String type;
+        public int index;
+        public String level;
+
+        public ExamType(String type, String level, int index) {
+            this.type = type;
+            this.level = level;
+            this.index=index;
+        }
+    }
+
+
+    public class ExamsAdapter extends ArrayAdapter<ExamType> {
+        public ExamsAdapter(Context context, ArrayList<ExamType> examType) {
+            super(context, 0, examType);
+        }
+
+        @Override
+        public View getView(int position, View convertView, ViewGroup parent) {
+            // Get the data item for this position
+            ExamType examType = getItem(position);
+            // Check if an existing view is being reused, otherwise inflate the view
+            if (convertView == null) {
+                convertView = LayoutInflater.from(getContext()).inflate(R.layout.item_examstype, parent, false);
+            }
+            // Lookup view for data population
+            TextView item_examsType_TextView_index = (TextView) convertView.findViewById(R.id.item_examsType_TextView_index);
+            TextView item_examsType_TextView_level = (TextView) convertView.findViewById(R.id.item_examsType_TextView_level);
+            TextView item_examsType_TextView_type = (TextView) convertView.findViewById(R.id.item_examsType_TextView_type);
+
+            // Populate the data into the template view using the data object
+            if(item_examsType_TextView_index==null)System.out.println("SA");
+            if(examType==null)System.out.println("Sb");
+            item_examsType_TextView_index.setText(Integer.toString(examType.index));
+            item_examsType_TextView_level.setText(getString(R.string.Nivel)+":"+examType.level);
+            item_examsType_TextView_type.setText(examType.type);
+            // Return the completed view to render on screen
+            return convertView;
+        }
     }
 
 }
