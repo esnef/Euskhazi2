@@ -262,7 +262,7 @@ public class ScreenLogin extends ScreenBase implements LoaderCallbacks<Cursor> {
                     mEngine.setOnGetUserListener(new UsersManager.OnGetUserListener() {
                         @Override
                         public void onGetUser(User user) {
-                            //Toast.makeText(getApplicationContext(), user.getName() + getString(R.string.usuario_correcto), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(), user.getName() + getString(R.string.usuario_correcto), Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent(getApplicationContext(), MenuNivelActivity.class);
                             startActivity(intent);
                             mEngine.setOnGetUserListener(null);
