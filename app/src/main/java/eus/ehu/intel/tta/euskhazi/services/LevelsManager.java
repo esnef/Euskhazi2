@@ -1,17 +1,26 @@
 package eus.ehu.intel.tta.euskhazi.services;
 
 import android.content.Context;
+import android.net.Uri;
+import android.os.AsyncTask;
 import android.util.Log;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
+import java.io.BufferedInputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.lang.reflect.Type;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.ArrayList;
 
 import eus.ehu.intel.tta.euskhazi.R;
+import eus.ehu.intel.tta.euskhazi.services.Communications.RestClient;
 import eus.ehu.intel.tta.euskhazi.services.dataType.exam.Level;
 import eus.ehu.intel.tta.euskhazi.services.dataType.exam.ahozkoa.Ahozkoa;
 import eus.ehu.intel.tta.euskhazi.services.dataType.exam.atarikoa.Atarikoa;
@@ -32,6 +41,7 @@ public class LevelsManager  {
     private OnExamsListener onExamsListener;
     private OnGetLevelsListener onGetLevelsListener;
     private OnGetLevelListener onGetLevelListener;
+    private OnUpdateFileListener onUpdateFileListener;
 
 
     public LevelsManager(Context contextApplication){
@@ -195,6 +205,137 @@ public class LevelsManager  {
             level.setSinonimoaks(new ArrayList<Sinonimoak>());
             updateLevel(level,intAhozkoa[con],intAtarikoa[con],intBerridazketak[con],intEntzunezkoa[con],intIdatzizkoa[con],intSinonimoak[con]);
             mLevels.add(level);
+        }
+    }
+
+
+    private File getTempFile(Context context, String url) throws IOException {
+        File file=null;
+            String fileName = Uri.parse(url).getLastPathSegment();
+            System.out.println("fileName: "+fileName);
+            file = File.createTempFile(fileName, null, context.getCacheDir());
+        return file;
+    }
+
+
+    public boolean updateFile(Uri uri,String fileName){
+        if(uri==null || fileName==null || fileName.equals("")){
+            return false;
+        }
+        File file = null;
+        try {
+
+            file = getTempFile(contextApplication,uri.getPath());
+            if(file==null)return false;
+        } catch (IOException e) {
+            Log.e(TAG, e.getMessage());
+            return false;
+        }
+        try {
+            if(file.exists()){
+                //Se saca del proveedor de contenidos el inputsteam necesario facilitandole la uri para ello.
+                InputStream inputStream = contextApplication.getContentResolver().openInputStream(uri);
+                ServerUpdateFile serverUpdateFile=new ServerUpdateFile(fileName,inputStream);
+                ServerUpdateFileAsyncTask serverUpdateFileAsyncTask=new ServerUpdateFileAsyncTask();
+                serverUpdateFileAsyncTask.execute(serverUpdateFile);
+
+            }else{
+                return false;
+            }
+
+        } catch (FileNotFoundException e) {
+            Log.e(TAG,e.getMessage());
+            return false;
+        } catch (IOException e) {
+            Log.e(TAG, e.getMessage());
+            return false;
+        }
+
+        return true;
+    }
+
+    public interface OnUpdateFileListener{
+        public void onUpdateFile(Boolean result);
+    }
+
+    public void setOnUpdateFileListener(OnUpdateFileListener onUpdateFileListener){
+        this.onUpdateFileListener=onUpdateFileListener;
+    }
+    
+    
+
+    private class ServerUpdateFile{
+        private String fileName;
+        private InputStream inputStream;
+
+
+        private ServerUpdateFile(String fileName,InputStream inputStream){
+            this.fileName=fileName;
+            this.inputStream=inputStream;
+        }
+        public String getFileName() {
+            return fileName;
+        }
+
+        public void setFileName(String fileName) {
+            this.fileName = fileName;
+        }
+
+        public InputStream getInputStream() {
+            return inputStream;
+        }
+
+        public void setInputStream(InputStream inputStream) {
+            this.inputStream = inputStream;
+        }
+
+
+    }
+
+    private class ServerUpdateFileAsyncTask extends AsyncTask<ServerUpdateFile, Void, Integer> {
+
+        @Override
+        protected Integer doInBackground(ServerUpdateFile... params) {
+            int count = params.length;
+            long totalSize = 0;
+            int d=-1;
+            ServerUpdateFile serverUpdateFile=params[0];
+            RestClient restClient=new RestClient();
+            System.out.println("a4");
+            try {
+                d=restClient.postFile("upload", serverUpdateFile.getInputStream(),serverUpdateFile.getFileName());
+                serverUpdateFile.getInputStream().close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            return d;
+
+        }
+
+        @Override
+        protected void onProgressUpdate(Void... values) {
+
+        }
+
+        @Override
+        protected void onPreExecute() {
+
+        }
+
+        @Override
+        protected void onPostExecute(Integer result) {
+            if(result==200){
+                if(onUpdateFileListener!=null)onUpdateFileListener.onUpdateFile(true);
+            }else{
+                if(onUpdateFileListener!=null)onUpdateFileListener.onUpdateFile(false);
+            }
+
+
+        }
+        @Override
+        protected void onCancelled() {
+
         }
     }
 }

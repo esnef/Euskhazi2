@@ -1,6 +1,7 @@
 package eus.ehu.intel.tta.euskhazi;
 
 import android.content.Context;
+import android.net.Uri;
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
 import android.util.Log;
@@ -8,10 +9,15 @@ import android.util.Log;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
+import java.io.BufferedInputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.lang.reflect.Type;
 import java.net.ContentHandler;
+import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -202,6 +208,15 @@ public class Engine {
     public void setOnGetLevelListener(LevelsManager.OnGetLevelListener onGetLevelListener){
         mLevelsManager.setOnGetLevelListener(onGetLevelListener);
     }
+
+    public boolean updateFile(Uri uri,String fileName){
+        return mLevelsManager.updateFile(uri,fileName);
+    }
+
+    public void setOnUpdateFileListener(LevelsManager.OnUpdateFileListener onUpdateFileListener){
+        mLevelsManager.setOnUpdateFileListener(onUpdateFileListener);
+    }
+
     //LEVEL END//
 
 
