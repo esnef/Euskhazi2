@@ -61,7 +61,14 @@ public class ScreenIdatzizkoa extends ScreenBase {
                 TextView conditionTextView = (TextView) findViewById(R.id.idatzizkoa_exercise_condition_textView);
                 conditionTextView.setText(idatzizkoa.getConditions());
 
-                ArrayList<String> lista = new ArrayList<String>();
+                TextView questionsTextView = (TextView)findViewById(R.id.idatzizkoa_questions_textView);
+                String itemIdatzizkoa = "";
+                for (ItemIdatzizkoa item : idatzizkoa.getItems()){
+                    itemIdatzizkoa = itemIdatzizkoa + "-" + item.getItem() + "\n";
+                }
+                questionsTextView.setText(itemIdatzizkoa);
+
+                /*ArrayList<String> lista = new ArrayList<String>();
                 for (ItemIdatzizkoa item : idatzizkoa.getItems()) {
                     String itemIdatzizkoa = "\u2022" + item.getItem();
                     lista.add(itemIdatzizkoa);
@@ -69,7 +76,7 @@ public class ScreenIdatzizkoa extends ScreenBase {
 
                 ArrayAdapter<String> adapter = new ArrayAdapter<>(getApplicationContext(), R.layout.textview_layout, R.id.exams_textView, lista);
                 ListView lstOpciones = (ListView) findViewById(R.id.idatzizkoa_listView);
-                lstOpciones.setAdapter(adapter);
+                lstOpciones.setAdapter(adapter);*/
 
                 mEngine.setOnGetLevelListener(null);
             }

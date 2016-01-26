@@ -37,11 +37,14 @@
             <TextView
                 android:id="@+id/idatzizkoa_exercise_explanation_textView"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:textSize="15dp" />
 
-            <ListView android:id="@+id/idatzizkoa_listView"
+            <TextView
+                android:id="@+id/idatzizkoa_questions_textView"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" />
+                android:layout_height="wrap_content"
+                android:textSize="12dp" />
 
             <EditText
                 android:id="@+id/idatzizkoa_exercise_editText"
@@ -51,7 +54,8 @@
             <TextView
                 android:id="@+id/idatzizkoa_exercise_condition_textView"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:textSize="10dp" />
 
             <Button
                 android:id="@+id/idatzizkoa_correct_button"
