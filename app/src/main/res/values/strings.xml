@@ -37,17 +37,17 @@
     <string name="send_to_correct">Zuzentzeko bidali</string>
     <string name="Nivel">Maila</string>
     <string name="Grabar_audio">Grabatu ahotsa</string>
-    <string name="No_se_ha_subido_correctamente_al_servidor">Ez dago behar bezala igo Server</string>
-    <string name="Se_ha_guardado_correctamente_en_el_servidor">Izan da zerbitzarian gordetako</string>
+    <string name="No_se_ha_subido_correctamente_al_servidor">Ez da behar den bezala igo zerbitzarira</string>
+    <string name="Se_ha_guardado_correctamente_en_el_servidor">Zerbitzarian ondo gorde da</string>
 
     <string name="usuario_incorrecto">Errore bat erabiltzailearen datuak lortzerakoan</string>
     <string name="correct_button">Zuzendu</string>
     <string name="examen_aprobado">Gainditu duzu!</string>
     <string name="examen_suspendido">Ez duzu gainditu</string>
-    <string name="anterior">Aurreko</string>
-    <string name="next">Aurrekoen</string>
-    <string name="corregir">zuzena</string>
-    <string name="No_se_ha_aprobado_la_prueba">Probaren ez du gainditu</string>
+    <string name="anterior">Aurrekoa</string>
+    <string name="next">Hurrengoa</string>
+    <string name="corregir">Zuzendu</string>
+    <string name="No_se_ha_aprobado_la_prueba">Proba ez duzu gainditu</string>
 
 
 

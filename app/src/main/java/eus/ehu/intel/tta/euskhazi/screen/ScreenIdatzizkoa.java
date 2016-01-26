@@ -95,8 +95,9 @@ public class ScreenIdatzizkoa extends ScreenBase {
                 exam.setLevel(levelString);
                 exam.setNumExams(numeroExamen);
                 exam.setTypeExam("idatzizkoa");
+                exam.setResult(0);
 
-                User user = saveUserExam(exam);
+                saveUserExam(exam);
             }
         });
     }
