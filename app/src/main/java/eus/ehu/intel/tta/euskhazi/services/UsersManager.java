@@ -620,9 +620,10 @@ public class UsersManager {
         protected void onPostExecute(Mobile mobile) {
             if(mobile!=null){
                 Gson gson=new Gson();
-                System.out.println(gson.toJson(mobile));
+                System.out.println("translate: " +gson.toJson(mobile));
                 if(onInitializationOnlineListener!=null)onInitializationOnlineListener.onInitializationOnline(true);
                 mMobile=mobile;
+
             }else{
                 if(onInitializationOnlineListener!=null)onInitializationOnlineListener.onInitializationOnline(false);
             }

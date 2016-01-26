@@ -161,7 +161,6 @@ public class RestClient {
             }
         }
     }
-
     public String getPathServer() {
         return pathServer;
     }

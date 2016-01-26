@@ -13,45 +13,65 @@
     tools:context="eus.ehu.intel.tta.euskhazi.screen.ScreenAhozkoa"
     tools:showIn="@layout/activity_screen_ahozkoa">
 
-    <TextView
-        android:id="@+id/ahozkoa_title_textView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:textSize="30dp"
-        android:text="title"/>
-    <TextView
-        android:id="@+id/ahozkoa_exam_textView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="24dp"
-        android:text="exam"/>
-    <TextView
-        android:id="@+id/ahozkoa_explanation_textView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="15dp"
-        android:text="explanation"
-        />
-    <TextView
-        android:id="@+id/ahozkoa_questions_textView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="12dp"
-        android:text=""
-        />
-    <TextView
-        android:id="@+id/ahozkoa_conditions_textView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="10dp"
-        android:text="conditions" />
 
-    <Button
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/Grabar_audio"
-        android:id="@+id/ahozkoa_record_voice_Button" />
+        android:layout_height="match_parent"
+        android:id="@+id/scrollView" >
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+            <TextView
+                android:id="@+id/ahozkoa_title_textView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textSize="30dp"
+                android:text="title"/>
+
+            <TextView
+                android:id="@+id/ahozkoa_exam_textView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="24dp"
+                android:text="exam"
+                android:textStyle="bold|italic"/>
+
+            <TextView
+                android:id="@+id/ahozkoa_explanation_textView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="15dp"
+                android:text="explanation"
+                />
+
+            <TextView
+                android:id="@+id/ahozkoa_questions_textView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="12dp"
+                android:text=""
+                />
+            <TextView
+                android:id="@+id/ahozkoa_conditions_textView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="10dp"
+                android:text="conditions" />
+
+
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/Grabar_audio"
+                android:id="@+id/ahozkoa_record_voice_Button" />
+        </LinearLayout>
+    </ScrollView>
+
 
 
 </LinearLayout>

@@ -122,7 +122,7 @@ public class ScreenAhozkoa extends ScreenBase {
                                     finish();
                                 }
                             });
-                            titleRecordAudio=UtilsServices.getMACaddress(getApplicationContext()) +"_"+user.getName()+"_"+levelString+"_"+numeroExamen+".3gpp";
+                            titleRecordAudio=UtilsServices.getMACaddress(getApplicationContext()) +"_"+user.getName()+"_"+levelString+"_"+numeroExamen+"_.3gpp";
                             mEngine.updateFile(dataResult.getData(), titleRecordAudio);
                         }
                     });
