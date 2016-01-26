@@ -31,8 +31,8 @@ public class RestClient {
     private final static String AUTH="Authorization";
 
 
-    //private String pathServer="http://ec2-54-213-59-103.us-west-2.compute.amazonaws.com/EuskhaziRestAndroid/rest/prueba";
-    private String pathServer="http://192.168.0.13:8080/EuskhaziRestAndroid/rest/prueba";
+    private String pathServer="http://ec2-54-213-59-103.us-west-2.compute.amazonaws.com/EuskhaziRestAndroid/rest/prueba";
+    //private String pathServer="http://192.168.0.13:8080/EuskhaziRestAndroid/rest/prueba";
 
     private String pathApplication="euskhazi";
 

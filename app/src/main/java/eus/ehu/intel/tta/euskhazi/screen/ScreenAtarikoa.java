@@ -21,6 +21,8 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.math.RoundingMode;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -79,19 +81,25 @@ public class ScreenAtarikoa extends ScreenBase{
                 if(data[0]==v.getId()){
                     System.out.println(1);
                     atarikoa.getStatements().get(statementNext).setIndex(0);
+                    System.out.println("a " + atarikoa.getStatements().get(statementNext).getIndex());
                     atarikoa.getStatements().get(statementNext).getAnswers().get(0).setChechFirst(true);
                 }else if(data[1]==v.getId()){
                     System.out.println(2);
                     atarikoa.getStatements().get(statementNext).setIndex(1);
+                    System.out.println("a " + atarikoa.getStatements().get(statementNext).getIndex());
+
                     atarikoa.getStatements().get(statementNext).getAnswers().get(0).setChechSecond(true);
 
                 }else if(data[2]==v.getId()){
                     System.out.println(3);
                     atarikoa.getStatements().get(statementNext).setIndex(2);
+                    System.out.println("a " + atarikoa.getStatements().get(statementNext).getIndex());
+
                     atarikoa.getStatements().get(statementNext).getAnswers().get(0).setChechThird(true);
                 }else if(data[3]==v.getId()){
                     System.out.println(4);
                     atarikoa.getStatements().get(statementNext).setIndex(3);
+                    System.out.println("a " + atarikoa.getStatements().get(statementNext).getIndex());
                     atarikoa.getStatements().get(statementNext).getAnswers().get(0).setChechFourth(true);
 
                 }
@@ -131,13 +139,20 @@ public class ScreenAtarikoa extends ScreenBase{
                     //Correguir
                     int okquestions=0;
                     for(int con=0;con<atarikoa.getStatements().size();con++) {
+                        System.out.println("okquestions1 "+okquestions);
+
                         if (atarikoa.getStatements().get(con).getIndex()==new Integer(atarikoa.getStatements().get(con).getSolution())) {
                             okquestions++;
+                            System.out.println("okquestions "+okquestions);
                         }
 
                     }
-                    double result=(okquestions/atarikoa.getStatements().size())*10;
-                    Toast.makeText(getApplicationContext(),"Azken puntuazioa "+result+" da",Toast.LENGTH_SHORT).show();
+
+                    double result=((double)okquestions/(double)atarikoa.getStatements().size())*10;
+                    DecimalFormat df = new DecimalFormat("##.##");
+                    df.setRoundingMode(RoundingMode.DOWN);
+                    String string=df.format(result);
+                    Toast.makeText(getApplicationContext(),"Azken puntuazioa "+string+" da",Toast.LENGTH_SHORT).show();
                     if(result>=5){
                         //aprobado
                         Exam exam=new Exam();
@@ -168,11 +183,12 @@ public class ScreenAtarikoa extends ScreenBase{
     }
 
     public void loadStatement(int index){
-        atarikoa_TextView_statement.setText((index+1)+"-."+atarikoa.getStatements().get(index).getStatement());
-        atarikoa_RadioButton_solutions_1.setText(atarikoa.getStatements().get(index).getAnswers().get(0).getFirst());
-        atarikoa_RadioButton_solutions_2.setText(atarikoa.getStatements().get(index).getAnswers().get(0).getSecond());
-        atarikoa_RadioButton_solutions_3.setText(atarikoa.getStatements().get(index).getAnswers().get(0).getThird());
-        atarikoa_RadioButton_solutions_4.setText(atarikoa.getStatements().get(index).getAnswers().get(0).getFourth());
+        atarikoa_RadioGroup_solutions.clearCheck();
+        atarikoa_TextView_statement.setText((index + 1) + "-." + atarikoa.getStatements().get(index).getStatement());
+        atarikoa_RadioButton_solutions_1.setText("1-."+atarikoa.getStatements().get(index).getAnswers().get(0).getFirst());
+        atarikoa_RadioButton_solutions_2.setText("2-."+atarikoa.getStatements().get(index).getAnswers().get(0).getSecond());
+        atarikoa_RadioButton_solutions_3.setText("3-."+atarikoa.getStatements().get(index).getAnswers().get(0).getThird());
+        atarikoa_RadioButton_solutions_4.setText("4-."+atarikoa.getStatements().get(index).getAnswers().get(0).getFourth());
         atarikoa_RadioButton_solutions_1.setChecked(atarikoa.getStatements().get(index).getAnswers().get(0).isChechFirst());
         atarikoa_RadioButton_solutions_2.setChecked(atarikoa.getStatements().get(index).getAnswers().get(0).isChechSecond());
         atarikoa_RadioButton_solutions_3.setChecked(atarikoa.getStatements().get(index).getAnswers().get(0).isChechThird());
