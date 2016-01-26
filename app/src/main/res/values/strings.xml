@@ -41,6 +41,9 @@
     <string name="Se_ha_guardado_correctamente_en_el_servidor">Izan da zerbitzarian gordetako</string>
 
     <string name="usuario_incorrecto">Errore bat erabiltzailearen datuak lortzerakoan</string>
+    <string name="correct_button">Zuzendu</string>
+    <string name="examen_aprobado">Gainditu duzu!</string>
+    <string name="examen_suspendido">Ez duzu gainditu</string>
 
 
 
