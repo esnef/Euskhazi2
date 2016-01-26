@@ -1,0 +1,68 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:padding="6dip"
+    android:orientation="vertical">
+    <!--
+     <TextView
+         android:id="@+id/item_atarikoa_TextView_index"
+         android:layout_width="40dp"
+         android:layout_height="wrap_content"
+         android:layout_alignParentBottom="true"
+         android:layout_alignParentTop="true"
+         android:layout_marginRight="6dip"
+         android:background="@color/colorPrimary"
+         android:textAlignment="center"
+         android:textColor="#FFFFFF"
+         android:gravity="center_horizontal|center_vertical"
+         android:textSize="16sp"
+         android:textStyle="bold"/>
+-->
+
+     <TextView
+         android:id="@+id/item_atarikoa_TextView_statement"
+         android:layout_width="fill_parent"
+         android:layout_height="wrap_content"
+         android:layout_alignParentBottom="true"
+         android:layout_alignParentRight="true"
+
+         android:ellipsize="marquee"
+         android:text="statement"
+         android:textStyle="bold"/>
+
+     <RadioGroup
+         android:id="@+id/item_atarikoa_RadioGroup_solutions"
+         android:layout_width="fill_parent"
+         android:layout_height="wrap_content"
+         android:layout_alignParentRight="true"
+         android:layout_alignParentTop="true"
+         android:layout_alignWithParentIfMissing="true"
+         android:gravity="center_vertical"
+         >
+         <!--
+         <RadioButton android:id="@+id/item_atarikoa_RadioButton_solutions_1"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:text="1"
+             android:onClick="onRadioButtonClicked"/>
+         <RadioButton android:id="@+id/item_atarikoa_RadioButton_solutions_2"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:text="1"
+             android:onClick="onRadioButtonClicked"/>
+         <RadioButton android:id="@+id/item_atarikoa_RadioButton_solutions_3"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:text="1"
+             android:onClick="onRadioButtonClicked"/>
+         <RadioButton android:id="@+id/item_atarikoa_RadioButton_solutions_4"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:text="1"
+             android:onClick="onRadioButtonClicked"/>
+
+        -->
+     </RadioGroup>
+
+
+ </LinearLayout>

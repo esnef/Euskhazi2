@@ -44,6 +44,12 @@
     <string name="correct_button">Zuzendu</string>
     <string name="examen_aprobado">Gainditu duzu!</string>
     <string name="examen_suspendido">Ez duzu gainditu</string>
+    <string name="anterior">Aurreko</string>
+    <string name="next">Aurrekoen</string>
+    <string name="corregir">zuzena</string>
+    <string name="No_se_ha_aprobado_la_prueba">Probaren ez du gainditu</string>
+
+
 
 
 

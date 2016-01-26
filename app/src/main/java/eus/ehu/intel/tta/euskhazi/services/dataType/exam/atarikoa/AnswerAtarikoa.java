@@ -11,6 +11,13 @@ public class AnswerAtarikoa implements Serializable {
     private String third;
     private String fourth;
 
+    private boolean chechFirst;
+    private boolean chechSecond;
+    private boolean chechThird;
+    private boolean chechFourth;
+
+
+
     public String getFirst() {
         return first;
     }
@@ -41,5 +48,37 @@ public class AnswerAtarikoa implements Serializable {
 
     public void setFourth(String fourth) {
         this.fourth = fourth;
+    }
+
+    public boolean isChechFirst() {
+        return chechFirst;
+    }
+
+    public void setChechFirst(boolean chechFirst) {
+        this.chechFirst = chechFirst;
+    }
+
+    public boolean isChechFourth() {
+        return chechFourth;
+    }
+
+    public void setChechFourth(boolean chechFourth) {
+        this.chechFourth = chechFourth;
+    }
+
+    public boolean isChechThird() {
+        return chechThird;
+    }
+
+    public void setChechThird(boolean chechThird) {
+        this.chechThird = chechThird;
+    }
+
+    public boolean isChechSecond() {
+        return chechSecond;
+    }
+
+    public void setChechSecond(boolean chechSecond) {
+        this.chechSecond = chechSecond;
     }
 }

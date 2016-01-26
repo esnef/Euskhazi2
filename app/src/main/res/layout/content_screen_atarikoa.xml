@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -10,13 +10,684 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="eus.ehu.intel.tta.euskhazi.screen.ScreenAtarikoa"
-    tools:showIn="@layout/activity_screen_atarikoa">
+    tools:showIn="@layout/activity_screen_atarikoa"
+    android:orientation="vertical">
 
-    <TextView
+
+<TextView
         android:id="@+id/atarikoa_title_textView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
         android:textSize="30dp"/>
+    <TextView
+        android:id="@+id/atarikoa_TextView_statement"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
 
-</RelativeLayout>
+        android:ellipsize="marquee"
+        android:text="statement"
+        android:textStyle="bold"/>
+
+    <RadioGroup
+        android:id="@+id/atarikoa_RadioGroup_solutions"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignWithParentIfMissing="true"
+        android:gravity="center_vertical"
+        >
+        <RadioButton android:id="@+id/atarikoa_RadioButton_solutions_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1"
+            android:onClick="onRadioButtonClicked"/>
+        <RadioButton android:id="@+id/atarikoa_RadioButton_solutions_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1"
+            android:onClick="onRadioButtonClicked"/>
+        <RadioButton android:id="@+id/atarikoa_RadioButton_solutions_3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1"
+            android:onClick="onRadioButtonClicked"/>
+        <RadioButton android:id="@+id/atarikoa_RadioButton_solutions_4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1"
+            android:onClick="onRadioButtonClicked"/>
+    </RadioGroup>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+
+
+        <Button
+            android:layout_weight=".50"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/anterior"
+            android:id="@+id/atarikoa_Button_previous" />
+
+        <Button
+            android:layout_weight=".50"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/next"
+            android:id="@+id/atarikoa_Button_next" />
+    </LinearLayout>
+    <!--
+    <TextView
+        android:id="@+id/item_atarikoa_TextView_statement_1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+
+        android:ellipsize="marquee"
+        android:text="statement"
+        android:textStyle="bold"/>
+
+    <RadioGroup
+        android:id="@+id/item_atarikoa_RadioGroup_solutions_1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignWithParentIfMissing="true"
+        android:gravity="center_vertical"
+        />
+    <TextView
+        android:id="@+id/item_atarikoa_TextView_statement_2"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+
+        android:ellipsize="marquee"
+        android:text="statement"
+        android:textStyle="bold"/>
+
+    <RadioGroup
+        android:id="@+id/item_atarikoa_RadioGroup_solutions_2"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignWithParentIfMissing="true"
+        android:gravity="center_vertical"
+        />
+    <TextView
+        android:id="@+id/item_atarikoa_TextView_statement_3"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+
+        android:ellipsize="marquee"
+        android:text="statement"
+        android:textStyle="bold"/>
+
+    <RadioGroup
+        android:id="@+id/item_atarikoa_RadioGroup_solutions_3"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignWithParentIfMissing="true"
+        android:gravity="center_vertical"
+        />
+    <TextView
+        android:id="@+id/item_atarikoa_TextView_statement_4"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+
+        android:ellipsize="marquee"
+        android:text="statement"
+        android:textStyle="bold"/>
+
+    <RadioGroup
+        android:id="@+id/item_atarikoa_RadioGroup_solutions_4"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignWithParentIfMissing="true"
+        android:gravity="center_vertical"
+        />
+    <TextView
+        android:id="@+id/item_atarikoa_TextView_statement_5"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+
+        android:ellipsize="marquee"
+        android:text="statement"
+        android:textStyle="bold"/>
+
+    <RadioGroup
+        android:id="@+id/item_atarikoa_RadioGroup_solutions_5"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignWithParentIfMissing="true"
+        android:gravity="center_vertical"
+        />
+    <TextView
+        android:id="@+id/item_atarikoa_TextView_statement_6"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+
+        android:ellipsize="marquee"
+        android:text="statement"
+        android:textStyle="bold"/>
+
+    <RadioGroup
+        android:id="@+id/item_atarikoa_RadioGroup_solutions_6"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignWithParentIfMissing="true"
+        android:gravity="center_vertical"
+        />
+    <TextView
+        android:id="@+id/item_atarikoa_TextView_statement_7"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+
+        android:ellipsize="marquee"
+        android:text="statement"
+        android:textStyle="bold"/>
+
+    <RadioGroup
+        android:id="@+id/item_atarikoa_RadioGroup_solutions_7"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignWithParentIfMissing="true"
+        android:gravity="center_vertical"
+        />
+    <TextView
+        android:id="@+id/item_atarikoa_TextView_statement_8"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+
+        android:ellipsize="marquee"
+        android:text="statement"
+        android:textStyle="bold"/>
+
+    <RadioGroup
+        android:id="@+id/item_atarikoa_RadioGroup_solutions_8"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignWithParentIfMissing="true"
+        android:gravity="center_vertical"
+        />
+    <TextView
+        android:id="@+id/item_atarikoa_TextView_statement_9"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+
+        android:ellipsize="marquee"
+        android:text="statement"
+        android:textStyle="bold"/>
+
+    <RadioGroup
+        android:id="@+id/item_atarikoa_RadioGroup_solutions_9"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignWithParentIfMissing="true"
+        android:gravity="center_vertical"
+        />
+    <TextView
+        android:id="@+id/item_atarikoa_TextView_statement_10"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+
+        android:ellipsize="marquee"
+        android:text="statement"
+        android:textStyle="bold"/>
+
+    <RadioGroup
+        android:id="@+id/item_atarikoa_RadioGroup_solutions_10"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignWithParentIfMissing="true"
+        android:gravity="center_vertical"
+        />
+    <TextView
+        android:id="@+id/item_atarikoa_TextView_statement_11"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+
+        android:ellipsize="marquee"
+        android:text="statement"
+        android:textStyle="bold"/>
+
+    <RadioGroup
+        android:id="@+id/item_atarikoa_RadioGroup_solutions_11"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignWithParentIfMissing="true"
+        android:gravity="center_vertical"
+        />
+    <TextView
+        android:id="@+id/item_atarikoa_TextView_statement_12"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+
+        android:ellipsize="marquee"
+        android:text="statement"
+        android:textStyle="bold"/>
+
+    <RadioGroup
+        android:id="@+id/item_atarikoa_RadioGroup_solutions_12"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignWithParentIfMissing="true"
+        android:gravity="center_vertical"
+        />
+    <TextView
+        android:id="@+id/item_atarikoa_TextView_statement_13"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+
+        android:ellipsize="marquee"
+        android:text="statement"
+        android:textStyle="bold"/>
+
+    <RadioGroup
+        android:id="@+id/item_atarikoa_RadioGroup_solutions_13"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignWithParentIfMissing="true"
+        android:gravity="center_vertical"
+        />
+    <TextView
+        android:id="@+id/item_atarikoa_TextView_statement_14"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+
+        android:ellipsize="marquee"
+        android:text="statement"
+        android:textStyle="bold"/>
+
+    <RadioGroup
+        android:id="@+id/item_atarikoa_RadioGroup_solutions_14"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignWithParentIfMissing="true"
+        android:gravity="center_vertical"
+        />
+    <TextView
+        android:id="@+id/item_atarikoa_TextView_statement_15"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+
+        android:ellipsize="marquee"
+        android:text="statement"
+        android:textStyle="bold"/>
+
+    <RadioGroup
+        android:id="@+id/item_atarikoa_RadioGroup_solutions_15"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignWithParentIfMissing="true"
+        android:gravity="center_vertical"
+        />
+    <TextView
+        android:id="@+id/item_atarikoa_TextView_statement_16"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+
+        android:ellipsize="marquee"
+        android:text="statement"
+        android:textStyle="bold"/>
+
+    <RadioGroup
+        android:id="@+id/item_atarikoa_RadioGroup_solutions_16"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignWithParentIfMissing="true"
+        android:gravity="center_vertical"
+        />
+    <TextView
+        android:id="@+id/item_atarikoa_TextView_statement_17"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+
+        android:ellipsize="marquee"
+        android:text="statement"
+        android:textStyle="bold"/>
+
+    <RadioGroup
+        android:id="@+id/item_atarikoa_RadioGroup_solutions_17"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignWithParentIfMissing="true"
+        android:gravity="center_vertical"
+        />
+    <TextView
+        android:id="@+id/item_atarikoa_TextView_statement_18"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+
+        android:ellipsize="marquee"
+        android:text="statement"
+        android:textStyle="bold"/>
+
+    <RadioGroup
+        android:id="@+id/item_atarikoa_RadioGroup_solutions_18"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignWithParentIfMissing="true"
+        android:gravity="center_vertical"
+        />
+    <TextView
+        android:id="@+id/item_atarikoa_TextView_statement_19"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+
+        android:ellipsize="marquee"
+        android:text="statement"
+        android:textStyle="bold"/>
+
+    <RadioGroup
+        android:id="@+id/item_atarikoa_RadioGroup_solutions_19"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignWithParentIfMissing="true"
+        android:gravity="center_vertical"
+        />
+    <TextView
+        android:id="@+id/item_atarikoa_TextView_statement_20"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+
+        android:ellipsize="marquee"
+        android:text="statement"
+        android:textStyle="bold"/>
+
+    <RadioGroup
+        android:id="@+id/item_atarikoa_RadioGroup_solutions_20"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignWithParentIfMissing="true"
+        android:gravity="center_vertical"
+        />
+    <TextView
+        android:id="@+id/item_atarikoa_TextView_statement_21"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+
+        android:ellipsize="marquee"
+        android:text="statement"
+        android:textStyle="bold"/>
+
+    <RadioGroup
+        android:id="@+id/item_atarikoa_RadioGroup_solutions_21"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignWithParentIfMissing="true"
+        android:gravity="center_vertical"
+        />
+    <TextView
+        android:id="@+id/item_atarikoa_TextView_statement_22"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+
+        android:ellipsize="marquee"
+        android:text="statement"
+        android:textStyle="bold"/>
+
+    <RadioGroup
+        android:id="@+id/item_atarikoa_RadioGroup_solutions_22"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignWithParentIfMissing="true"
+        android:gravity="center_vertical"
+        />
+    <TextView
+        android:id="@+id/item_atarikoa_TextView_statement_23"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+
+        android:ellipsize="marquee"
+        android:text="statement"
+        android:textStyle="bold"/>
+
+    <RadioGroup
+        android:id="@+id/item_atarikoa_RadioGroup_solutions_23"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignWithParentIfMissing="true"
+        android:gravity="center_vertical"
+        />
+    <TextView
+        android:id="@+id/item_atarikoa_TextView_statement_24"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+
+        android:ellipsize="marquee"
+        android:text="statement"
+        android:textStyle="bold"/>
+
+    <RadioGroup
+        android:id="@+id/item_atarikoa_RadioGroup_solutions_24"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignWithParentIfMissing="true"
+        android:gravity="center_vertical"
+        />
+    <TextView
+        android:id="@+id/item_atarikoa_TextView_statement_25"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+
+        android:ellipsize="marquee"
+        android:text="statement"
+        android:textStyle="bold"/>
+
+    <RadioGroup
+        android:id="@+id/item_atarikoa_RadioGroup_solutions_25"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignWithParentIfMissing="true"
+        android:gravity="center_vertical"
+        />
+    <TextView
+        android:id="@+id/item_atarikoa_TextView_statement_26"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+
+        android:ellipsize="marquee"
+        android:text="statement"
+        android:textStyle="bold"/>
+
+    <RadioGroup
+        android:id="@+id/item_atarikoa_RadioGroup_solutions_26"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignWithParentIfMissing="true"
+        android:gravity="center_vertical"
+        />
+    <TextView
+        android:id="@+id/item_atarikoa_TextView_statement_27"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+
+        android:ellipsize="marquee"
+        android:text="statement"
+        android:textStyle="bold"/>
+
+    <RadioGroup
+        android:id="@+id/item_atarikoa_RadioGroup_solutions_27"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignWithParentIfMissing="true"
+        android:gravity="center_vertical"
+        />
+    <TextView
+        android:id="@+id/item_atarikoa_TextView_statement_28"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+
+        android:ellipsize="marquee"
+        android:text="statement"
+        android:textStyle="bold"/>
+
+    <RadioGroup
+        android:id="@+id/item_atarikoa_RadioGroup_solutions_28"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignWithParentIfMissing="true"
+        android:gravity="center_vertical"
+        />
+    <TextView
+        android:id="@+id/item_atarikoa_TextView_statement_29"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+
+        android:ellipsize="marquee"
+        android:text="statement"
+        android:textStyle="bold"/>
+
+    <RadioGroup
+        android:id="@+id/item_atarikoa_RadioGroup_solutions_29"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignWithParentIfMissing="true"
+        android:gravity="center_vertical"
+        />
+    <TextView
+        android:id="@+id/item_atarikoa_TextView_statement_30"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+
+        android:ellipsize="marquee"
+        android:text="statement"
+        android:textStyle="bold"/>
+
+    <RadioGroup
+        android:id="@+id/item_atarikoa_RadioGroup_solutions_30"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignWithParentIfMissing="true"
+        android:gravity="center_vertical"
+        />
+-->
+    <!--
+    <ListView android:id="@+id/atarikoa_statements_listView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+        -->
+</LinearLayout>

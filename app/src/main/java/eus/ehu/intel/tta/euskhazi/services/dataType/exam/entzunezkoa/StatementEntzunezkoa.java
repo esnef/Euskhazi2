@@ -9,6 +9,7 @@ import java.util.ArrayList;
 public class StatementEntzunezkoa implements Serializable {
     private String statement;
     private String solution;
+    private int select;
     private ArrayList<AnswerEntzunezkoa> answers;
 
     public String getStatement() {
@@ -33,5 +34,13 @@ public class StatementEntzunezkoa implements Serializable {
 
     public void setAnswers(ArrayList<AnswerEntzunezkoa> answers) {
         this.answers = answers;
+    }
+
+    public int getSelect() {
+        return select;
+    }
+
+    public void setSelect(int select) {
+        this.select = select;
     }
 }
