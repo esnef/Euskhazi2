@@ -9,6 +9,7 @@ import java.util.ArrayList;
 public class AtarikoaStatements implements Serializable {
     private String statement;
     private String solution;
+    private int index=100;
     private ArrayList<AnswerAtarikoa> answers;
 
     public String getStatement() {
@@ -35,5 +36,11 @@ public class AtarikoaStatements implements Serializable {
         this.answers = answers;
     }
 
+    public int getIndex() {
+        return index;
+    }
 
+    public void setIndex(int index) {
+        this.index = index;
+    }
 }
