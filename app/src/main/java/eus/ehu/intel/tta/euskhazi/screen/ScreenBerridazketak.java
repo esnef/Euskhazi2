@@ -67,6 +67,27 @@ public class ScreenBerridazketak extends ScreenBase {
                 TextView statementTextView9 = (TextView) findViewById(R.id.berridazketak_layout_textView_9);
                 statementTextView9.setText(statements.get(9).getStatement());
 
+                EditText answerEditText0 = (EditText) findViewById(R.id.berridazketak_layout_editText_0);
+                clearEditTextOnClick(answerEditText0, statements, 0);
+                EditText answerEditText1 = (EditText) findViewById(R.id.berridazketak_layout_editText_1);
+                clearEditTextOnClick(answerEditText1, statements, 1);
+                EditText answerEditText2 = (EditText) findViewById(R.id.berridazketak_layout_editText_2);
+                clearEditTextOnClick(answerEditText2, statements, 2);
+                EditText answerEditText3 = (EditText) findViewById(R.id.berridazketak_layout_editText_3);
+                clearEditTextOnClick(answerEditText3, statements, 3);
+                EditText answerEditText4 = (EditText) findViewById(R.id.berridazketak_layout_editText_4);
+                clearEditTextOnClick(answerEditText4, statements, 4);
+                EditText answerEditText5 = (EditText) findViewById(R.id.berridazketak_layout_editText_5);
+                clearEditTextOnClick(answerEditText5, statements, 5);
+                EditText answerEditText6 = (EditText) findViewById(R.id.berridazketak_layout_editText_6);
+                clearEditTextOnClick(answerEditText6, statements, 6);
+                EditText answerEditText7 = (EditText) findViewById(R.id.berridazketak_layout_editText_7);
+                clearEditTextOnClick(answerEditText7, statements, 7);
+                EditText answerEditText8 = (EditText) findViewById(R.id.berridazketak_layout_editText_8);
+                clearEditTextOnClick(answerEditText8, statements, 8);
+                EditText answerEditText9 = (EditText) findViewById(R.id.berridazketak_layout_editText_9);
+                clearEditTextOnClick(answerEditText9, statements, 9);
+
                 Button zuzenduButton = (Button) findViewById(R.id.berridazketak_correct_button);
                 zuzenduButton.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -123,6 +144,16 @@ public class ScreenBerridazketak extends ScreenBase {
             }
         });
         mEngine.getLevel(levelString);
+    }
+
+    private void clearEditTextOnClick(final EditText answerEditText, ArrayList<StatementBerridazketak> statements, int numeroAnswer){
+        answerEditText.setText(statements.get(numeroAnswer).getPlaceholder());
+        answerEditText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                answerEditText.setText("");
+            }
+        });
     }
 
 }
