@@ -149,7 +149,7 @@ public class ScreenBerridazketak extends ScreenBase {
     }
 
     private void clearEditTextOnClick(final EditText answerEditText, ArrayList<StatementBerridazketak> statements, int numeroAnswer){
-        answerEditText.setText(statements.get(numeroAnswer).getPlaceholder());
+        answerEditText.setHint(statements.get(numeroAnswer).getPlaceholder());
         answerEditText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
