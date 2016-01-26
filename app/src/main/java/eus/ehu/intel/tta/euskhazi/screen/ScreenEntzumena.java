@@ -1,12 +1,14 @@
 package eus.ehu.intel.tta.euskhazi.screen;
 
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
@@ -18,11 +20,14 @@ import java.util.ArrayList;
 
 import eus.ehu.intel.tta.euskhazi.R;
 import eus.ehu.intel.tta.euskhazi.services.LevelsManager;
+import eus.ehu.intel.tta.euskhazi.services.dataType.Exam;
 import eus.ehu.intel.tta.euskhazi.services.dataType.exam.Level;
 import eus.ehu.intel.tta.euskhazi.services.dataType.exam.entzunezkoa.StatementEntzunezkoa;
 import eus.ehu.intel.tta.euskhazi.services.dataType.exam.sinonimoak.StatementSinonimoak;
 
 public class ScreenEntzumena extends ScreenBase {
+
+    private MediaPlayer mediaPlayer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,7 +38,7 @@ public class ScreenEntzumena extends ScreenBase {
 
         Intent intent = getIntent();
         final int numeroExamen = intent.getExtras().getInt("numeroExamen");
-        String levelString = intent.getStringExtra("level");
+        final String levelString = intent.getStringExtra("level");
 
         TextView textLogin = (TextView)findViewById(R.id.entzumena_title_textView);
         textLogin.setText("Entzumena " + (numeroExamen + 1) + " - " + levelString);
@@ -45,8 +50,11 @@ public class ScreenEntzumena extends ScreenBase {
                     Toast.makeText(getApplicationContext(), R.string.load_exam_incorrectly, Toast.LENGTH_SHORT).show();
                     return;
                 }
-                String audioUrl = levels.getEntzunezkoas().get(numeroExamen).getAudioUrl();
-                ArrayList<StatementEntzunezkoa> statements = levels.getEntzunezkoas().get(numeroExamen).getStatements();
+                //String audioUrl = levels.getEntzunezkoas().get(numeroExamen).getAudioUrl();
+                mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.lentillak);
+                mediaPlayer.start();
+
+                final ArrayList<StatementEntzunezkoa> statements = levels.getEntzunezkoas().get(numeroExamen).getStatements();
 
                 TextView statementTextView0 = (TextView) findViewById(R.id.entzumena_statement_textView_0);
                 statementTextView0.setText(statements.get(0).getStatement());
@@ -60,20 +68,60 @@ public class ScreenEntzumena extends ScreenBase {
                 statementTextView4.setText(statements.get(4).getStatement());
 
                 ArrayList<String> posibleAnswers0 = getPosibleAnswers(statements, 0);
-                RadioGroup radioGroup0 = (RadioGroup) findViewById(R.id.entzumena_radioGroup_0);
+                final RadioGroup radioGroup0 = (RadioGroup) findViewById(R.id.entzumena_radioGroup_0);
                 populateRadioGroup(radioGroup0, posibleAnswers0);
                 ArrayList<String> posibleAnswers1 = getPosibleAnswers(statements, 1);
-                RadioGroup radioGroup1 = (RadioGroup) findViewById(R.id.entzumena_radioGroup_1);
+                final RadioGroup radioGroup1 = (RadioGroup) findViewById(R.id.entzumena_radioGroup_1);
                 populateRadioGroup(radioGroup1, posibleAnswers1);
                 ArrayList<String> posibleAnswers2 = getPosibleAnswers(statements, 2);
-                RadioGroup radioGroup2 = (RadioGroup) findViewById(R.id.entzumena_radioGroup_2);
+                final RadioGroup radioGroup2 = (RadioGroup) findViewById(R.id.entzumena_radioGroup_2);
                 populateRadioGroup(radioGroup2, posibleAnswers2);
                 ArrayList<String> posibleAnswers3 = getPosibleAnswers(statements, 3);
-                RadioGroup radioGroup3 = (RadioGroup) findViewById(R.id.entzumena_radioGroup_3);
+                final RadioGroup radioGroup3 = (RadioGroup) findViewById(R.id.entzumena_radioGroup_3);
                 populateRadioGroup(radioGroup3, posibleAnswers3);
                 ArrayList<String> posibleAnswers4 = getPosibleAnswers(statements, 4);
-                RadioGroup radioGroup4 = (RadioGroup) findViewById(R.id.entzumena_radioGroup_4);
+                final RadioGroup radioGroup4 = (RadioGroup) findViewById(R.id.entzumena_radioGroup_4);
                 populateRadioGroup(radioGroup4, posibleAnswers4);
+
+                Button zuzenduButton = (Button)findViewById(R.id.entzumena_correct_button);
+                zuzenduButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        double zuzenak = 0;
+
+                        int answer0 = radioGroup0.getCheckedRadioButtonId();
+                        RadioButton radioButton0 = (RadioButton)radioGroup0.getChildAt(Integer.parseInt(statements.get(0).getSolution()));
+                        if (radioButton0.getId() == answer0)zuzenak++;
+                        int answer1 = radioGroup1.getCheckedRadioButtonId();
+                        RadioButton radioButton1 = (RadioButton)radioGroup1.getChildAt(Integer.parseInt(statements.get(1).getSolution()));
+                        if (radioButton1.getId() == answer1)zuzenak++;
+                        int answer2 = radioGroup2.getCheckedRadioButtonId();
+                        RadioButton radioButton2 = (RadioButton)radioGroup2.getChildAt(Integer.parseInt(statements.get(2).getSolution()));
+                        if (radioButton2.getId() == answer2)zuzenak++;
+                        int answer3 = radioGroup3.getCheckedRadioButtonId();
+                        RadioButton radioButton3 = (RadioButton)radioGroup3.getChildAt(Integer.parseInt(statements.get(3).getSolution()));
+                        if (radioButton3.getId() == answer3)zuzenak++;
+                        int answer4 = radioGroup4.getCheckedRadioButtonId();
+                        RadioButton radioButton4 = (RadioButton)radioGroup4.getChildAt(Integer.parseInt(statements.get(4).getSolution()));
+                        if (radioButton4.getId() == answer4)zuzenak++;
+
+                        if (zuzenak > 2) {
+                            Toast.makeText(getApplicationContext(), R.string.examen_aprobado, Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(getApplicationContext(), R.string.examen_suspendido, Toast.LENGTH_SHORT).show();
+                        }
+                        System.out.println("Asmatutako erantzun kopurua: " + zuzenak);
+
+                        Exam exam = new Exam();
+                        exam.setTypeExam("entzumena");
+                        exam.setNumExams(numeroExamen);
+                        exam.setLevel(levelString);
+                        exam.setResult((2*zuzenak));
+
+                        saveUserExam(exam);
+                    }
+                });
+                mEngine.setOnGetLevelListener(null);
             }
         });
         mEngine.getLevel(levelString);
@@ -89,13 +137,20 @@ public class ScreenEntzumena extends ScreenBase {
     }
 
     private void populateRadioGroup(RadioGroup radioGroup, ArrayList<String> posibleAnswers){
-        for (String posibleAnswer : posibleAnswers) {
-            RadioButton radioButton = new RadioButton(getApplicationContext());
-            radioButton.setText(posibleAnswer);
+        //for (String posibleAnswer : posibleAnswers) {
+        for (int n =0; n < posibleAnswers.size(); n++){
+            RadioButton radioButton = new RadioButton(this);
+            radioButton.setText(posibleAnswers.get(n));
             //radioButton.setOnClickListener(this);
             radioGroup.addView(radioButton);
 
-            System.out.println(posibleAnswer);
+            System.out.println(posibleAnswers.get(n));
         }
+    }
+
+    @Override
+    protected void onPause(){
+        super.onPause();
+        mediaPlayer.stop();
     }
 }

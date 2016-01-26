@@ -96,42 +96,44 @@ public class ScreenBerridazketak extends ScreenBase {
 
                         EditText answerEditText0 = (EditText) findViewById(R.id.berridazketak_layout_editText_0);
                         String answer0 = answerEditText0.getText().toString().trim().toLowerCase();
-                        if (statements.get(0).getSolution().equals(answer0)) zuzenak++;
+                        if (statements.get(0).getSolution().toLowerCase().equals(answer0)) zuzenak++;
                         EditText answerEditText1 = (EditText) findViewById(R.id.berridazketak_layout_editText_1);
                         String answer1 = answerEditText1.getText().toString().trim().toLowerCase();
-                        if (statements.get(1).getSolution().equals(answer1)) zuzenak++;
+                        if (statements.get(1).getSolution().toLowerCase().equals(answer1)) zuzenak++;
                         EditText answerEditText2 = (EditText) findViewById(R.id.berridazketak_layout_editText_2);
                         String answer2 = answerEditText2.getText().toString().trim().toLowerCase();
-                        if (statements.get(2).getSolution().equals(answer2)) zuzenak++;
+                        if (statements.get(2).getSolution().toLowerCase().equals(answer2)) zuzenak++;
                         EditText answerEditText3 = (EditText) findViewById(R.id.berridazketak_layout_editText_3);
                         String answer3 = answerEditText3.getText().toString().trim().toLowerCase();
-                        if (statements.get(3).getSolution().equals(answer3)) zuzenak++;
+                        if (statements.get(3).getSolution().toLowerCase().equals(answer3)) zuzenak++;
                         EditText answerEditText4 = (EditText) findViewById(R.id.berridazketak_layout_editText_4);
                         String answer4 = answerEditText4.getText().toString().trim().toLowerCase();
-                        if (statements.get(4).getSolution().equals(answer4)) zuzenak++;
+                        if (statements.get(4).getSolution().toLowerCase().equals(answer4)) zuzenak++;
                         EditText answerEditText5 = (EditText) findViewById(R.id.berridazketak_layout_editText_5);
                         String answer5 = answerEditText5.getText().toString().trim().toLowerCase();
-                        if (statements.get(5).getSolution().equals(answer5)) zuzenak++;
+                        if (statements.get(5).getSolution().toLowerCase().equals(answer5)) zuzenak++;
                         EditText answerEditText6 = (EditText) findViewById(R.id.berridazketak_layout_editText_6);
                         String answer6 = answerEditText6.getText().toString().trim().toLowerCase();
-                        if (statements.get(6).getSolution().equals(answer6)) zuzenak++;
+                        if (statements.get(6).getSolution().toLowerCase().equals(answer6)) zuzenak++;
                         EditText answerEditText7 = (EditText) findViewById(R.id.berridazketak_layout_editText_7);
                         String answer7 = answerEditText7.getText().toString().trim().toLowerCase();
-                        if (statements.get(7).getSolution().equals(answer7)) zuzenak++;
+                        if (statements.get(7).getSolution().toLowerCase().equals(answer7)) zuzenak++;
                         EditText answerEditText8 = (EditText) findViewById(R.id.berridazketak_layout_editText_8);
                         String answer8 = answerEditText8.getText().toString().trim().toLowerCase();
-                        if (statements.get(8).getSolution().equals(answer8)) zuzenak++;
+                        if (statements.get(8).getSolution().toLowerCase().equals(answer8)) zuzenak++;
                         EditText answerEditText9 = (EditText) findViewById(R.id.berridazketak_layout_editText_9);
                         String answer9 = answerEditText9.getText().toString().trim().toLowerCase();
-                        if (statements.get(9).getSolution().equals(answer9)) zuzenak++;
+                        if (statements.get(9).getSolution().toLowerCase().equals(answer9)) zuzenak++;
 
-                        if (zuzenak >= 6) {
+                        if (zuzenak >= 5) {
                             Toast.makeText(getApplicationContext(), R.string.examen_aprobado, Toast.LENGTH_SHORT).show();
                         } else {
                             Toast.makeText(getApplicationContext(), R.string.examen_suspendido, Toast.LENGTH_SHORT).show();
                         }
+                        System.out.println("Asmatutako erantzun kopurua: " + zuzenak);
+
                         Exam exam = new Exam();
-                        exam.setTypeExam("entzumena");
+                        exam.setTypeExam("berridazketak");
                         exam.setNumExams(numeroExamen);
                         exam.setLevel(levelString);
                         exam.setResult(zuzenak);
