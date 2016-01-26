@@ -113,10 +113,10 @@ public class ScreenEntzumena extends ScreenBase {
                         System.out.println("Asmatutako erantzun kopurua: " + zuzenak);
 
                         Exam exam = new Exam();
-                        exam.setTypeExam("entzunezkoa");
+                        exam.setTypeExam("entzumena");
                         exam.setNumExams(numeroExamen);
                         exam.setLevel(levelString);
-                        exam.setResult(zuzenak);
+                        exam.setResult((2*zuzenak));
 
                         saveUserExam(exam);
                     }
