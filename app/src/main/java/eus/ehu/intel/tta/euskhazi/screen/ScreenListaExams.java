@@ -14,6 +14,8 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.math.RoundingMode;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 import eus.ehu.intel.tta.euskhazi.R;
@@ -233,12 +235,17 @@ public class ScreenListaExams extends ScreenBase {
             if(examType.score>0){
                 if(examType.score>=5){
                     //aprobado verde
-                    item_examsType_TextView_index.setBackgroundColor(Color.argb(255, 16,178,35));
+                    item_examsType_TextView_index.setBackgroundColor(Color.argb(255, 16, 178, 35));
                 }else{
-                    item_examsType_TextView_index.setBackgroundColor(Color.argb(255, 206,29,29));
+                    item_examsType_TextView_index.setBackgroundColor(Color.argb(255, 206, 29, 29));
                     //suspendido rojo
                 }
+                DecimalFormat df = new DecimalFormat("##.##");
+                df.setRoundingMode(RoundingMode.DOWN);
+                String string=df.format(examType.score);
+                item_examsType_TextView_type.setText(item_examsType_TextView_type.getText() + "  " + getString(R.string.Puntuacion) + ": " + string);
             }
+
 
 
             return convertView;

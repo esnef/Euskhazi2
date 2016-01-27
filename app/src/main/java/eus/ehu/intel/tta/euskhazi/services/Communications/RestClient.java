@@ -5,6 +5,7 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.util.Base64;
+import android.util.Log;
 
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
@@ -23,6 +24,7 @@ import eus.ehu.intel.tta.euskhazi.services.dataType.Mobile;
  * Created by eduardo on 1/01/16.
  */
 public class RestClient {
+    private static String TAG = RestClient.class.getCanonicalName();
 
     private final Map<String,String> properties=new HashMap<>();
 
@@ -116,7 +118,7 @@ public class RestClient {
         if (path == null || json == null || path.equals("")) {
             throw new RestException("Except that you do not have parameters");
         }
-        System.out.println(json);
+        Log.d(TAG, json);
         HttpURLConnection conn = null;
         try {
             conn = getConnection(path);

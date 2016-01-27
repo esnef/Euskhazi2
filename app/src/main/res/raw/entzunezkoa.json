@@ -1,6 +1,6 @@
 [
 		{
-			"audioUrl":"lentillak",
+			"audioUrl":"lentillak3",
 			"statements":[
 				{
 				"statement":"Kanpo bisuala hobea da …",
@@ -60,7 +60,7 @@
 				]
 		},
   {
-	"audioUrl":"lentillak",
+	"audioUrl":"lentillak3",
 	"statements":[
 	  {
 		"statement":"Kanpo bisuala hobea da …",
@@ -120,7 +120,7 @@
 	]
   },
   {
-	"audioUrl":"audio/lentillak",
+	"audioUrl":"lentillak3",
 	"statements":[
 	  {
 		"statement":"Kanpo bisuala hobea da …",
@@ -180,7 +180,7 @@
 	]
   },
   {
-	"audioUrl":"lentillak",
+	"audioUrl":"lentillak3",
 	"statements":[
 	  {
 		"statement":"Kanpo bisuala hobea da …",
@@ -240,7 +240,7 @@
 	]
   },
 		{
-			"audioUrl":"lentillak",
+			"audioUrl":"lentillak3",
 			"statements":[
 				{
 				"statement":"Kanpo bisuala hobea da …",
@@ -298,5 +298,65 @@
 				]
 				}
 				]
+		},
+		{
+		  "audioUrl":"lentillak3",
+		  "statements":[
+			{
+			  "statement":"Kanpo bisuala hobea da …",
+			  "solution":"0",
+			  "answers":[
+				{
+				  "first":"Betaurrekoekin",
+				  "second":"Lentillekin",
+				  "third":"Teleskopioarekin"
+				}
+			  ]
+			},
+			{
+			  "statement":"Zein dira erosoenak?",
+			  "solution":"0",
+			  "answers":[
+				{
+				  "first":"Lentillak",
+				  "second":"Betaurrekoak",
+				  "third":"Teleskopioa"
+				}
+			  ]
+			},
+			{
+			  "statement":"Zenbat lentilla mota daude?",
+			  "solution":"0",
+			  "answers":[
+				{
+				  "first":"Bi",
+				  "second":"Zazpi ",
+				  "third":"Hiru"
+				}
+			  ]
+			},
+			{
+			  "statement":"Koloretako lentillak …",
+			  "solution":"0",
+			  "answers":[
+				{
+				  "first":"Oso kaltegarriak dira.",
+				  "second":"Gazteei gustatzen zaizkie.",
+				  "third":"Nahiko natural gelditzen dira."
+				}
+			  ]
+			},
+			{
+			  "statement":"Zein da egia?",
+			  "solution":"0",
+			  "answers":[
+				{
+				  "first":"Retro itxurakoak modan daude.",
+				  "second":"Pastadun betaurrekoak modan daude",
+				  "third":"Betaurreko gorriak modan daude."
+				}
+			  ]
+			}
+		  ]
 		}
 ]		

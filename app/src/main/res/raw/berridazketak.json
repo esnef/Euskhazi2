@@ -274,5 +274,61 @@
 				
 				
 				]
+		},
+		{
+		  "statements":[
+			{
+			  "statement":"Litzentziaturako azterketa zail hura gainditzekotan, aldez aurretik oso ondo prestatu beharra zuen Koldok.",
+			  "solution":"a",
+			  "placeholder":"………………………..Ba-………………………………………………………………."
+			},
+			{
+			  "statement":"Liburu mardul hau da lana egitean laguntzarik handiena eman diguna",
+			  "solution":"a",
+			  "placeholder":"………………Digu………………………………………………………………………."
+			},
+			{
+			  "statement":"'Zerk bulaza zaitezkete euskara ikastera?' Galdetu zigun Kepak lehenengo egunean",
+			  "solution":"a",
+			  "placeholder":"……………………………Galdetu……………………………………………………..."
+			},
+			{
+			  "statement":"Afaria Arzakenean izango zela entzun genion Olatzi, baita beraren senargaia etorriko zela ere",
+			  "solution":"a",
+			  "placeholder":"........................................................................................................Entzun genion Olatzi."
+			},
+			{
+			  "statement":"Anek ondo ikusten zuen bere burua lanpostu hartarako, eta Enekok berea ere bai",
+			  "solution":"a",
+			  "placeholder":"Anek eta Enekok ..............................................................................................................."
+			},
+			{
+			  "statement":"Nire aburuz, derbya Arhleticek Realak baino dezente hobeo jokatu zuen",
+			  "solution":"a",
+			  "placeholder":"..............................................................................Bezain...................................................."
+			},
+			{
+			  "statement":"Ulertuko duzunez , une hartan nik ezin izan nizuen halako mesederik eskatu",
+			  "solution":"a",
+			  "placeholder":"..............................Nik ez...................................................................................................."
+			},
+			{
+			  "statement":"Maider neska ezin atseginagoa da, baina Arrate ez da gutxiago",
+			  "solution":"a",
+			  "placeholder":"...........................Baino........................................................................................................"
+			},
+			{
+			  "statement":"Argi eta garbi esan nizuen neure etxean ez azaltzeko eta, are gutxiago, oparirik ekartzeko",
+			  "solution":"a",
+			  "placeholder":"............................Azal ez....................................................................................................."
+			},
+			{
+			  "statement":"Liburu hori berori erosi eta irakurri dut, baina baita gstau ere",
+			  "solution":"Ñ",
+			  "placeholder":"...............................Gain, ................................ere.............................................................."
+			}
+
+
+		  ]
 		}
 	]		

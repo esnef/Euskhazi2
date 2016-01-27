@@ -2,59 +2,59 @@
     <string name="app_name">Euskhazi</string>
 
     <!-- Strings related to login -->
-    <string name="prompt_email">Emaila</string>
-    <string name="prompt_password">Pasahitza (aukerazkoa)</string>
-    <string name="action_sign_in">Sartu</string>
-    <string name="action_sign_in_short">Sign in</string>
-    <string name="error_invalid_email">This email address is invalid</string>
-    <string name="error_invalid_password">This password is too short</string>
-    <string name="error_incorrect_password">This password is incorrect</string>
-    <string name="error_field_required">This field is required</string>
-    <string name="permission_rationale">"Contacts permissions are needed for providing email
+    <string name="prompt_email" translatable="false">Emaila</string>
+    <string name="prompt_password" translatable="false">Pasahitza (aukerazkoa)</string>
+    <string name="action_sign_in" translatable="false">Sartu</string>
+    <string name="action_sign_in_short" translatable="false">Sign in</string>
+    <string name="error_invalid_email" translatable="false">This email address is invalid</string>
+    <string name="error_invalid_password" translatable="false">This password is too short</string>
+    <string name="error_incorrect_password" translatable="false">This password is incorrect</string>
+    <string name="error_field_required" translatable="false">This field is required</string>
+    <string name="permission_rationale" translatable="false">"Contacts permissions are needed for providing email
         completions."</string>
-    <string name="title_activity_menu_nivel">MenuNivelActivity</string>
-    <string name="title_choose_level">Aukeratu maila</string>
-    <string name="title_activity_atarikoa">AtarikoaActivity</string>
-    <string name="title_activity_tipo_examen">TipoExamenActivity</string>
-    <string name="title_choose_exam_type">Aukeratu azterketa mota</string>
-    <string name="title_activity_screen_registro_usuario">ScreenRegistroUsuario</string>
-    <string name="action_resgistrar">Erabiltzaile berria</string>
-    <string name="action_crear_usuario">Erabiltzailea sortu</string>
-    <string name="resgistro_usuario_meter_todos_los_datos">Datu guztiak bete behar dituzu</string>
-    <string name="registrado_correctamente">Erabiltzailea ondo sortu da</string>
-    <string name="registrado_incorrecto">Errore bat gertatu da erabiltzailea sortzerakoan</string>
-    <string name="usuario_incorrecto_login">Ez da existitzen erabiltzaile hau pasahitz horrekin</string>
-    <string name="usuario_correcto"> erabiltzailearen pasahitza zuzena da</string>
-    <string name="no_hay_examenes">Ez dago maila honetako azterketarik</string>
-    <string name="title_activity_screen_atarikoa">ScreenAtarikoa</string>
-    <string name="title_activity_screen_loading">ScreenLoading</string>
-    <string name="title_activity_screen_idatzizkoa">ScreenIdatzizkoa</string>
-    <string name="title_activity_screen_sinonimoak">ScreenSinonimoak</string>
-    <string name="title_activity_screen_berridazketak">ScreenBerridazketak</string>
-    <string name="title_activity_screen_entzumena">ScreenEntzumena</string>
-    <string name="title_activity_screen_ahozkoa">ScreenAhozkoa</string>
-    <string name="load_exam_incorrectly">Azterketa kargatzerakoan arazo bat gertatu da</string>
-    <string name="send_to_correct">Zuzentzeko bidali</string>
-    <string name="Nivel">Maila</string>
-    <string name="Grabar_audio">Grabatu ahotsa</string>
-    <string name="No_se_ha_subido_correctamente_al_servidor">Ez da behar den bezala igo zerbitzarira</string>
-    <string name="Se_ha_guardado_correctamente_en_el_servidor">Zerbitzarian ondo gorde da</string>
+    <string name="title_activity_menu_nivel" translatable="false">MenuNivelActivity</string>
+    <string name="title_choose_level" translatable="false">Aukeratu maila</string>
+    <string name="title_activity_atarikoa" translatable="false">AtarikoaActivity</string>
+    <string name="title_activity_tipo_examen" translatable="false">TipoExamenActivity</string>
+    <string name="title_choose_exam_type" translatable="false">Aukeratu azterketa mota</string>
+    <string name="title_activity_screen_registro_usuario" translatable="false">ScreenRegistroUsuario</string>
+    <string name="action_resgistrar" translatable="false">Erabiltzaile berria</string>
+    <string name="action_crear_usuario" translatable="false">Erabiltzailea sortu</string>
+    <string name="resgistro_usuario_meter_todos_los_datos" translatable="false">Datu guztiak bete behar dituzu</string>
+    <string name="registrado_correctamente" translatable="false">Erabiltzailea ondo sortu da</string>
+    <string name="registrado_incorrecto" translatable="false">Errore bat gertatu da erabiltzailea sortzerakoan</string>
+    <string name="usuario_incorrecto_login" translatable="false">Ez da existitzen erabiltzaile hau pasahitz horrekin</string>
+    <string name="usuario_correcto" translatable="false"> erabiltzailearen pasahitza zuzena da</string>
+    <string name="no_hay_examenes" translatable="false">Ez dago maila honetako azterketarik</string>
+    <string name="title_activity_screen_atarikoa" translatable="false">ScreenAtarikoa</string>
+    <string name="title_activity_screen_loading" translatable="false">ScreenLoading</string>
+    <string name="title_activity_screen_idatzizkoa" translatable="false">ScreenIdatzizkoa</string>
+    <string name="title_activity_screen_sinonimoak" translatable="false">ScreenSinonimoak</string>
+    <string name="title_activity_screen_berridazketak" translatable="false">ScreenBerridazketak</string>
+    <string name="title_activity_screen_entzumena" translatable="false">ScreenEntzumena</string>
+    <string name="title_activity_screen_ahozkoa" translatable="false">ScreenAhozkoa</string>
+    <string name="load_exam_incorrectly" translatable="false">Azterketa kargatzerakoan arazo bat gertatu da</string>
+    <string name="send_to_correct" translatable="false">Zuzentzeko bidali</string>
+    <string name="Nivel" translatable="false">Maila</string>
+    <string name="Grabar_audio" translatable="false">Grabatu ahotsa</string>
+    <string name="No_se_ha_subido_correctamente_al_servidor" translatable="false">Ez da behar den bezala igo zerbitzarira</string>
+    <string name="Se_ha_guardado_correctamente_en_el_servidor" translatable="false">Zerbitzarian ondo gorde da</string>
 
-    <string name="usuario_incorrecto">Errore bat erabiltzailearen datuak lortzerakoan</string>
-    <string name="correct_button">Zuzendu</string>
-    <string name="examen_aprobado">Gainditu duzu!</string>
-    <string name="examen_suspendido">Ez duzu gainditu</string>
-    <string name="anterior">Aurrekoa</string>
-    <string name="next">Hurrengoa</string>
-    <string name="corregir">Zuzendu</string>
-    <string name="No_se_ha_aprobado_la_prueba">Proba ez duzu gainditu</string>
+    <string name="usuario_incorrecto" translatable="false">Errore bat erabiltzailearen datuak lortzerakoan</string>
+    <string name="correct_button" translatable="false">Zuzendu</string>
+    <string name="examen_aprobado" translatable="false">Gainditu duzu!</string>
+    <string name="examen_suspendido" translatable="false">Ez duzu gainditu</string>
+    <string name="anterior" translatable="false">Aurrekoa</string>
+    <string name="next" translatable="false">Hurrengoa</string>
+    <string name="corregir" translatable="false">Zuzendu</string>
+    <string name="No_se_ha_aprobado_la_prueba" translatable="false">Proba ez duzu gainditu</string>
 
-    <string name="usuarios_del_sistema">Sistema erabiltzaile</string>
-    <string name="Nombre">Izena</string>probak egin
-    <string name="play_audio">play audio</string>probak egin
+    <string name="usuarios_del_sistema" translatable="false">Sistema erabiltzaile</string>
+    <string name="Nombre" translatable="false">Izena</string>
+    <string name="play_audio" translatable="false">play audio</string>
 
-    <string name="Examenes_hechos">Probak egin</string>
-
+    <string name="Examenes_hechos" translatable="false">Probak egin</string>
+    <string name="Puntuacion" translatable="false">Puntuazio</string>
 
 
 

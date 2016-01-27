@@ -212,7 +212,7 @@ public class LevelsManager  {
     private File getTempFile(Context context, String url) throws IOException {
         File file=null;
             String fileName = Uri.parse(url).getLastPathSegment();
-            System.out.println("fileName: "+fileName);
+            Log.d(TAG,"fileName: "+fileName);
             file = File.createTempFile(fileName, null, context.getCacheDir());
         return file;
     }
@@ -301,7 +301,6 @@ public class LevelsManager  {
             int d=-1;
             ServerUpdateFile serverUpdateFile=params[0];
             RestClient restClient=new RestClient();
-            System.out.println("a4");
             try {
                 d=restClient.postFile("upload", serverUpdateFile.getInputStream(),serverUpdateFile.getFileName());
                 serverUpdateFile.getInputStream().close();

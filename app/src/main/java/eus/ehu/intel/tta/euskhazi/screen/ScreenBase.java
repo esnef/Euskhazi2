@@ -19,6 +19,7 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -102,7 +103,6 @@ public class ScreenBase extends AppCompatActivity implements Runnable{
                 }
                 if (nuevoExamen){
                     examList.add(exam);
-                    System.out.println("NUEVO EXAMEN");
                 }
 
                 user.setExams(examList);
@@ -111,9 +111,9 @@ public class ScreenBase extends AppCompatActivity implements Runnable{
                     @Override
                     public void onSaveUser(boolean isSaveUser) {
                         if (isSaveUser) {
-                            System.out.println("Se ha guardado correctamente el usuario");
+                            Log.d(TAG,"Se ha guardado correctamente el usuario");
                         } else {
-                            System.out.println("ERRORRRR!!!!");
+                            Log.e(TAG, "ERRORRRR!!!!");
                         }
                         finish();
                         mEngine.setOnSaveUserListener(null);

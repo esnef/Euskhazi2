@@ -425,7 +425,7 @@ public class UsersManager {
         try {
             if(!RestClient.isOnline(context))return mobile;
             String json=restClient.getString(RestClient.PATH_GET_MOBILE+mobile.getMobilesMAC());
-            System.out.println("json: "+json);
+            Log.d(TAG,"json: "+json);
             if(json!=null && !json.equals("")){
                 Gson gson=new Gson();
                 if(gson.toJson(mobile).trim().equals(json.trim())){
@@ -518,7 +518,7 @@ public class UsersManager {
             SaveMobileData saveMobileData=params[0];
             Gson gson=new Gson();
             String json=gson.toJson(saveMobileData.getMobile());
-            System.out.println(json);
+            Log.d(TAG,json);
             try {
                 return saveMobileServer(json,saveMobileData.getContext());
             } catch (IOException e) {
@@ -620,7 +620,7 @@ public class UsersManager {
         protected void onPostExecute(Mobile mobile) {
             if(mobile!=null){
                 Gson gson=new Gson();
-                System.out.println("translate: " +gson.toJson(mobile));
+                Log.d(TAG,"translate: " +gson.toJson(mobile));
                 if(onInitializationOnlineListener!=null)onInitializationOnlineListener.onInitializationOnline(true);
                 mMobile=mobile;
 

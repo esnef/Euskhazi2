@@ -29,7 +29,6 @@ public class AudioPlayer implements MediaController.MediaPlayerControl, MediaPla
         controller=new MediaController(view.getContext()){
           @Override
           public boolean dispatchKeyEvent(KeyEvent event){
-              System.out.println("AAA1");
               if(event.getKeyCode()==KeyEvent.KEYCODE_BACK){
                   try {
                       release();
@@ -37,7 +36,6 @@ public class AudioPlayer implements MediaController.MediaPlayerControl, MediaPla
                   } catch (Throwable throwable) {
                   }
               }else if(event.getKeyCode()==KeyEvent.KEYCODE_MEDIA_PAUSE){
-                  System.out.println("AAA2");
               }
 
               return super.dispatchKeyEvent(event);
