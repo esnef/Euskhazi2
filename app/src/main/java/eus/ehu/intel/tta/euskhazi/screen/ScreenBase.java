@@ -30,11 +30,13 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 import eus.ehu.intel.tta.euskhazi.Engine;
 import eus.ehu.intel.tta.euskhazi.R;
+import eus.ehu.intel.tta.euskhazi.services.AudioPlayer;
 import eus.ehu.intel.tta.euskhazi.services.UsersManager;
 import eus.ehu.intel.tta.euskhazi.services.dataType.Exam;
 import eus.ehu.intel.tta.euskhazi.services.dataType.User;
@@ -44,15 +46,36 @@ import static android.Manifest.permission.READ_CONTACTS;
 /**
  * A login screen that offers login via email/password.
  */
-public class ScreenBase extends AppCompatActivity{
+public class ScreenBase extends AppCompatActivity implements Runnable{
     protected static User newUser;
     protected static String TAG = ScreenBase.class.getCanonicalName();
     protected Engine mEngine;
+    private Uri uri;
+    private AudioPlayer audioPlayer;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mEngine=Engine.getInstance(getApplicationContext());
     }
+
+
+    protected void playAudio(View view,String name) {
+        if (view==null || name==null) {
+            return;
+        }
+        //uri= Uri.parse("http://www.ntonyx.com/mp3files/Intoxication_V09.mp3");
+        int audioResource = getResources().
+                getIdentifier(name, "raw", getPackageName());
+        String path = "android.resource://" + getPackageName() + "/" + audioResource;
+        uri = Uri.parse(path);
+        audioPlayer = new AudioPlayer(view, this);
+        try {
+            audioPlayer.setAudioUri(uri);
+        } catch (IOException e) {
+        }
+    }
+
 
     protected User saveUserExam(final Exam exam){
 
@@ -105,5 +128,9 @@ public class ScreenBase extends AppCompatActivity{
         return null;
     }
 
+    @Override
+    public void run() {
+        //Ejecutar al final de la ejecución de la musica.
+    }
 }
 

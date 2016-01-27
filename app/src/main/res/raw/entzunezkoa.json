@@ -1,6 +1,6 @@
 [
 		{
-			"audioUrl":"audio/lentillak",
+			"audioUrl":"lentillak",
 			"statements":[
 				{
 				"statement":"Kanpo bisuala hobea da …",
@@ -60,7 +60,7 @@
 				]
 		},
   {
-	"audioUrl":"audio/lentillak",
+	"audioUrl":"lentillak",
 	"statements":[
 	  {
 		"statement":"Kanpo bisuala hobea da …",
@@ -180,7 +180,7 @@
 	]
   },
   {
-	"audioUrl":"audio/lentillak",
+	"audioUrl":"lentillak",
 	"statements":[
 	  {
 		"statement":"Kanpo bisuala hobea da …",
@@ -240,7 +240,7 @@
 	]
   },
 		{
-			"audioUrl":"audio/lentillak",
+			"audioUrl":"lentillak",
 			"statements":[
 				{
 				"statement":"Kanpo bisuala hobea da …",

@@ -18,17 +18,35 @@
         android:layout_height="match_parent">
 
         <LinearLayout
+            android:id="@+id/entzumena_LinearLayout_audioplay"
             android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_centerHorizontal="true">
 
+
+            <!--
+            <LinearLayout
+                android:id="@+id/entzumena_LinearLayout_audioplay"
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"/>
+               -->
             <TextView
                 android:id="@+id/entzumena_title_textView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:textSize="30dp"/>
+            <Button
+                android:id="@+id/entzumena_play_button"
+                style="?android:textAppearanceSmall"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="@string/play_audio"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/entzumena_statement_textView_0"
@@ -107,5 +125,14 @@
         </LinearLayout>
 
     </ScrollView>
+    <VideoView
+        android:alpha="0.5"
+        android:background="@android:color/transparent"
+        android:id="@+id/vv_play_video_dialog_detail"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:visibility="visible"
+        />
+
 
 </RelativeLayout>

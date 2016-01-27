@@ -4,12 +4,14 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import eus.ehu.intel.tta.euskhazi.R;
 
 public class TipoExamenActivity extends ScreenBase {
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,7 +24,6 @@ public class TipoExamenActivity extends ScreenBase {
         Intent intent = getIntent();
         TextView textLogin = (TextView)findViewById(R.id.tipo_examen_textView_level);
         textLogin.setText(intent.getStringExtra("level") + " MAILA");
-
 
     }
 

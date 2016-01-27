@@ -6,6 +6,7 @@ import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -22,6 +23,7 @@ import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.text.TextUtils;
 import android.view.KeyEvent;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
@@ -32,16 +34,20 @@ import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 import eus.ehu.intel.tta.euskhazi.R;
+import eus.ehu.intel.tta.euskhazi.services.AudioPlayer;
 import eus.ehu.intel.tta.euskhazi.services.UsersManager;
+import eus.ehu.intel.tta.euskhazi.services.dataType.Exam;
 import eus.ehu.intel.tta.euskhazi.services.dataType.User;
 
 import static android.Manifest.permission.READ_CONTACTS;
@@ -51,6 +57,7 @@ import static android.Manifest.permission.READ_CONTACTS;
  */
 public class ScreenLogin extends ScreenBase implements LoaderCallbacks<Cursor> {
     private static String TAG = ScreenLogin.class.getCanonicalName();
+    public List<User> mUsers;
 
     /**
      * Id to identity READ_CONTACTS permission request.
@@ -74,11 +81,14 @@ public class ScreenLogin extends ScreenBase implements LoaderCallbacks<Cursor> {
     private EditText mPasswordView;
     private View mProgressView;
     private View mLoginFormView;
+    private LinearLayout email_login_form;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.screen_login);
+
+
         // Set up the login form.
         mEmailView = (AutoCompleteTextView) findViewById(R.id.email);
         populateAutoComplete();
@@ -120,30 +130,34 @@ public class ScreenLogin extends ScreenBase implements LoaderCallbacks<Cursor> {
 
     }
 
+
+
     @Override
     protected void onResume(){
         super.onResume();
         mEngine.setOnGetAllUserListener(new UsersManager.OnGetAllUserListener() {
+
             @Override
-            public void onGetAllUser(List<User> users) {
+            public void onGetAllUser(final List<User> users) {
                 ArrayList<String> listNombreUsuarios = new ArrayList<>();
                 if (users == null || users.isEmpty()) {
                     Toast.makeText(getApplicationContext(), "Ez dago erabiltzailerik erregistratuta", Toast.LENGTH_SHORT).show();
                     return;
                 }else {
+                    mUsers=users;
                     for (User user : users) {
                         String nombreUsuario = user.getName();
                         listNombreUsuarios.add(nombreUsuario);
                     }
-                    ArrayAdapter<String> adapter = new ArrayAdapter<>(getApplicationContext(), R.layout.textview_layout, R.id.exams_textView, listNombreUsuarios);
+                    UsersAdapter adapter=new UsersAdapter(getApplicationContext(),users);
+                    //ArrayAdapter<String> adapter = new ArrayAdapter<>(getApplicationContext(), R.layout.textview_layout, R.id.exams_textView, listNombreUsuarios);
                     ListView lstOpciones = (ListView) findViewById(R.id.screen_login_usuarios_listView);
                     lstOpciones.setAdapter(adapter);
 
                     lstOpciones.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                         public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
-                            String nombreUsuario = (String) adapterView.getItemAtPosition(position);
                             AutoCompleteTextView emailTextView = (AutoCompleteTextView) findViewById(R.id.email);
-                            emailTextView.setText(nombreUsuario);
+                            emailTextView.setText(users.get(position).getName());
                         }
                     });
                 }
@@ -258,7 +272,6 @@ public class ScreenLogin extends ScreenBase implements LoaderCallbacks<Cursor> {
             @Override
             public void onIsUser(boolean isUser) {
                 if (isUser) {
-
                     mEngine.setOnGetUserListener(new UsersManager.OnGetUserListener() {
                         @Override
                         public void onGetUser(User user) {
@@ -418,6 +431,43 @@ public class ScreenLogin extends ScreenBase implements LoaderCallbacks<Cursor> {
         }
     }
 
+
+
+    public class UsersAdapter extends ArrayAdapter<User> {
+        public List<User> users;
+        public UsersAdapter(Context context, List<User> users) {
+            super(context,R.layout.screen_login, users);
+            this.users=users;
+        }
+
+        @Override
+        public View getView(int position, View convertView, ViewGroup parent) {
+            // Get the data item for this position
+            User user = users.get(position);
+            // Check if an existing view is being reused, otherwise inflate the view
+            if (convertView == null) {
+                convertView = LayoutInflater.from(getContext()).inflate(R.layout.item_login_user, parent, false);
+            }
+            // Lookup view for data population
+            TextView item_user_TextView_index = (TextView) convertView.findViewById(R.id.item_user_TextView_index);
+            TextView item_user_TextView_name = (TextView) convertView.findViewById(R.id.item_user_TextView_name);
+            TextView item_user_TextView_exams = (TextView) convertView.findViewById(R.id.item_user_TextView_exams);
+
+            // Populate the data into the template view using the data object
+            String s=Integer.toString(position);
+            item_user_TextView_index.setText(s);
+            item_user_TextView_name.setText(getString(R.string.Nombre)+": "+user.getName());
+            if(user.getExams()==null)user.setExams(new ArrayList<Exam>());
+            item_user_TextView_exams.setText(getString(R.string.Examenes_hechos)+": "+user.getExams().size());
+            // Return the completed view to render on screen
+
+
+
+            return convertView;
+        }
+    }
+
+
     /**
      * Represents an asynchronous login/registration task used to authenticate
      * the user.
@@ -474,5 +524,8 @@ public class ScreenLogin extends ScreenBase implements LoaderCallbacks<Cursor> {
             showProgress(false);
         }
     }
+
+
+
 }
 

@@ -14,7 +14,9 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
@@ -41,6 +43,7 @@ public class ScreenLoading extends ScreenBase {
     private Handler mHandler;
     //prueba
     private ProgressDialog mProgressDialog;
+    private RelativeLayout loading_RelativeLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,7 +77,6 @@ public class ScreenLoading extends ScreenBase {
         });
 
         mEngine.initialization();
-
 
 
 
